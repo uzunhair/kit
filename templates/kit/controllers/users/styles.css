@@ -1,0 +1,8 @@
+/* ========================================================================== */
+#user_status_widget.loading {
+    background-position: center center;
+}
+#user_status_widget.loading .input{
+    visibility: hidden;
+}
+

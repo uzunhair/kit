@@ -1,0 +1,6 @@
+.peer_online {
+  &:after {
+    background-color: $main-color;
+    border: 2px solid ($gray-lightest);
+  }
+}

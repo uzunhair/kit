@@ -1,0 +1,13 @@
+.widget_activity_list,
+.activity-list,
+.widget_content_list,
+#pm_contact,
+.contacts{
+  .media {
+    margin-top: $media-margin-top;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+!/system/languages/ru/templates/kit.php
+system/
+license.ru.txt
+license.en.txt
+index.php
+cron.php
+credits.txt
+bootstrap.php
+.htaccess
+templates/default/
+upload/
+wysiwyg/
+cache/
+.idea/
+templates/kit/sass/.sass-cache/
+static/
+templates/kit/js/widgets_options/

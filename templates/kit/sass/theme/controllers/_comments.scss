@@ -1,0 +1,20 @@
+#comments_widget #comments_add_form,
+#comments_list  .scroll-down,
+#comments_add_form .loading{ display: none; }
+
+#comments_add_form .loading {
+  font-family: FontAwesome;
+  font-size: inherit;
+}
+#comments_add_form .loading:before {
+  content: "\f110";
+  display: inline-block;
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+// скрываем select меню после комментариев
+#tab-icms + select,
+#tab-vk + select {
+  display: none;
+}

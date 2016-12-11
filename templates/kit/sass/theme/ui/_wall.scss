@@ -1,0 +1,18 @@
+#wall_add_form {
+  display: none;
+  margin-bottom:$grid-gutter-width-base ;
+}
+.preview_box {
+  display: none;
+}
+#wall_widget #wall_add_form .loading{ display: none; }
+
+#wall_widget #entries_list .replies_loading {
+  display: none;
+  margin-bottom: 10px;
+  margin-top: 12px;
+}
+.loading {
+  background: rgba(0, 0, 0, 0) url("../images/loader16.gif") no-repeat scroll center center;
+}
+

@@ -1,0 +1,7 @@
+a {
+  color: $main-color;
+  @include hover-focus {
+    color: darken($main-color, 5%);
+  }
+}
+

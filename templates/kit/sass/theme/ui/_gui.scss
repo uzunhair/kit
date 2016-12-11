@@ -1,0 +1,211 @@
+//GUI в данном файле настраиваются различные элементы шаблона.
+
+/* Global =================================================================== */
+.display-i-b    {display:inline-block !important;}
+.display-b      {display:block !important;}
+.display-no     {display:none;}
+.display-t      {display:table;max-width: 100%;width: 100%;}
+.display-t-c    {display:table-cell; vertical-align: top;}
+.display-f      {display:flex;flex-wrap: wrap;}
+.align-items-c  {align-items: center;}
+.justify-c-s-b  {justify-content: space-between;}
+.justify-c-c    {justify-content: center;}
+
+.mb-05          {margin-bottom:0.5rem;}
+.margin-b0      {margin-bottom:0   !important;}
+.margin-t0      {margin-top:0     !important;}
+.margin-t5      {margin-top:5px   !important;}
+.margin-t-5     {margin-top:-5px  !important;}
+.margin-t10     {margin-top:10px  !important;}
+.margin-t15     {margin-top:15px  !important;}
+.margin-t20     {margin-top:20px  !important;}
+.margin-t-20    {margin-top:-20px !important;}
+.margin-t25     {margin-top:25px  !important;}
+
+.margin-l5      {margin-left:5px;}
+.margin-l10     {margin-left:10px;}
+.margin-l-10    {margin-left:-10px;}
+.margin-l15     {margin-left:15px;}
+
+.margin-r5      {margin-right:5px;}
+.margin-r10     {margin-right:10px;}
+.margin-r-10    {margin-right:-10px;}
+.margin-r15     {margin-right:15px;}
+.margin-r-15    {margin-right:-15px;}
+.margin-r30     {margin-right:30px;}
+.margin-r-30    {margin-right: -30px !important;}
+
+.padding-t5     {padding-top:5px !important;}
+.padding-t10    {padding-top:10px !important;}
+
+.padding-l0     {padding-left: 0px;}
+.padding-l5     {padding-left: 5px;}
+
+.padding-r0     {padding-right: 0px;}
+.padding-r5     {padding-right: 5px;}
+
+.padding-0      {padding:0 !important;}
+.padding-all5   {padding:5px !important;}
+.padding-all10  {padding:10px !important;}
+.padding-all15  {padding:15px !important;}
+
+.padding-b0     {padding-bottom:0 !important;}
+.padding-b5     {padding-bottom:5px !important;}
+.padding-b10    {padding-bottom:10px !important;}
+.height-full    {height: 100%;}
+
+.font-size-base {font-size: $font-size-base}
+.font-size-xs {font-size: $font-size-xs}
+.font-size-sm {font-size: $font-size-sm}
+.font-size-lg {font-size: $font-size-lg}
+
+.cursor-pointer {cursor: pointer;}
+
+.fa-no-photo {
+  font-family: FontAwesome;
+  font-feature-settings: normal;
+  font-kerning: auto;
+  font-language-override: normal;
+  font-size: inherit;
+  font-size-adjust: none;
+  font-stretch: normal;
+  font-style: normal;
+  font-synthesis: weight style;
+  font-variant: normal;
+  font-weight: normal;
+  text-rendering: auto;
+  &:before {
+    content: "\f03e";
+  }
+}
+
+nav select { display: none; }
+// Bootstrap
+
+.navbar {
+  .dropdown-menu {
+    padding-top: 0;
+    border-width: 1px;
+    padding-bottom: 0;
+    min-width: 260px;
+    .dropdown-menu {
+      left: 100%;
+      top: 0;
+      .dropdown-menu {
+        left: auto;
+        right: 100%;
+      }
+    }
+  }
+  .dropdown-item {
+    font-size: 12px;
+    font-weight: 500;
+    padding: ($grid-gutter-width-base / 2);
+  }
+}
+
+#breadcrumbs {
+  margin-top: -1rem;
+  margin-left: ($grid-gutter-width-base / -2);
+  margin-right: ($grid-gutter-width-base / -2);
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+}
+
+select.form-control {
+  &:not([size]):not([multiple]) {
+    $select-border-width: ($border-width * 2 - 8px);
+    height: calc(#{$input-height} - #{$select-border-width});
+    padding-bottom: ($input-padding-y - $one-pixel-to-rem *3);
+    padding-top: ($input-padding-y - $one-pixel-to-rem * 3);
+  }
+}
+
+/* InstatnCMS2 Standart Style Kod =====================================*/
+
+.field {
+  .title_left,
+  .title_top {
+    font-weight: bold;
+  }
+  .title_left {
+    float: left;
+    padding-right: 0.5rem;
+  }
+}
+
+.karma {
+  .thumb {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: inherit; // can't have font-size inherit on line above, so need to override
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &.thumb_up:after  {
+      content: "\f087";
+    }
+    &.thumb_down:after  {
+      content: "\f088";
+    }
+  }
+}
+
+.title a, .details a{
+  color: inherit;
+}
+.section-content {
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+  > article > h1 {
+    margin-bottom: 1rem;
+  }
+  > article + div {
+    margin-top:($grid-gutter-width-base / 2);
+  }
+}
+
+// Alert
+#site_off_notice {
+  position: fixed;
+  top:($grid-gutter-width-base / 2);
+  right: ($grid-gutter-width-base / 2);
+  z-index: 100;
+}
+
+.input-small {
+  display: inline-block;
+  width: 65px !important;
+}
+.date-input.form-control {
+  display: inline-block;
+  margin-right: 3px;
+  vertical-align: middle;
+  width: 7rem;
+}
+
+#error-maintenance {
+  min-height: 100%;
+  height: 100%;
+  .container {
+    height: 100%;
+  }
+}
+
+// Dotdotdot.js
+// 1 dot название скрипта
+// 2 base размер шрифта
+// 3 two количество строк
+
+.dot-base-two {
+  overflow: hidden;
+  max-height: 3rem;
+}
+.dot-base-three {
+  overflow: hidden;
+  max-height: 4.5rem;
+}
