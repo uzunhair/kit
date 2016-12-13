@@ -1,4 +1,4 @@
-<ul class="<?php echo $css_class; ?> nav">
+<ul class="nav nav-pills nav-stacked">
 
     <?php $last_level = 0; ?>
 
@@ -17,7 +17,6 @@
             $is_active = in_array($id, $active_ids);
 
             $css_classes = array();
-            if ($is_active) { $css_classes[] = 'active'; }
             if ($item['childs_count'] > 0) { $css_classes[] = 'dropdown'; }
             if ($item['level'] ==1 ) { $css_classes[] = 'nav-item';}
             if (!empty($item['options']['class'])) { $css_classes[] = $item['options']['class']; }
@@ -34,6 +33,7 @@
             }
 
             $css_classes_link = array();
+            if ($is_active) { $css_classes_link[] = 'active'; }
             if ($item['level'] == 1) { $css_classes_link[] = 'nav-link';}
             if ($item['level'] > 1) {$css_classes_link[] = 'dropdown-item';}
 
