@@ -65,15 +65,25 @@
     <?php $this->head(); ?>
     <style><?php include('options.css.php'); ?></style>
 </head>
-<body id="<?php echo $device_type; ?>_device_type">
 
+<body id="<?php echo $device_type; ?>_device_type" <?php if($body_padding) {?>style="<?php echo $body_padding; ?>"<?php } ?>>
     <div id="layout">
+        <?php if($this->hasWidgetsOn('top')) { ?>
+            <?php if ($header_nav_width) { ?>
+                <div id="widget_pos_top" class="container">
+            <?php } ?>
+            <nav class="<?php echo $header_nav_class; ?>">
+                <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
+                    <?php $this->widgets('top', false, 'wrapper_plain'); ?>
+                <?php if (!$header_nav_width) { ?></div><?php } ?>
+            </nav>
+            <?php if ($header_nav_width) { ?>
+                </div>
+            <?php } ?>
+        <?php } ?>
+        <div class="container">
 
-        <nav class="navbar navbar-dark bg-inverse">
-            <div id="widget_pos_top" class="container">
-                <?php $this->widgets('top', false, 'wrapper_plain'); ?>
-            </div>
-        </nav>
+
 
 
 
