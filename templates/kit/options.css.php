@@ -12,7 +12,7 @@
     }
     if (strrpos($header_nav_class, $navbar_fixed_bottom)) {
         $body_padding_bottom = "padding-bottom: {$this->options['body_padding_bottom']}px;";
-        $body_padding[] = $body_padding_botom;
+        $body_padding[] = $body_padding_bottom;
     }
     $body_padding = implode(' ', $body_padding);
     

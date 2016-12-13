@@ -9,6 +9,7 @@
     <?php $this->addMainCSS("templates/{$this->name}/css/system.css"); ?>
     <?php $this->addMainCSS("templates/{$this->name}/css/theme.css"); ?>
     <?php $this->addMainCSS("templates/{$this->name}/css/gray.css"); ?>
+    <?php $this->addMainCSS("templates/{$this->name}/css/example.css"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/jquery.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/jquery-modal.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/core.js"); ?>
@@ -68,6 +69,7 @@
 
 <body id="<?php echo $device_type; ?>_device_type" <?php if($body_padding) {?>style="<?php echo $body_padding; ?>"<?php } ?>>
     <div id="layout">
+        <header>
         <?php if($this->hasWidgetsOn('top')) { ?>
             <?php if ($header_nav_width) { ?>
                 <div id="widget_pos_top" class="container">
@@ -81,33 +83,27 @@
                 </div>
             <?php } ?>
         <?php } ?>
+            <div class="container">
+                <div id="logo">
+                    <?php if($core->uri) { ?>
+                        <a href="<?php echo href_to_home(); ?>"></a>
+                    <?php } else { ?>
+                        <span></span>
+                    <?php } ?>
+                </div>
+            </div>
+        </header>
         <div class="container">
 
-
-
-
-
-
-
-
-
-        <header>
-            <div id="logo">
-                <?php if($core->uri) { ?>
-                    <a href="<?php echo href_to_home(); ?>"></a>
-                <?php } else { ?>
-                    <span></span>
-                <?php } ?>
-            </div>
             <div class="widget_ajax_wrap" id="widget_pos_header"><?php $this->widgets('header', false, 'wrapper_plain'); ?></div>
-        </header>
 
 
-        <div id="body">
+
+        <div id="body" class="row">
 
             <?php
                 $is_sidebar = $this->hasWidgetsOn('right-top', 'right-center', 'right-bottom');
-                $section_width = $is_sidebar ? '730px' : '100%';
+                $section_width = $is_sidebar ? 'col-xs-9' : 'col-xs-12';
             ?>
 
             <?php
@@ -125,7 +121,7 @@
                 }
             ?>
 
-            <section style="width:<?php echo $section_width; ?>">
+            <section class="<?php echo $section_width; ?>">
 
                 <div class="widget_ajax_wrap" id="widget_pos_left-top"><?php $this->widgets('left-top'); ?></div>
 
@@ -145,7 +141,7 @@
             </section>
 
             <?php if($is_sidebar){ ?>
-                <aside>
+                <aside class="col-xs-3">
                     <div class="widget_ajax_wrap" id="widget_pos_right-top"><?php $this->widgets('right-top'); ?></div>
                     <div class="widget_ajax_wrap" id="widget_pos_right-center"><?php $this->widgets('right-center'); ?></div>
                     <div class="widget_ajax_wrap" id="widget_pos_right-bottom"><?php $this->widgets('right-bottom'); ?></div>
