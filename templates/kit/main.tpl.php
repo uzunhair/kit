@@ -88,9 +88,8 @@
 
 
 
-        <?php if (!$config->is_site_on){ ?>
-            <div id="site_off_notice"><?php printf(ERR_SITE_OFFLINE_FULL, href_to('admin', 'settings', 'siteon')); ?></div>
-        <?php } ?>
+
+
 
         <header>
             <div id="logo">
@@ -169,46 +168,56 @@
                 </div>
             </div>
         <?php } ?>
-
-        <footer>
-            <ul>
-                <li id="copyright">
-                    <a href="<?php echo $this->options['owner_url'] ? $this->options['owner_url'] : href_to_home(); ?>">
-                        <?php html($this->options['owner_name'] ? $this->options['owner_name'] : cmsConfig::get('sitename')); ?></a>
-                    &copy;
-                    <?php echo $this->options['owner_year'] ? $this->options['owner_year'] : date('Y'); ?>
-                </li>
-                <li id="info">
-                    <span class="item">
-                        <?php echo LANG_POWERED_BY_INSTANTCMS; ?>
-                    </span>
-                    <span class="item">
-                        <?php echo LANG_ICONS_BY_FATCOW; ?>
-                    </span>
-                    <?php if ($config->debug && cmsUser::isAdmin()){ ?>
-                        <span class="item">
-                            SQL: <a href="#sql_debug" title="SQL dump" class="ajax-modal"><?php echo $core->db->query_count; ?></a>
-                        </span>
-                        <?php if ($config->cache_enabled){ ?>
-                            <span class="item">
-                                Cache: <a href="<?php echo href_to('admin', 'cache_delete', $config->cache_method);?>" title="Clear cache"><?php echo cmsCache::getInstance()->query_count; ?></a>
+        </div>
+        <footer class="mt-2">
+            <div class="navbar navbar-light bg-faded">
+                <div class="container navbar-toggleable-md">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" id="copyright">
+                            <a class="nav-link" href="<?php echo $this->options['owner_url'] ? $this->options['owner_url'] : href_to_home(); ?>">
+                                <?php html($this->options['owner_name'] ? $this->options['owner_name'] : cmsConfig::get('sitename')); ?>
+                                &copy;
+                                <?php echo $this->options['owner_year'] ? $this->options['owner_year'] : date('Y'); ?>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="info">
+                            <span class="item navbar-text">
+                                <?php echo LANG_POWERED_BY_INSTANTCMS; ?>
                             </span>
-                        <?php } ?>
-                        <span class="item">
-                            Mem: <?php echo round(memory_get_usage()/1024/1024, 2); ?> Mb
-                        </span>
-                        <span class="item">
-                            Time: <?php echo number_format(cmsCore::getTime(), 4); ?> s
-                        </span>
-                    <?php } ?>
-                </li>
-                <li id="nav">
-                    <div class="widget_ajax_wrap" id="widget_pos_footer"><?php $this->widgets('footer', false, 'wrapper_plain'); ?></div>
-                </li>
-            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <span class="item navbar-text">
+                                <?php echo LANG_ICONS_BY_FATCOW; ?>
+                            </span>
+                        </li>
+                            <?php if ($config->debug && cmsUser::isAdmin()){ ?>
+                                <li class="nav-item">
+                                <span class="item navbar-text">
+                                    SQL: <a href="#sql_debug" title="SQL dump" class="ajax-modal"><?php echo $core->db->query_count; ?></a>
+                                </span>
+                                <?php if ($config->cache_enabled){ ?>
+                                    <span class="item navbar-text">
+                                        Cache: <a href="<?php echo href_to('admin', 'cache_delete', $config->cache_method);?>" title="Clear cache"><?php echo cmsCache::getInstance()->query_count; ?></a>
+                                    </span>
+                                <?php } ?>
+                                <span class="item navbar-text">
+                                    Mem: <?php echo round(memory_get_usage()/1024/1024, 2); ?> Mb
+                                </span>
+                                <span class="item navbar-text">
+                                    Time: <?php echo number_format(cmsCore::getTime(), 4); ?> s
+                                </span>
+                                </li>
+                            <?php } ?>
+                        <li class="nav-item float-lg-right" id="nav">
+                            <?php $this->widgets('footer', false, 'wrapper_plain'); ?>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </footer>
-
-    </div>
+        <?php if (!$config->is_site_on){ ?>
+            <div id="site_off_notice"><?php printf(ERR_SITE_OFFLINE_FULL, href_to('admin', 'settings', 'siteon')); ?></div>
+        <?php } ?>
 
 </body>
 </html>
