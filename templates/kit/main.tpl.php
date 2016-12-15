@@ -17,7 +17,7 @@
     <?php if (cmsUser::isLogged()){ ?>
         <?php $this->addMainJS("templates/{$this->name}/js/messages.js"); ?>
     <?php } ?>
-    <?php $this->addMainJS("templates/{$this->name}/addons/bootstrap/js/bootstrap.min.js"); ?>
+    <?php $this->addMainJS("templates/{$this->name}/addons/bootstrap/bootstrap.min.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/addons/setting.js"); ?>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
