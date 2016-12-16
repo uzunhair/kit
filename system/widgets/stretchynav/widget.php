@@ -21,7 +21,6 @@ class widgetStretchynav extends cmsWidget {
             $position = $position .= " nav-is-visible trigger-is-hidden";
         }
 
-
         return array(
             'position'=> $position,
             'border'=> $border,

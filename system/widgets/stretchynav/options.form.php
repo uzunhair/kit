@@ -49,6 +49,7 @@ class formWidgetStretchynavOptions extends cmsForm {
                         'default' => 'no-border',
                         'items' => array(
                             'stretch-rounded-no' => LANG_WD_STRETCHYNAV_BORDER_NO,
+                            'stretch-rounded' => LANG_WD_STRETCHYNAV_BORDER_ALL,
                             'stretch-rounded-top' => LANG_WD_STRETCHYNAV_BORDER_TOP,
                             'stretch-rounded-right' => LANG_WD_STRETCHYNAV_BORDER_RIGHT,
                             'stretch-rounded-bottom' => LANG_WD_STRETCHYNAV_BORDER_BOTTOM,
