@@ -1,20 +1,21 @@
-
 <?php $this->addMainJS("templates/{$this->name}/addons/tether/tether.min.js"); ?>
-<?php $this->addJS("templates/{$this->name}/addons/navigation/main.js"); ?>
-
-
-
+<?php if ($nav_posture == false) { ?>
+    <?php $this->addJS("templates/{$this->name}/addons/navigation/main.js"); ?>
+<?php } ?>
 <?php
-
-//echo $menu_id;
-//echo $today;
-//?>
-
-
-<nav class="cd-stretchy-nav">
-    <a class="cd-nav-trigger" href="#0">
-        <span aria-hidden="true"></span>
-    </a>
+if (!isset($this->menus[$widget->options['menu']])) {
+    $menu = $this->loadMenus($widget->options['menu']);
+    if (!$menu){ return; }
+    $this->setMenuItems($widget->options['menu'], $menu);
+}
+$menu = $this->menus[$widget->options['menu']];
+?>
+<nav class="cd-stretchy-nav <?php echo $position; ?>">
+    <?php if ($nav_posture == false) { ?>
+        <a class="cd-nav-trigger" href="#0">
+            <span aria-hidden="true" class="<?php echo $trigger_color; ?>"></span>
+        </a>
+    <?php } ?>
     <ul>
         <?php foreach ($menu as $id => $item) { ?>
 
@@ -70,7 +71,7 @@
                 ?>
 
                 <li <?php if ($css_classes) { ?>class="<?php echo implode(' ', $css_classes); ?>"<?php } ?>>
-                    <a data-toggle="tooltip" data-placement="left"
+                    <a class="<?php echo $text_color; ?>" data-toggle="tooltip" data-placement="left"
                        title="<?php echo html($item['title']); ?>" <?php echo $data_attr; ?>
                        href="<?php echo !empty($item['url']) ? htmlspecialchars($item['url']) : 'javascript:void(0)'; ?>"
                        <?php if ($onclick) { ?>onclick="<?php echo $onclick; ?>"<?php } ?>
@@ -85,6 +86,5 @@
             <?php } ?>
         <?php } ?>
     </ul>
-    <span aria-hidden="true" class="stretchy-nav-bg <?php echo $bg_color; ?>"></span>
+    <span aria-hidden="true" class="stretchy-nav-bg <?php echo $bg_color.' '.$border;?>"></span>
 </nav>
-

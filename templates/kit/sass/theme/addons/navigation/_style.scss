@@ -8,12 +8,44 @@ Stretchy Nav style - common to:
 
 -------------------------------- */
 $cd-stretchy-size:  50px !default;
+$stretch-rounded: 0.5rem;
+
+.stretch-left {
+  left: ($grid-gutter-width-base/2);
+}
+.stretch-left-attach {
+  left: 0;
+}
+.stretch-right {
+  right: ($grid-gutter-width-base/2);
+}
+.stretch-right-attach {
+  right: 0;
+}
+
+.stretch-rounded {
+  @include border-radius($stretch-rounded);
+}
+.stretch-rounded-top {
+  @include border-top-radius($stretch-rounded);
+}
+.stretch-rounded-right {
+  @include border-right-radius($stretch-rounded);
+}
+.stretch-rounded-bottom {
+  @include border-bottom-radius($stretch-rounded);
+}
+.stretch-rounded-left {
+  @include border-left-radius($stretch-rounded);
+}
+.stretch-rounded-circle {
+  border-radius:($cd-stretchy-size/2);
+}
 
 .cd-stretchy-nav {
   position: fixed;
   z-index: 2;
   top:63px;
-  right: ($grid-gutter-width-base/2);
   pointer-events: none;
   .stretchy-nav-bg {
     /* this is the stretching navigation background */
@@ -23,7 +55,6 @@ $cd-stretchy-size:  50px !default;
     right: 0;
     width: $cd-stretchy-size;
     height: $cd-stretchy-size;
-    border-radius: ($cd-stretchy-size/2);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     -webkit-transition: height 0.2s, box-shadow 0.2s;
     -moz-transition: height 0.2s, box-shadow 0.2s;
@@ -59,7 +90,10 @@ $cd-stretchy-size:  50px !default;
   position: absolute;
   width: 16px;
   height: 2px;
-  background-color: $gray-lightest;
+}
+.cd-nav-trigger span::after,
+.cd-nav-trigger span::before {
+  background-color: inherit;
 }
 .cd-nav-trigger span {
   /* middle line of the hamburger icon */
@@ -99,7 +133,7 @@ $cd-stretchy-size:  50px !default;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
 }
 .nav-is-visible .cd-nav-trigger span {
-  background-color: transparent;
+  height: 0;
 }
 .nav-is-visible .cd-nav-trigger span::before {
   -webkit-transform: rotate(-45deg);
@@ -121,11 +155,12 @@ $cd-stretchy-size:  50px !default;
     position: relative;
     list-style: none;
     z-index: 2;
-    padding: $cd-stretchy-size 0 0;
+    padding: $cd-stretchy-size 0 15px;
     visibility: hidden;
     -webkit-transition: visibility 0.3s;
     -moz-transition: visibility 0.3s;
     transition: visibility 0.3s;
+    margin-bottom: 0;
     a {
       position: relative;
       display: block;
@@ -133,11 +168,15 @@ $cd-stretchy-size:  50px !default;
       line-height: 50px;
       width: $cd-stretchy-size;
       text-align: center;
-      color: $gray-dark;
       font-size: 1.4rem;
       -webkit-transition: color 0.2s;
       -moz-transition: color 0.2s;
       transition: color 0.2s;
+    }
+  }
+  &.trigger-is-hidden {
+    ul {
+      padding-top: 15px;
     }
   }
 }
