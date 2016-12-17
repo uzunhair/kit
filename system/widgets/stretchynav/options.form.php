@@ -36,7 +36,8 @@ class formWidgetStretchynavOptions extends cmsForm {
                         'default' => 'right',
                         'items' => array(
                             'stretch-right' => LANG_WD_STRETCHYNAV_POSITION_RIGHT,
-                            'stretch-left' => LANG_WD_STRETCHYNAV_POSITION_LEFT
+                            'stretch-left' => LANG_WD_STRETCHYNAV_POSITION_LEFT,
+                            'add-content stretch-bottom' => LANG_WD_STRETCHYNAV_POSITION_BOTTOM_CENTER,
                         )
                     )),
 
