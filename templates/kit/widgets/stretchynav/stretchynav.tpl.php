@@ -11,7 +11,7 @@ if (!isset($this->menus[$widget->options['menu']])) {
 
 $menu = $this->menus[$widget->options['menu']];
 ?>
-<nav class="cd-stretchy-nav <?php echo $position; ?>">
+<nav class="cd-stretchy-nav <?php echo $position; ?>" <?php if (($tooltip_pos=='left') || ($tooltip_pos=='right')){ ?>style="top:<?php echo $off_top; ?>%"<?php } ?>>
     <?php if ($nav_posture == false) { ?>
         <a class="cd-nav-trigger" href="#0">
             <span aria-hidden="true" class="<?php echo $trigger_color; ?>"></span>
@@ -36,9 +36,10 @@ $menu = $this->menus[$widget->options['menu']];
         <?php foreach ($menu as $id => $item) { ?>
             <?php if ($item['level'] == 1) { ?>
                 <?php
+                $css_classes = array();
                 $fa_icon = 'fa fa-file-text-o';
+                $link_class = $item['options']['class'];
                 if ($widget->options['menu'] == 'toolbar') {
-                    $link_class = $item['options']['class'];
                     if ($link_class == 'add') {
                         $fa_icon = 'fa fa-file-text-o';
                     } else if ($link_class == 'edit') {
@@ -58,13 +59,17 @@ $menu = $this->menus[$widget->options['menu']];
                     } else if ($link_class == 'cancel') {
                         $fa_icon = 'fa fa-ban';
                     }
+                } else {
+                    if(stristr($link_class, 'fa-')) {
+                        $fa_icon = '';
+                    }
                 }
-
-                $css_classes = array();
 
                 if (!empty($item['options']['class'])) {
                     $css_classes[] = $item['options']['class'];
                 }
+                $css_classes[] = $text_color;
+                $css_classes[] = $fa_icon;
 
                 $onclick = isset($item['options']['onclick']) ? $item['options']['onclick'] : false;
                 $onclick = isset($item['options']['confirm']) ? "return confirm('{$item['options']['confirm']}')" : $onclick;
@@ -76,37 +81,37 @@ $menu = $this->menus[$widget->options['menu']];
                         $data_attr .= 'data-' . $key . '="' . $val . '" ';
                     }
                 }
+                $nav_item = '';
                 if ($nav_posture == false) {
                     $margin_next++;
                     $margin_last++;
 
                     if (($stretchy_count / $margin_last == 1) || ($stretchy_count - 1 == 1)) {
                         if ($stretchy_count - $margin_next == 1) {
-                            $css_classes[] = 'stretchy-li';
+                            $nav_item = 'stretchy-li';
                         }
                     }
 
                     if ($margin_next > 1) {
                         if ($stretchy_count / $margin_next == 2) {
-                            $css_classes[] = 'stretchy-li';
+                            $nav_item = 'stretchy-li';
                         }
                     }
                 }
                 ?>
-                
-                <li <?php if ($css_classes) { ?>class="<?php echo implode(' ', $css_classes); ?>"<?php } ?>>
-                    <a class="<?php echo $text_color; ?>" data-toggle="tooltip" data-placement="<?php echo $tooltip_pos; ?>"
+
+                <li <?php if ($nav_item); { ?>class="<?php echo $nav_item; ?>"<?php } ?>>
+                    <a <?php if ($css_classes) { ?>class="<?php echo implode(' ', $css_classes); ?>"<?php } ?> data-toggle="tooltip" data-placement="<?php echo $tooltip_pos; ?>"
                        title="<?php echo html($item['title']); ?>" <?php echo $data_attr; ?>
                        href="<?php echo !empty($item['url']) ? htmlspecialchars($item['url']) : 'javascript:void(0)'; ?>"
                        <?php if ($onclick) { ?>onclick="<?php echo $onclick; ?>"<?php } ?>
                        <?php if ($target) { ?>target="<?php echo $target; ?>"<?php } ?>>
-                        <i class="fa <?php echo $fa_icon; ?>">
                             <?php if (isset($item['counter']) && $item['counter']) { ?>
                                 <span class="counter"><?php html($item['counter']); ?></span>
                             <?php } ?>
-                        </i>
                     </a>
                 </li>
+                <?php unset($nav_item); ?>
             <?php } ?>
         <?php } ?>
     </ul>

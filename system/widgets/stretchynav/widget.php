@@ -14,6 +14,7 @@ class widgetStretchynav extends cmsWidget {
         $text_color = $this->getOption('text_color');
         $trigger_color = $this->getOption('trigger_color');
         $nav_posture = $this->getOption('nav_posture');
+        $off_top= $this->getOption('off_top');
 
         if ($position == 'stretch-right'){
             $tooltip_pos = 'left';
@@ -22,7 +23,7 @@ class widgetStretchynav extends cmsWidget {
         } elseif ($position == 'add-content stretch-bottom') {
             $tooltip_pos = 'top';
         }
-
+        
         if ($attach == true) {
             $position  = $position .= "-attach";
         }
@@ -42,6 +43,7 @@ class widgetStretchynav extends cmsWidget {
             'trigger_color'=> $trigger_color,
             'nav_posture'=> $nav_posture,
             'tooltip_pos'=> $tooltip_pos,
+            'off_top'=> $off_top,
         );
 
     }

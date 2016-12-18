@@ -3,6 +3,7 @@
     define('LANG_WD_STRETCHYNAV_POSITION_RIGHT',    'Справа');
     define('LANG_WD_STRETCHYNAV_POSITION_LEFT',     'Слева');
     define('LANG_WD_STRETCHYNAV_POSITION_BOTTOM_CENTER', 'Снизу в центре');
+    define('LANG_WD_STRETCHYNAV_OFF_TOP', 'Отступ с верху');
     define('LANG_WD_STRETCHYNAV_ATTACH',            'Прикрепить к краю');
     define('LANG_WD_STRETCHYNAV_BORDER',            'Скруглить углы меню');
     define('LANG_WD_STRETCHYNAV_BORDER_NO',         'Нет');

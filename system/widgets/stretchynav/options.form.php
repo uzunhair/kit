@@ -41,6 +41,15 @@ class formWidgetStretchynavOptions extends cmsForm {
                         )
                     )),
 
+                    new fieldNumber('options:off_top', array(
+                        'title' => LANG_WD_STRETCHYNAV_OFF_TOP,
+                        'default' => 0,
+                        'rules' => array(
+                            array('min', 0),
+                            array('max', 100),
+                        )
+                    )),
+
                     new fieldCheckbox('options:attach', array(
                         'title' => LANG_WD_STRETCHYNAV_ATTACH,
                     )),
