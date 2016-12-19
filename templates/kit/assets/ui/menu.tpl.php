@@ -36,6 +36,7 @@
             $css_classes_link = array();
             if ($item['level'] == 1) { $css_classes_link[] = 'nav-link';}
             if ($item['level'] > 1) {$css_classes_link[] = 'dropdown-item';}
+            if ($is_active) { $css_classes_link[] = 'active'; }
 
         ?>
 

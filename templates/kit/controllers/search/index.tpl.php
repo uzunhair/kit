@@ -46,7 +46,7 @@
 <h1><?php echo LANG_SEARCH_TITLE; ?></h1>
 
 <div id="search_form">
-    <form action="<?php echo href_to('search'); ?>" method="get">
+    <form action="<?php echo href_to('search'); ?>" method="get" class="form-inline">
         <?php echo html_input('text', 'q', $query, array('placeholder'=>LANG_SEARCH_QUERY_INPUT)); ?>
         <?php echo html_select('type', array(
             'words' => LANG_SEARCH_TYPE_WORDS,
@@ -69,23 +69,25 @@
 <?php if (!empty($search_data)){ ?>
 
     <div id="search_results_pills">
-        <?php $this->menu('results_tabs', true, 'pills-menu-small'); ?>
+        <?php $this->menu('results_tabs', true, 'nav nav-pills'); ?>
     </div>
 
     <div id="search_results_list">
         <?php foreach($search_data['items'] as $item){ ?>
-            <div class="item">
-                <h3 class="title">
-                    <a href="<?php echo $item['url']; ?>" target="_blank"><?php echo $item['title']; ?></a>
-                </h3>
+            <div class="media">
                 <?php if(!empty($item['image'])){ ?>
-                    <div class="field search_field_image"><?php echo $item['image']; ?></div>
+                    <div class="media-left"><?php echo $item['image']; ?></div>
                 <?php } ?>
-                <?php foreach($item['fields'] as $field=>$value){ ?>
-                    <?php if (!$value) { continue; } ?>
-                    <div class="field search_field_<?php echo $field; ?>"><?php echo ((mb_strlen($value) > 280) ? string_short($value, 280) : $value); ?></div>
-                <?php } ?>
-                <div class="info"><span class="date"><?php echo html_date_time($item['date_pub']); ?></span></div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <a href="<?php echo $item['url']; ?>" target="_blank"><?php echo $item['title']; ?></a>
+                    </h4>
+                    <?php foreach($item['fields'] as $field=>$value){ ?>
+                        <?php if (!$value) { continue; } ?>
+                        <div class="field search_field_<?php echo $field; ?>"><?php echo ((mb_strlen($value) > 280) ? string_short($value, 280) : $value); ?></div>
+                    <?php } ?>
+                    <div class="text-muted"> <i class="fa fa-calendar"></i> <?php echo html_date_time($item['date_pub']); ?></div>
+                </div>
             </div>
         <?php } ?>
     </div>
