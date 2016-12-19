@@ -104,14 +104,15 @@ nav select { display: none; }
   }
 }
 
-#breadcrumbs {
-  margin-top: -1rem;
-  margin-left: ($grid-gutter-width-base / -2);
-  margin-right: ($grid-gutter-width-base / -2);
-  .breadcrumb {
-    margin-bottom: 0;
-  }
-}
+
+//#breadcrumbs {
+//  margin-top: -1rem;
+//  margin-left: ($grid-gutter-width-base / -2);
+//  margin-right: ($grid-gutter-width-base / -2);
+//  .breadcrumb {
+//    margin-bottom: 0;
+//  }
+//}
 
 select.form-control {
   &:not([size]):not([multiple]) {
