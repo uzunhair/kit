@@ -76,7 +76,7 @@
             <?php } ?>
             <nav class="<?php echo $header_nav_class; ?>">
                 <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
-                    <?php $this->widgets('top', false, 'wrapper_plain'); ?>
+                    <?php $this->widgets('top'); ?>
                 <?php if (!$header_nav_width) { ?></div><?php } ?>
             </nav>
             <?php if ($header_nav_width) { ?>
