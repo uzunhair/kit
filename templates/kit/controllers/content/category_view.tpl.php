@@ -95,31 +95,27 @@
             <h1><?php echo $page_header; ?></h1>
         </div>
         <?php if (!empty($ctype['options']['is_rss']) && $this->controller->isControllerEnabled('rss')) { ?>
-            <div class="media-right">
-                <div class="content_list_rss_icon">
-                    <a href="<?php echo href_to('rss', 'feed', $ctype['name']) . $rss_query; ?>"><i class="fa fa-rss"></i></a>
-                </div>
+            <div class="media-right media-middle">
+                <a href="<?php echo href_to('rss', 'feed', $ctype['name']) . $rss_query; ?>"><i class="fa fa-rss"></i></a>
             </div>
         <?php } ?>
     </div>
 <?php } ?>
 
 <?php if ($datasets && !$is_hide_items){ ?>
-    <div class="content_datasets<?php if (!empty($current_dataset['description'])){ echo ' mb-0';} ?>">
-        <ul class="nav nav-datasets pills-menu">
+    <div class="content_datasets <?php if (!empty($current_dataset['description'])){ echo ' mb-0';} else { echo 'mb-1';} ?>">
+        <ul class="nav nav-tabs">
             <?php $ds_counter = 0; ?>
             <?php foreach($datasets as $set){ ?>
                 <?php $ds_selected = ($dataset == $set['name'] || (!$dataset && $ds_counter==0)); ?>
                 <li class="nav-item">
                     <?php if ($ds_counter > 0) { $ds_url = sprintf(rel_to_href($base_ds_url), $set['name']); } ?>
                     <?php if ($ds_counter == 0) { $ds_url = href_to($base_url, isset($category['slug']) ? $category['slug'] : ''); } ?>
-
                     <?php if ($ds_selected){ ?>
-                        <a class="btn btn-secondary active" href="<?php echo $ds_url; ?>"><?php echo $set['title']; ?></a>
+                        <a class="nav-link active" href="<?php echo $ds_url; ?>"><?php echo $set['title']; ?></a>
                     <?php } else { ?>
-                        <a class="btn btn-secondary" href="<?php echo $ds_url; ?>"><?php echo $set['title']; ?></a>
+                        <a class="nav-link" href="<?php echo $ds_url; ?>"><?php echo $set['title']; ?></a>
                     <?php } ?>
-
                 </li>
                 <?php $ds_counter++; ?>
             <?php } ?>
@@ -137,11 +133,11 @@
 <?php } ?>
 
 <?php if ($subcats && $ctype['is_cats'] && !empty($ctype['options']['is_show_cats'])){ ?>
-    <div class="gui-panel content_categories<?php if (count($subcats)>8){ ?> categories_small<?php } ?>">
-        <ul class="nav <?php echo $ctype['name'];?>_icon">
+    <div class="gui-panel content_categories<?php if (count($subcats)>8){ ?> categories_small<?php } ?> mb-1">
+        <ul class="nav nav nav-inline <?php echo $ctype['name'];?>_icon">
             <?php foreach($subcats as $c){ ?>
                 <li class="nav-item <?php echo str_replace('/', '-', $c['slug']);?>">
-                    <a class="nav-link" href="<?php echo href_to($base_url . ($dataset ? '-'.$dataset : ''), $c['slug']); ?>"><?php echo $c['title']; ?></a>
+                    <a class="nav-link" href="<?php echo href_to($base_url . ($dataset ? '-'.$dataset : ''), $c['slug']); ?>"><i class="fa fa-folder-o"></i> <?php echo $c['title']; ?></a>
                 </li>
             <?php } ?>
         </ul>
