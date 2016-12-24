@@ -197,6 +197,18 @@ select.form-control {
   }
 }
 
+
+// info_bar
+.info_bar {
+  .bar_item {
+    display: inline-block;
+    &+ .bar_item {
+      margin-left: 1px;
+    }
+  }
+}
+
+
 // Dotdotdot.js
 // 1 dot название скрипта
 // 2 base размер шрифта
