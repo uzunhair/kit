@@ -18,6 +18,8 @@
     
     $header_nav_width = $this->options['header_nav_width'];
 
+    $btn_class = $this->options['btn_class'];
+
 ?>
 
 

@@ -36,6 +36,20 @@
     define('LANG_THEME_KIT_COPYRIGHT_YEAR_HINT',    'Если не указан, выводится текущий');
 
     define('LANG_PAGE_CSS_SETTING',    'CSS настройка');
+    define('LANG_THEME_KIT_BTN_CLASS', 'CSS класс кнопок');
+    define('LANG_THEME_KIT_BTN_PRIMARY', 'btn-primary');
+    define('LANG_THEME_KIT_BTN_SECONDARY', 'btn-secondary');
+    define('LANG_THEME_KIT_BTN_SUCCESS', 'btn-success');
+    define('LANG_THEME_KIT_BTN_INFO', 'btn-info');
+    define('LANG_THEME_KIT_BTN_WARNING', 'btn-warning');
+    define('LANG_THEME_KIT_BTN_DANGER', 'btn-danger');
+    define('LANG_THEME_KIT_BTN_LINK', 'btn-link');
+    define('LANG_THEME_KIT_BTN_OUTLINE_PRIMARY', 'btn-outline_primary');
+    define('LANG_THEME_KIT_BTN_OUTLINE_SECONDARY', 'btn-outline_secondary');
+    define('LANG_THEME_KIT_BTN_OUTLINE_SUCCESS', 'btn-outline_success');
+    define('LANG_THEME_KIT_BTN_OUTLINE_INFO', 'btn-outline_info');
+    define('LANG_THEME_KIT_BTN_OUTLINE_WARNING', 'btn-outline_warning');
+    define('LANG_THEME_KIT_BTN_OUTLINE_DANGER', 'btn-outline_danger');
 
     define('LANG_THEME_KIT_SITE_LANGUAGES',         'Язык сайта');
     define('LANG_THEME_KIT_SITE_LANGUAGES_HINT',    'Вставьте код языка сайта, Например: ru, подробнее <a href="http://htmlbook.ru/html/value/lang" > здесь </a>  ');

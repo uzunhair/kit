@@ -185,8 +185,7 @@
     <?php echo $append_html; ?>
 
     <div class="buttons margin-t5">
-        <?php $btn_secondary = $this->options['btn_secondary']; ?>
-        <?php echo html_submit($submit['title'], 'submit', array('class'=> $btn_secondary)); ?>
+        <?php echo html_submit($submit['title'], 'submit', array('class'=> $this->options['btn_class'])); ?>
         <?php if ($cancel['show']) { echo html_button($cancel['title'], 'cancel', "location.href='{$cancel['href']}'"); } ?>
     </div>
 

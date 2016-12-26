@@ -62,7 +62,7 @@
         }
         ;
     </script>
-    <script>loadFont('Roboto', '/templates/oneminima/fonts/roboto.css', '/templates/oneminima/fonts/roboto_woff2.css'); </script>
+    <script>loadFont('Roboto', '/templates/<?php echo $this->name; ?>/fonts/roboto.css', '/templates/<?php echo $this->name; ?>/fonts/roboto_woff2.css'); </script>
     <?php $this->head(); ?>
     <style><?php include('options.css.php'); ?></style>
 </head>
@@ -106,32 +106,34 @@
                 $section_width = $is_sidebar ? 'col-xs-9' : 'col-xs-12';
             ?>
 
-            <?php
+            <section class="<?php echo $section_width; ?>">
+                <?php if ($config->show_breadcrumbs && $this->isBreadcrumbs()){ ?>
+                    <div id="breadcrumbs">
+                        <?php $this->breadcrumbs(array('strip_last'=>false)); ?>
+                    </div>
+                <?php } ?>
+                
+                <?php
                 $messages = cmsUser::getSessionMessages();
                 if ($messages){
                     ?>
-                    <div class="sess_messages">
+                    <div class="alert alert-info alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <?php
-                            foreach($messages as $message){
-                                echo $message;
-                            }
+                        foreach($messages as $message){
+                            echo $message;
+                        }
                         ?>
                     </div>
                     <?php
                 }
-            ?>
-
-            <section class="<?php echo $section_width; ?>">
-
+                ?>
                 <div class="widget_ajax_wrap" id="widget_pos_left-top"><?php $this->widgets('left-top'); ?></div>
 
                 <?php if ($this->isBody()){ ?>
                     <article>
-                        <?php if ($config->show_breadcrumbs && $this->isBreadcrumbs()){ ?>
-                            <div id="breadcrumbs">
-                                <?php $this->breadcrumbs(array('strip_last'=>false)); ?>
-                            </div>
-                        <?php } ?>
                         <div id="controller_wrap"><?php $this->body(); ?></div>
                     </article>
                 <?php } ?>

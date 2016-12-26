@@ -1,7 +1,7 @@
 <?php // Reworked the bootstrap ?>
 <?php
 $this->addJSFromContext('templates/default/js/jquery-chosen.js');
-$this->addCSSFromContext('templates/oneminima/css/jquery-chosen.css');
+$this->addCSSFromContext('templates/default/css/jquery-chosen.css');
 ?>
 <div id="geo_window">
 

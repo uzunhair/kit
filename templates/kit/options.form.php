@@ -77,6 +77,26 @@ class formKitTemplateOptions extends cmsForm {
                             0 => LANG_NO
                         )
                     )),
+
+                    new fieldList('btn_class', array(
+                        'title' => LANG_THEME_KIT_BTN_CLASS,
+                        'default' => 'btn-primary',
+                        'items' => array(
+                            'btn-primary' => LANG_THEME_KIT_BTN_PRIMARY,
+                            'btn-secondary' => LANG_THEME_KIT_BTN_SECONDARY,
+                            'btn-success' => LANG_THEME_KIT_BTN_SUCCESS,
+                            'btn-info' => LANG_THEME_KIT_BTN_INFO,
+                            'btn-warning' => LANG_THEME_KIT_BTN_WARNING,
+                            'btn-danger' => LANG_THEME_KIT_BTN_DANGER,
+                            'btn-link' => LANG_THEME_KIT_BTN_LINK,
+                            'btn-outline-primary' => LANG_THEME_KIT_BTN_OUTLINE_PRIMARY,
+                            'btn-outline-secondary' => LANG_THEME_KIT_BTN_OUTLINE_SECONDARY,
+                            'btn-outline-success' => LANG_THEME_KIT_BTN_OUTLINE_SUCCESS,
+                            'btn-outline-info' => LANG_THEME_KIT_BTN_OUTLINE_INFO,
+                            'btn-outline-warning' => LANG_THEME_KIT_BTN_OUTLINE_WARNING,
+                            'btn-outline-danger' => LANG_THEME_KIT_BTN_OUTLINE_DANGER,
+                        )
+                    )),
                 )
             ),
 

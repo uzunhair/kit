@@ -27,10 +27,10 @@
 
         <?php echo html_input('hidden', $field->element_name, $value['id'], array('class'=>'city-id')); ?>
 
-        <span class="city-name" <?php if (empty($value['name'])){ ?>style="display:none"<?php } ?>><?php echo $value['name']; ?></span>
+        <span class="city-name btn btn-secondary disabled" <?php if (empty($value['name'])){ ?>style="display:none"<?php } ?>><i class="fa fa-map-marker"></i> <?php echo $value['name']; ?></span>
 
-        <a class="city_clear_link btn <?php echo $this->options['btn_secondary']; ?>" href="#" <?php if (empty($value['name'])){ ?>style="display:none"<?php } ?>><?php echo LANG_DELETE; ?></a>
-        <a class="ajax-modal btn <?php echo $this->options['btn_secondary']; ?>" href="<?php echo href_to('geo', 'widget', array($field->element_name, $value['id'])); ?>"><?php echo LANG_SELECT; ?></a>
+        <a class="city_clear_link btn <?php echo $this->options['btn_class']; ?>" href="#" <?php if (empty($value['name'])){ ?>style="display:none"<?php } ?>><?php echo LANG_DELETE; ?></a>
+        <a class="ajax-modal btn <?php echo $this->options['btn_class']; ?>" href="<?php echo href_to('geo', 'widget', array($field->element_name, $value['id'])); ?>"><?php echo LANG_SELECT; ?></a>
 
     </div>
 
