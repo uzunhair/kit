@@ -16,32 +16,29 @@
         $index = 0;
     ?>
 
-    <div id="users_profiles_list" class="striped-list list-32">
+    <div id="users_profiles_list">
 
         <?php foreach($profiles as $profile){ ?>
 
-            <div class="item">
+            <div class="media mt-next-1">
 
                 <?php if ($dataset_name == 'rating') { ?>
-                    <div class="position">
+                    <div class="position media-left media-middle">
                         <?php $position = $index_first + $index; ?>
-                        <?php if (in_array($position, range(1, 3))){ ?>
-                            <div class="medal-icon-16 medal<?php echo $position; ?>-16" title="<?php echo $position; ?>"></div>
-                        <?php } else {  ?>
-                            <?php echo $position; ?>
-                        <?php } ?>
+
+                        <?php echo $position; ?>
+
                     </div>
                 <?php } ?>
 
-                <div class="icon">
+                <div class="media-left">
 					<a href="<?php echo $this->href_to($profile['id']); ?>"><?php echo html_avatar_image($profile['avatar'], 'micro', $profile['nickname']); ?></a>
                 </div>
-
-                <div class="title">
-                    <a href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a>
+                <div class="media-body">
+                    <a class=" font-size-lg" href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a>
                 </div>
 
-                <div class="actions">
+                <div class="media-right media-middle">
 
                     <?php if ($dataset_name == 'popular') { ?>
 

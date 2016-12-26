@@ -49,29 +49,25 @@
     <?php $this->renderChild('profile_header', array('profile'=>$profile, 'tabs'=>false, 'is_can_view'=>false)); ?>
 </div>
 
-<div id="user_profile" class="clearfix">
+<div id="user_profile" class="row">
 
-    <div id="left_column" class="column">
-
-        <div id="avatar" class="block">
-            <?php echo html_avatar_image($profile['avatar'], 'normal', $profile['nickname']); ?>
-        </div>
-        <div class="block">
-            <ul class="list-unstyled font-size-sm left-column-info">
-
-                <li>
+    <div id="left_column" class="col-xs-12 col-lg-4">
+        <div class="card">
+            <img id="avatar" class="card-img-top img-fluid" src="<?php echo html_avatar_image_src($profile['avatar'], 'normal'); ?>" alt="<?php html($profile['nickname']); ?>">
+            <div class="card-block">
+                <div>
                     <strong><?php echo LANG_USERS_PROFILE_REGDATE; ?>:</strong>
                     <?php echo string_date_age_max($profile['date_reg'], true); ?>
-                </li>
-                <li>
+                </div>
+                <div>
                     <strong><?php echo LANG_USERS_PROFILE_LOGDATE; ?>:</strong>
                     <?php echo $profile['is_online'] ? '<span class="online">'.LANG_ONLINE.'</span>' : string_date_age_max($profile['date_log'], true); ?>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="right_column" class="column">
+    <div id="right_column" class="col-xs-12 col-lg-8">
         <div class="height-full text-xs-center">
             <div class="display-1">
                 <i class="fa fa-lock"></i>

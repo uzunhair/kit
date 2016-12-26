@@ -47,34 +47,7 @@ $(document).ready(function(){
     $("nav select").change(function() {
         window.location = $(this).find("option:selected").val();
     });
-
-    if ($('.tabs-menu').length){
-
-        $(".tabs-menu").each(function() {
-
-            var tabs = $(this);
-
-            var dropdown = $("<select>").prependTo(tabs);
-            $("ul > li > a", tabs).each(function() {
-                var el = $(this);
-                var attr = {
-                    value   : el.attr('href'),
-                    text    : el.text()
-                };
-                if(window.location.pathname.indexOf(el.attr('href')) === 0){
-                    attr.selected = true;
-                }
-                $("<option>", attr).appendTo(dropdown);
-            });
-
-            $(dropdown).change(function() {
-                window.location = $(this).find("option:selected").val();
-            });
-
-        });
-
-    }
-
+    
 	$('.messages.ajax-modal a').on('click', function(){
         $('#popup-manager').addClass('nyroModalMessage');
 	});

@@ -58,25 +58,23 @@
     $rss_query = "?user={$profile['id']}";
 
 ?>
-
-<h1 id="user_profile_title">
-
+<div class="media mb-1">
+    <div class="media-left">
+        <a class="avatar" href="<?php echo $this->href_to($profile['id']); ?>"><?php echo html_avatar_image($profile['avatar'], 'micro', $profile['nickname']); ?></a>
+    </div>
+    <div class="media-body media-middle">
+        <h1 class="h4 mb-0">
+            <a href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a> <i class="fa fa-angle-double-right font-size-lg"></i>
+            <span><?php echo $list_header; ?></span>
+        </h1>
+    </div>
     <?php if (!empty($ctype['options']['is_rss']) && $this->controller->isControllerEnabled('rss')){ ?>
-        <div class="content_list_rss_icon">
+        <div class="media-right media-middle">
             <a href="<?php echo href_to('rss', 'feed', $ctype['name']) . $rss_query; ?>">RSS</a>
         </div>
     <?php } ?>
+</div>
 
-    <div class="avatar">
-        <a href="<?php echo $this->href_to($profile['id']); ?>"><?php echo html_avatar_image($profile['avatar'], 'micro', $profile['nickname']); ?></a>
-    </div>
-
-    <div class="name">
-        <a href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a> /
-        <span><?php echo $list_header; ?></span>
-    </div>
-
-</h1>
 
 <?php if ($folders){ ?>
     <div id="user_content_folders">
