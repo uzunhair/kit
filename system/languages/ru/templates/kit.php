@@ -66,5 +66,8 @@
 
     define('LANG_THEME_KIT_HEADER_NAV_WIDTH',          'Выводить навигацию в контейнере?');
 
+    define('LANG_ICONS_BY_FONTAWESOME',          'Иконки от <a href="http://fontawesome.io">Font Awesome</a>');
+
+
 
 

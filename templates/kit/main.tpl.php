@@ -185,7 +185,7 @@
                         </li>
                         <li class="nav-item">
                             <span class="item navbar-text">
-                                <?php echo LANG_ICONS_BY_FATCOW; ?>
+                                <?php echo LANG_ICONS_BY_FONTAWESOME; ?>
                             </span>
                         </li>
                             <?php if ($config->debug && cmsUser::isAdmin()){ ?>
