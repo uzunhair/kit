@@ -25,9 +25,9 @@
     define('LANG_WD_STRETCHYNAV_TEXT_COLOR_SUCCESS','Success');
     define('LANG_WD_STRETCHYNAV_TEXT_COLOR_PRIMARY','Primary');
     define('LANG_WD_STRETCHYNAV_TEXT_COLOR_INFO',   'Info');
-    define('LANG_WD_STRETCHYNAV_TEXT_COLOR_INVERSE','Inverse');
+    define('LANG_WD_STRETCHYNAV_TEXT_COLOR_WARNING','Warning');
     define('LANG_WD_STRETCHYNAV_TEXT_COLOR_DANGER', 'Danger');
-    define('LANG_WD_STRETCHYNAV_TEXT_COLOR_MUTED',  'muted');
+    define('LANG_WD_STRETCHYNAV_TEXT_COLOR_MUTED',  'Muted');
     define('LANG_WD_STRETCHYNAV_TEXT_COLOR_WHITE',  'White');
     define('LANG_WD_STRETCHYNAV_TRIGGER_COLOR',     'Цвет кнопки открытия');
     define('LANG_WD_STRETCHYNAV_NAV_POSTURE',       'Открытое меню');

@@ -89,7 +89,7 @@ class formWidgetStretchynavOptions extends cmsForm {
                             'text-success' => LANG_WD_STRETCHYNAV_TEXT_COLOR_SUCCESS,
                             'text-primary' => LANG_WD_STRETCHYNAV_TEXT_COLOR_PRIMARY,
                             'text-info' => LANG_WD_STRETCHYNAV_TEXT_COLOR_INFO,
-                            'text-warning' => LANG_WD_STRETCHYNAV_TEXT_COLOR_INVERSE,
+                            'text-warning' => LANG_WD_STRETCHYNAV_TEXT_COLOR_WARNING,
                             'text-danger' => LANG_WD_STRETCHYNAV_TEXT_COLOR_DANGER,
                             'text-muted' => LANG_WD_STRETCHYNAV_TEXT_COLOR_MUTED,
                             'text-white' => LANG_WD_STRETCHYNAV_TEXT_COLOR_WHITE,
