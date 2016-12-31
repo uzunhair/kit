@@ -29,15 +29,18 @@ $show_bar = $is_tags || $item['parent_id'] ||
                         <?php echo html_avatar_image($item['user']['avatar'], 'micro', $item['user']['nickname']); ?>
                     </a>
                 </span>
+                <i class="fa fa-user-o"></i>
                 <?php echo $fields['user']['html']; ?>
             <?php } ?>
             <?php if ($fields['date_pub']['is_in_item']){ ?>
                 <span class="album_date" title="<?php html( $fields['date_pub']['title'] ); ?>">
                     <?php if (!$item['is_pub']){ ?>
                         <span class="bi_not_pub">
+                            <i class="fa fa-exclamation-triangle"></i>
                             <?php echo LANG_CONTENT_NOT_IS_PUB; ?>
                         </span>
                     <?php } else { ?>
+                        <i class="fa fa-calendar"></i>
                         <?php echo $fields['date_pub']['html']; ?>
                     <?php } ?>
                 </span>
@@ -214,6 +217,7 @@ $show_bar = $is_tags || $item['parent_id'] ||
         </div>
         <?php if (!$item['is_approved']){ ?>
             <div class="bar_item bi_not_approved">
+                <i class="fa fa-exclamation-triangle"></i> 
                 <?php echo LANG_CONTENT_NOT_APPROVED; ?>
             </div>
         <?php } ?>

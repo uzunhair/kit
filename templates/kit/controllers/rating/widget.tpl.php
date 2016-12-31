@@ -11,15 +11,19 @@
     <?php } ?>
 >
 
-    <div class="arrow up">
+    <span class="arrow up">
         <?php if ($is_enabled){ ?>
-            <a href="#vote-up" class="vote-up" title="<?php echo LANG_RATING_VOTE_UP; ?>"></a>
+            <a href="#vote-up" class="vote-up" title="<?php echo LANG_RATING_VOTE_UP; ?>">
+                <i class="fa fa-thumbs-o-up"></i>
+            </a>
         <?php } else { ?>
-            <span class="disabled" title="<?php html($is_voted ? LANG_RATING_VOTED : LANG_RATING_DISABLED); ?>"></span>
+            <span class="disabled text-muted" title="<?php html($is_voted ? LANG_RATING_VOTED : LANG_RATING_DISABLED); ?>">
+                <i class="fa fa-thumbs-o-up"></i>
+            </span>
         <?php } ?>
-    </div>
+    </span>
 
-    <div class="score" title="<?php echo LANG_RATING; ?>">
+    <span class="score" title="<?php echo LANG_RATING; ?>">
         <?php if ($options['is_hidden'] && !$is_voted && ($is_enabled || $is_guest)){ ?>
             <span>&mdash;</span>
         <?php } else { ?>
@@ -27,15 +31,19 @@
                 <?php echo html_signed_num($current_rating); ?>
             </span>
         <?php } ?>
-    </div>
+    </span>
 
-    <div class="arrow down">
+    <span class="arrow down">
         <?php if ($is_enabled){ ?>
-            <a href="#vote-down" class="vote-down" title="<?php echo LANG_RATING_VOTE_DOWN; ?>"></a>
+            <a href="#vote-down" class="vote-down" title="<?php echo LANG_RATING_VOTE_DOWN; ?>">
+                <i class="fa fa-thumbs-o-down"></i>
+            </a>
         <?php } else { ?>
-            <span class="disabled" title="<?php html($is_voted ? LANG_RATING_VOTED : LANG_RATING_DISABLED); ?>"></span>
+            <span class="disabled text-muted" title="<?php html($is_voted ? LANG_RATING_VOTED : LANG_RATING_DISABLED); ?>">
+                <i class="fa fa-thumbs-o-down"></i>
+            </span>
         <?php } ?>
-    </div>
+    </span>
 
 </div>
 

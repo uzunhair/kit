@@ -79,9 +79,11 @@
                 </a>
             </span>
             <a href="<?php echo href_to('users', $photo['user']['id']); ?>" title="<?php echo LANG_AUTHOR ?>">
+                <i class="fa fa-user-o"></i> 
                 <?php echo $photo['user']['nickname']; ?>
             </a>
             <span class="album_date" title="<?php echo LANG_DATE_PUB; ?>">
+                <i class="fa fa-calendar"></i>
                 <?php echo html_date_time($photo['date_pub']); ?>
             </span>
         </div>

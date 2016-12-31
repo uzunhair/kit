@@ -104,11 +104,13 @@
             <?php } ?>
             <?php if ($fields['date_pub']['is_in_item']){ ?>
                 <div class="bar_item bi_date_pub" title="<?php html( $fields['date_pub']['title'] ); ?>">
+                    <i class="fa fa-calendar"></i>
                     <?php echo $fields['date_pub']['html']; ?>
                 </div>
             <?php } ?>
             <?php if (!$item['is_pub']){ ?>
                 <div class="bar_item bi_not_pub">
+                    <i class="fa fa-exclamation-triangle"></i>
                     <?php echo LANG_CONTENT_NOT_IS_PUB; ?>
                 </div>
             <?php } ?>
@@ -119,10 +121,12 @@
             <?php } ?>
             <?php if ($fields['user']['is_in_item']){ ?>
                 <div class="bar_item bi_user" title="<?php html( $fields['user']['title'] ); ?>">
+                    <i class="fa fa-user-o"></i>
                     <?php echo $fields['user']['html']; ?>
                 </div>
                 <?php if (!empty($item['folder_title'])){ ?>
                     <div class="bar_item bi_folder">
+                        <i class="fa fa-folder-o"></i>
                         <a href="<?php echo href_to('users', $item['user']['id'], array('content', $ctype['name'], $item['folder_id'])); ?>"><?php echo $item['folder_title']; ?></a>
                     </div>
                 <?php } ?>
@@ -136,6 +140,7 @@
             </div>
             <?php if (!$item['is_approved']){ ?>
                 <div class="bar_item bi_not_approved">
+                    <i class="fa fa-exclamation-triangle"></i> 
                     <?php echo LANG_CONTENT_NOT_APPROVED; ?>
                 </div>
             <?php } ?>

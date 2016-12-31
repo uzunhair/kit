@@ -202,12 +202,26 @@ select.form-control {
 }
 
 
+// ctype_list
+.content_list_item {
+  &+.content_list_item {
+    margin-top: 1rem;
+  }
+}
+.fields {
+  .field {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
 // info_bar
 .info_bar {
+  margin-top:0.5rem;
   .bar_item {
     display: inline-block;
     &+ .bar_item {
-      margin-left: 1px;
+      margin-left: .5rem;
     }
   }
 }

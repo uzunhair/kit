@@ -33,6 +33,7 @@
                     <div class="photo">
                         <?php if ($fields['date_pub']['is_in_list']){ ?>
                             <div class="note" title="<?php echo $fields['date_pub']['title']; ?>">
+                                <i class="fa fa-calendar"></i>
                                 <?php echo $fields['date_pub']['handler']->parse( $item['date_pub'] ); ?>
                             </div>
                         <?php } ?>
@@ -117,15 +118,18 @@
                         <?php } ?>
                         <?php if ($fields['user']['is_in_list']){ ?>
                             <div class="bar_item bi_user" title="<?php echo $fields['user']['title']; ?>">
+                                <i class="fa fa-user-o"></i>
                                 <?php echo $fields['user']['handler']->parse( $item['user'] ); ?>
                             </div>
                         <?php } ?>
                         <?php if ($ctype['is_comments'] && $item['is_comments_on']){ ?>
                             <div class="bar_item bi_comments">
                                 <?php if ($is_private) { ?>
+                                    <i class="fa fa-comment-o"></i>
                                     <?php echo intval($item['comments']); ?>
                                 <?php } else { ?>
                                     <a href="<?php echo href_to($ctype['name'], $item['slug'].'.html'); ?>#comments" title="<?php echo LANG_COMMENTS; ?>">
+                                        <i class="fa fa-comment-o"></i>
                                         <?php echo intval($item['comments']); ?>
                                     </a>
                                 <?php } ?>
@@ -133,6 +137,7 @@
                         <?php } ?>
                         <?php if (!$item['is_approved']){ ?>
                             <div class="bar_item bi_not_approved">
+                                <i class="fa fa-exclamation-triangle"></i> 
                                 <?php echo LANG_CONTENT_NOT_APPROVED; ?>
                             </div>
                         <?php } ?>
