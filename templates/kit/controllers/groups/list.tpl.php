@@ -5,37 +5,33 @@
         $index = 0;
     ?>
 
-    <div class="groups-list striped-list list-64">
+    <div class="groups-list">
 
         <?php foreach($groups as $group){ ?>
 
-            <div class="item">
+            <div class="media mt-next-1">
 
                 <?php if ($dataset_name == 'rating') { ?>
-                    <div class="position">
+                    <div class="media-left">
                         <?php $position = $index_first + $index; ?>
-                        <?php if (in_array($position, range(1, 3))){ ?>
-                            <div class="medal-icon-32 medal<?php echo $position; ?>-32" title="<?php echo $position; ?>"></div>
-                        <?php } else {  ?>
-                            <?php echo $position; ?>
-                        <?php } ?>
+                        <?php echo $position; ?>
                     </div>
                 <?php } ?>
 
-                <div class="icon">
+                <div class="media-left">
                     <?php
                         echo html_image($group['logo'], 'small', $group['title']);
                     ?>
                 </div>
 
-                <div class="title">
-                    <a href="<?php echo $this->href_to($group['id']); ?>"><?php html($group['title']); ?></a>
+                <div class="media-body">
+                    <a class="media-heading h4" href="<?php echo $this->href_to($group['id']); ?>"><?php html($group['title']); ?></a>
                     <?php if ($group['is_closed']) { ?>
                         <span class="is_closed" title="<?php html(LANG_GROUP_IS_CLOSED_ICON); ?>"></span>
                     <?php } ?>
                 </div>
 
-                <div class="actions">
+                <div class="media-right">
 
                     <?php if ($dataset_name == 'popular') { ?>
 
@@ -43,10 +39,10 @@
 
                     <?php } elseif ($dataset_name == 'rating') { ?>
 
-                        <span class="rate_value rating" title="<?php echo LANG_RATING; ?>"><?php echo $group['rating']; ?></span>
+                        <span class="rate_value rating" title="<?php echo LANG_RATING; ?>"> <i class="fa fa-star-o"></i> <?php echo $group['rating']; ?></span>
 
                     <?php } else { ?>
-
+                        <i class="fa fa-calendar"></i>
                         <?php echo html_date($group['date_pub']); ?>
 
                     <?php } ?>

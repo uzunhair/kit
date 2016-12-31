@@ -27,20 +27,20 @@
 <h1><?php echo LANG_GROUPS; ?></h1>
 
 <?php if (sizeof($datasets)>1){ ?>
-    <div class="content_datasets">
-        <ul class="pills-menu">
+    <div class="content_datasets mb-1">
+        <ul class="nav nav-tabs">
             <?php $ds_counter = 0; ?>
             <?php foreach($datasets as $set){ ?>
                 <?php $ds_selected = ($dataset_name == $set['name'] || (!$dataset_name && $ds_counter==0)); ?>
-                <li <?php if ($ds_selected){ ?>class="active"<?php } ?>>
+                <li class="nav-item">
 
                     <?php if ($ds_counter > 0) { $ds_url = sprintf(href_to($base_ds_url), $set['name']); } ?>
                     <?php if ($ds_counter == 0) { $ds_url = href_to($base_url); } ?>
 
                     <?php if ($ds_selected){ ?>
-                        <div><?php echo $set['title']; ?></div>
+                        <div class="nav-link active"><?php echo $set['title']; ?></div>
                     <?php } else { ?>
-                        <a href="<?php echo $ds_url; ?>"><?php echo $set['title']; ?></a>
+                        <a class="nav-link" href="<?php echo $ds_url; ?>"><?php echo $set['title']; ?></a>
                     <?php } ?>
 
                 </li>

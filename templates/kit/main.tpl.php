@@ -106,7 +106,7 @@
                 $section_width = $is_sidebar ? 'col-xs-9' : 'col-xs-12';
             ?>
 
-            <section class="<?php echo $section_width; ?>">
+            <section class="<?php echo $section_width; ?> section-content">
                 <?php if ($config->show_breadcrumbs && $this->isBreadcrumbs()){ ?>
                     <div id="breadcrumbs">
                         <?php $this->breadcrumbs(array('strip_last'=>false)); ?>

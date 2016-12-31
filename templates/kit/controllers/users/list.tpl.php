@@ -25,9 +25,7 @@
                 <?php if ($dataset_name == 'rating') { ?>
                     <div class="position media-left media-middle">
                         <?php $position = $index_first + $index; ?>
-
                         <?php echo $position; ?>
-
                     </div>
                 <?php } ?>
 

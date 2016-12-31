@@ -71,9 +71,6 @@
 ?>
 
 <h1 id="group_profile_title">
-	<?php if ($group['logo']){ ?>
-		<span class="logo"><?php echo html_image($group['logo'], 'micro', $group['title']); ?></span>
-	<?php } ?>
     <?php html($group['title']); ?>
     <?php if ($group['is_closed']) { ?>
         <span class="is_closed" title="<?php html(LANG_GROUP_IS_CLOSED_ICON); ?>"></span>
@@ -82,9 +79,9 @@
 
 <?php if (!$group['is_closed'] || ($is_member || $user->is_admin)){ ?>
 
-    <div id="group_profile_tabs">
+    <div id="group_profile_tabs" class="mb-1">
         <div class="tabs-menu">
-            <?php $this->menu('group_tabs', true, 'tabbed'); ?>
+            <?php $this->menu('group_tabs', true, 'nav nav-tabs'); ?>
         </div>
     </div>
 

@@ -11,26 +11,16 @@
     <?php $this->renderChild('group_header', array('group'=>$group)); ?>
 </div>
 
-<div id="group_profile">
-
-    <div id="left_column" class="column">
-
-        <div id="logo" class="block">
-            <?php echo html_image($group['logo'], 'normal', $group['title']); ?>
+<div id="group_profile" class="row">
+    <div id="left_column" class="col-xs-12 col-lg-4">
+        <div class="card">
+            <?php echo html_image($group['logo'], 'normal', $group['title'], array('class' => 'card-img-top img-fluid mb-1')); ?>
         </div>
-
     </div>
-
-    <div id="right_column" class="column">
-
+    <div id="right_column" class="col-xs-12 col-lg-8">
         <div id="information" class="content_item block">
-
-            <div class="group_description">
-                <?php echo LANG_GROUP_IS_CLOSED; ?>
-            </div>
-
+            <i class="fa fa-exclamation-triangle" ></i>
+            <?php echo LANG_GROUP_IS_CLOSED; ?>
         </div>
-
     </div>
-
 </div>

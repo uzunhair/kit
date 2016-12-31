@@ -19,7 +19,7 @@
 
 <?php if ($staff){ ?>
 
-<div id="group_staff_list" class="striped-list list-32">
+<div id="group_staff_list" class="striped-list">
 
     <?php foreach($staff as $member) { ?>
         <?php echo $this->renderChild('group_edit_staff_item', array('member'=>$member, 'group'=>$group)); ?>
@@ -31,10 +31,9 @@
 
 <div id="group_staff_add" class="gui-panel">
 
-    <h3><?php echo LANG_GROUPS_ADD_STAFF; ?></h3>
-    <div class="hint"><?php echo LANG_GROUPS_ADD_STAFF_HINT; ?></div>
-
-    <div class="field">
+    <h4><?php echo LANG_GROUPS_ADD_STAFF; ?></h4>
+    <div class="mb-1"><?php echo LANG_GROUPS_ADD_STAFF_HINT; ?></div>
+    <div class="form-inline">
         <?php echo html_input('text', 'username', '', array('id'=>'staff-username', 'autocomplete'=>'off')); ?>
         <?php echo html_button(LANG_ADD, 'add', 'icms.groups.addStaff()', array('id'=>'staff-submit', 'disabled'=>'disabled')); ?>
         <div class="loading-icon" style="display:none"></div>

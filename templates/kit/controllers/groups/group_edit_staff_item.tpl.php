@@ -1,4 +1,4 @@
-<div class="media" id="staff-<?php echo $member['id']; ?>">
+<div class="media mb-1" id="staff-<?php echo $member['id']; ?>">
     <div class="media-left">
         <?php echo html_avatar_image($member['avatar'], 'micro'); ?>
     </div>
