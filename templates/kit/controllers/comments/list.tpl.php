@@ -1,7 +1,7 @@
 <?php // Шаблон списка комментариев и формы добавления //
 
 $this->addJS('templates/default/js/jquery-scroll.js');
-$this->addJS('templates/default/js/comments.js');
+$this->addJS('templates/kit/js/comments.js');
 $is_guests_allowed =  !empty($this->controller->options['is_guests']);
 $is_karma_allowed = $user->is_logged && !cmsUser::isPermittedLimitHigher('comments', 'karma', $user->karma);
 
@@ -9,16 +9,18 @@ $is_karma_allowed = $user->is_logged && !cmsUser::isPermittedLimitHigher('commen
 
 <?php if ($user->is_logged){ ?>
     <?php if ($is_karma_allowed){ ?>
-        <div class="track">
-            <label><input type="checkbox" id="is_track" name="is_track" value="1" <?php if($is_tracking){ ?>checked="checked"<?php } ?> /> <?php echo LANG_COMMENTS_TRACK; ?></label>
+        <div class="track m-b10">
+            <label class="mb-0"><input type="checkbox" id="is_track" name="is_track" value="1" <?php if($is_tracking){ ?>checked="checked"<?php } ?> /> <?php echo LANG_COMMENTS_TRACK; ?></label>
         </div>
     <?php } ?>
     <div id="comments_refresh_panel">
-        <a href="#refresh" class="refresh_btn" onclick="return icms.comments.refresh()" title="<?php echo LANG_COMMENTS_REFRESH; ?>"></a>
+        <a href="#refresh" class="refresh_btn" onclick="return icms.comments.refresh()" title="<?php echo LANG_COMMENTS_REFRESH; ?>">
+<!--            <i class="fa fa-refresh"></i>-->
+        </a>
     </div>
 <?php } ?>
 
-<div id="comments_list">
+<div id="comments_list" class="mb-1">
 
     <?php if (!$comments){ ?>
 
@@ -57,7 +59,7 @@ $is_karma_allowed = $user->is_logged && !cmsUser::isPermittedLimitHigher('commen
 
 <?php if (($user->is_logged && cmsUser::isAllowed('comments', 'add')) || (!$user->is_logged && $is_guests_allowed)){ ?>
     <div id="comments_add_link">
-        <a href="#reply" class="ajaxlink" onclick="return icms.comments.add()"><?php echo LANG_COMMENT_ADD; ?></a>
+        <a href="#reply" class="ajaxlink btn btn-success" onclick="return icms.comments.add()"><?php echo LANG_COMMENT_ADD; ?></a>
     </div>
 
     <div id="comments_add_form">

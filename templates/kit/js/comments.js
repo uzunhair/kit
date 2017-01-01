@@ -349,7 +349,7 @@ icms.comments = (function ($) {
                 return;
             }
 
-            c.html('<span class="deleted">'+LANG_COMMENT_DELETED+'</span>');
+            c.html('<div class="deleted">'+LANG_COMMENT_DELETED+'</div>');
 
             icms.comments.restoreForm();
 

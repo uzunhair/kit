@@ -13,7 +13,13 @@
 
 .mt-next-1 + .mt-next-1{margin-top:1rem;}
 
+.m-l10     {margin-left:($one-pixel-to-rem*10);}
+.m-l5     {margin-left:($one-pixel-to-rem*5);}
 
+.m-r5     {margin-right:($one-pixel-to-rem*5);}
+
+.m-b5     {margin-bottom:($one-pixel-to-rem*5);}
+.m-b10     {margin-bottom:($one-pixel-to-rem*10);}
 
 
 .mb-05          {margin-bottom:0.5rem;}
@@ -28,7 +34,7 @@
 .margin-t25     {margin-top:25px  !important;}
 
 .margin-l5      {margin-left:5px;}
-.margin-l10     {margin-left:10px;}
+
 .margin-l-10    {margin-left:-10px;}
 .margin-l15     {margin-left:15px;}
 
@@ -57,6 +63,8 @@
 .padding-b0     {padding-bottom:0 !important;}
 .padding-b5     {padding-bottom:5px !important;}
 .padding-b10    {padding-bottom:10px !important;}
+
+.h-dec-no:hover {text-decoration: none;}
 
 .font-size-base {font-size: $font-size-base}
 .font-size-xs {font-size: $font-size-xs}

@@ -1,6 +1,11 @@
 #comments_widget #comments_add_form,
 #comments_list  .scroll-down,
 #comments_add_form .loading{ display: none; }
+.comment {
+  #comments_add_form {
+    margin-top: 1rem;
+  }
+}
 
 #comments_add_form .loading {
   font-family: FontAwesome;
@@ -17,4 +22,18 @@
 #tab-icms + select,
 #tab-vk + select {
   display: none;
+}
+.comment {
+  .media-body, .deleted {
+    border: 1px solid $gray-lighter;
+    padding:$navbar-padding-y $navbar-padding-x;
+  }
+  .deleted {
+    @extend .m-l10;
+  }
+  .info {
+    margin-bottom:$navbar-padding-y;
+    padding-bottom: $navbar-padding-y;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
