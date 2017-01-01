@@ -27,11 +27,11 @@
         <?php } ?>
     </div>
 
-    <div class="previews_list row">
+    <div class="previews_list clearfix">
         <?php if ($images){ ?>
             <?php foreach($images as $idx => $paths){ ?>
-                <div class="preview block" rel="<?php echo $idx; ?>" data-paths="<?php html(json_encode($paths)); ?>">
-                    <div class="card" style="max-width: 15rem;">
+                <div class="preview" rel="<?php echo $idx; ?>" data-paths="<?php html(json_encode($paths)); ?>">
+                    <div class="card">
 					    <?php  $is_image_exists = !empty($paths); ?>
 					    <?php if ($is_image_exists) { ?>
                             <div class="preview-height">
@@ -46,7 +46,7 @@
     </div>
 
     <div class="preview_template block" style="display:none">
-        <div class="card" style="max-width: 15rem;">
+        <div class="card">
             <div class="preview-height">
                 <img src="" class="card-img-top img-fluid mx-auto" />
             </div>

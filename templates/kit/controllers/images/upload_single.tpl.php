@@ -11,7 +11,7 @@
 	}
 
 ?>
-<div id="widget_image_<?php echo $name; ?>" class="widget_image_single">
+<div id="widget_image_<?php echo $name; ?>" class="widget_image_single clearfix">
 
     <div class="data" style="display:none">
         <?php if ($is_image_exists) { ?>
@@ -21,7 +21,7 @@
         <?php } ?>
     </div>
 
-    <div class="preview block row" <?php if (!$is_image_exists) { ?>style="display:none"<?php } ?>>
+    <div class="preview" <?php if (!$is_image_exists) { ?>style="display:none"<?php } ?>>
         <div class="image_single-col">
             <div class="card">
                 <div class="preview-height">
@@ -38,7 +38,7 @@
     </div>
 
     <div class="loading block" style="display:none">
-        <div class="card text-xs-center"  style="max-width: 15rem;">
+        <div class="card text-xs-center"  style="max-width: 10rem;">
             <div class="pt-1 pb-1 bg-success">
                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
             </div>
