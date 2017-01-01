@@ -8,8 +8,8 @@
 					<?php $value = isset($filters[$name]) ? $filters[$name] : null; ?>
 					<?php $output = $field['handler']->getFilterInput($value); ?>
 					<?php if (!$output){ continue; } ?>
-					<div class="field ft_<?php echo $field['type']; ?> f_<?php echo $field['name']; ?>">
-						<div class="title"><?php echo $field['title']; ?></div>
+					<div class="field form-group ft_<?php echo $field['type']; ?> f_<?php echo $field['name']; ?>">
+						<label class="title"><?php echo $field['title']; ?></label>
 						<div class="value">
 							<?php echo $output; ?>
 						</div>
@@ -25,8 +25,8 @@
 							if ($prop['type'] == 'number' && !empty($prop['options']['is_filter_range'])){ $field->setOption('filter_range', true); }
 							$value = isset($filters["p{$prop['id']}"]) ? $filters["p{$prop['id']}"] : null;
 						?>
-						<div class="field ft_<?php echo $prop['type']; ?> f_prop_<?php echo $prop['id']; ?>">
-							<div class="title"><?php echo $prop['title']; ?></div>
+						<div class="field form-group ft_<?php echo $prop['type']; ?> f_prop_<?php echo $prop['id']; ?>">
+							<label class="title"><?php echo $prop['title']; ?></label>
 							<div class="value">
 								<?php echo $field->getFilterInput($value); ?>
 							</div>
@@ -37,7 +37,7 @@
 			<div class="buttons">
 				<?php echo html_submit(LANG_FILTER_APPLY); ?>					
 				<?php if (sizeof($filters)){ ?>
-						<a href="<?php echo is_array($page_url) ? $page_url['base'] : $page_url; ?>"><?php echo LANG_CANCEL; ?></a>
+						<a class="btn btn-danger" href="<?php echo is_array($page_url) ? $page_url['base'] : $page_url; ?>"><?php echo LANG_CANCEL; ?></a>
 				<?php } ?>				
 			</div>
 		</form>

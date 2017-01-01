@@ -165,7 +165,7 @@ function html_back_button(){
 function html_checkbox($name, $checked=false, $value=1, $attributes=array()){
     if ($checked) { $attributes['checked'] = 'checked'; }
     $attr_str = html_attr_str($attributes);
-    $class = 'input-checkbox';
+    $class = 'form-check-input';
     if (isset($attributes['class'])) { $class .= ' '.$attributes['class']; }
 	return '<input type="checkbox" class="'.$class.'" name="'.$name.'" value="'.$value.'" '.$attr_str.'/>';
 }
@@ -438,13 +438,13 @@ function html_select_multiple($name, $items, $selected=array(), $attributes=arra
 
             $title = ltrim($title, '- ');
 
-            $html .= "\t" . '<label class="checkbox-inline" '. ($level>0 ? 'style="margin-left:'.($level*20).'px"' : ''). '>' .
+            $html .= "\t" . '<label class="form-check-inline" '. ($level>0 ? 'style="margin-left:'.($level*20).'px"' : ''). '>' .
                     html_checkbox($name.'[]', $checked, $value) . ' ' .
                     htmlspecialchars($title) . '</label><br>' . "\n";
 
         } else {
 
-            $html .= "\t" . '<label class="checkbox-inline">' .
+            $html .= "\t" . '<label class="form-check-inline">' .
                     html_checkbox($name.'[]', $checked, $value) . ' ' .
                     htmlspecialchars($title) . '</label>' . "\n";
 
