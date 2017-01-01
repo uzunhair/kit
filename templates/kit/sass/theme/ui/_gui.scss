@@ -223,6 +223,10 @@ select.form-control {
     }
   }
 }
+.ft_age label,
+.ft_color label {
+  display: block;
+}
 // info_bar
 .info_bar {
   margin-top:0.5rem;
