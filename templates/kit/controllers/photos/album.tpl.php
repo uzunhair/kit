@@ -1,7 +1,7 @@
 <?php $this->addJS( $this->getJavascriptFileName('photos') ); ?>
 <?php $this->addJS( $this->getJavascriptFileName('jquery-flex-images') ); ?>
 
-<div class="album-photos-wrap" id="album-photos-list"<?php if ($is_owner || !empty($item['is_public'])) { ?> data-delete-url="<?php echo $this->href_to('delete'); ?>"<?php } ?>>
+<div class="album-photos-wrap clearfix" id="album-photos-list"<?php if ($is_owner || !empty($item['is_public'])) { ?> data-delete-url="<?php echo $this->href_to('delete'); ?>"<?php } ?>>
     <?php echo $this->renderChild('photos', array(
         'photos'   => $photos,
         'is_owner' => $is_owner,

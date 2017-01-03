@@ -18,128 +18,153 @@ $show_bar = $is_tags || $item['parent_id'] ||
         <?php } ?>
         <?php html($item['title']); ?>
         <?php if ($item['is_private']) { ?>
-            <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"></span>
+            <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-eye-slash"></i></span>
         <?php } ?>
     </h1>
     <?php if ($show_bar){ ?>
-        <h2 class="parent_title">
+        <h2 class="parent_title media mb-1">
             <?php if ($fields['user']['is_in_item']){ ?>
-                <span class="album_user">
+                <div class="media-left album_user ">
                     <a href="<?php echo href_to('users', $item['user']['id']); ?>">
                         <?php echo html_avatar_image($item['user']['avatar'], 'micro', $item['user']['nickname']); ?>
                     </a>
-                </span>
-                <i class="fa fa-user-o"></i>
-                <?php echo $fields['user']['html']; ?>
+                </div>
             <?php } ?>
-            <?php if ($fields['date_pub']['is_in_item']){ ?>
-                <span class="album_date" title="<?php html( $fields['date_pub']['title'] ); ?>">
-                    <?php if (!$item['is_pub']){ ?>
-                        <span class="bi_not_pub">
-                            <i class="fa fa-exclamation-triangle"></i>
-                            <?php echo LANG_CONTENT_NOT_IS_PUB; ?>
-                        </span>
-                    <?php } else { ?>
-                        <i class="fa fa-calendar"></i>
-                        <?php echo $fields['date_pub']['html']; ?>
+            <div class="media-body media-middle font-size-base">
+                <div class="info_bar mt-0">
+                    <?php if ($fields['user']['is_in_item']){ ?>
+                        <div class="bar_item">
+                            <i class="fa fa-user-o"></i>
+                            <?php echo $fields['user']['html']; ?>
+                        </div>
                     <?php } ?>
-                </span>
-            <?php } ?>
-            <?php if (!empty($ctype['options']['hits_on']) && $item['hits_count']){ ?>
-                <span class="album_hits">
-                    <?php echo html_spellcount($item['hits_count'], LANG_HITS_SPELL); ?>
-                </span>
-            <?php } ?>
-            <?php if ($item['parent_id']){ ?>
-                <a href="<?php echo rel_to_href($item['parent_url']); ?>"><?php html($item['parent_title']); ?></a>
-            <?php } ?>
-            <?php if ($is_tags){ ?>
-                <span class="tags_bar"><?php echo html_tags_bar($item['tags']); ?></span>
-            <?php } ?>
+                    <?php if ($fields['date_pub']['is_in_item']){ ?>
+                        <span class="bar_item album_date" title="<?php html( $fields['date_pub']['title'] ); ?>">
+                            <?php if (!$item['is_pub']){ ?>
+                                <span class="bi_not_pub">
+                                    <i class="fa fa-exclamation-triangle"></i>
+                                    <?php echo LANG_CONTENT_NOT_IS_PUB; ?>
+                                </span>
+                            <?php } else { ?>
+                                <i class="fa fa-calendar"></i>
+                                <?php echo $fields['date_pub']['html']; ?>
+                            <?php } ?>
+                        </span>
+                    <?php } ?>
+                    <?php if (!empty($ctype['options']['hits_on']) && $item['hits_count']){ ?>
+                        <div class="bar_item album_hits">
+                            <?php echo html_spellcount($item['hits_count'], LANG_HITS_SPELL); ?>
+                        </div
+                    <?php } ?>
+                    <?php if ($item['parent_id']){ ?>
+                        <div class="bar_item">
+                            <a href="<?php echo rel_to_href($item['parent_url']); ?>"><?php html($item['parent_title']); ?></a>
+                        </div>
+                    <?php } ?>
+                    <?php if ($is_tags){ ?>
+                        <div class="bar_item tags_bar"> <i class="fa fa-tags"></i> <?php echo html_tags_bar($item['tags']); ?></div>
+                    <?php } ?>
+                </div>
+            </div>
         </h2>
     <?php } ?>
     <?php unset($fields['title']); ?>
 <?php } ?>
 
-<div class="photo_filter">
+<div class="photo_filter mb-1">
     <form action="<?php echo $item['base_url']; ?>" method="get">
-    <span title="<?php echo LANG_SORTING; ?>" class="box_menu <?php echo !isset($item['filter_selected']['ordering']) ?'': 'box_menu_select'; ?>">
-        <?php echo $item['filter_panel']['ordering'][$item['filter_values']['ordering']]; ?>
-    </span>
-    <div class="box_menu_dd">
-        <?php foreach($item['filter_panel']['ordering'] as $value => $name){ ?>
-            <?php $url_params = $item['url_params']; $url_params['ordering'] = $value; ?>
-            <a href="<?php echo href_to($ctype['name'], $item['slug'].'.html?'.http_build_query($url_params)); ?>">
-                <?php echo $name; ?>
-                <?php if($item['filter_values']['ordering'] == $value){ ?>
-                    <input type="hidden" name="ordering" value="<?php echo $value; ?>">
-                    <i class="check">&larr;</i>
-                <?php } ?>
-            </a>
-        <?php } ?>
-    </div>
-    <?php if($item['filter_panel']['types']){ ?>
-        <span class="box_menu <?php echo !isset($item['filter_selected']['types']) ?'': 'box_menu_select'; ?>">
-            <?php echo $item['filter_panel']['types'][$item['filter_values']['types']]; ?>
-        </span>
-        <div class="box_menu_dd">
-            <?php foreach($item['filter_panel']['types'] as $value => $name){ ?>
-                <?php $url_params = $item['url_params']; $url_params['types'] = $value; ?>
-                <a href="<?php echo href_to($ctype['name'], $item['slug'].'.html?'.http_build_query($url_params)); ?>">
-                    <?php echo $name; ?>
-                    <?php if($item['filter_values']['types'] == $value){ ?>
-                        <input type="hidden" name="types" value="<?php echo $value; ?>">
-                        <i class="check">&larr;</i>
+        <div class="navbar navbar-dark bg-inverse">
+        <ul class="nav navbar-nav">
+            <li class="nav-item dropdown<?php echo !isset($item['filter_selected']['ordering']) ?'': ' active'; ?>">
+                <a href="#" title="<?php echo LANG_SORTING; ?>" class="nav-link dropdown-toggle" id="filter-ordering" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $item['filter_panel']['ordering'][$item['filter_values']['ordering']]; ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="filter-ordering">
+                    <?php foreach($item['filter_panel']['ordering'] as $value => $name){ ?>
+                        <?php $url_params = $item['url_params']; $url_params['ordering'] = $value; ?>
+                        <a class="dropdown-item" href="<?php echo href_to($ctype['name'], $item['slug'].'.html?'.http_build_query($url_params)); ?>">
+                            <?php echo $name; ?>
+                            <?php if($item['filter_values']['ordering'] == $value){ ?>
+                                <input type="hidden" name="ordering" value="<?php echo $value; ?>">
+                                <i class="check">&larr;</i>
+                            <?php } ?>
+                        </a>
+                    <?php } ?>
+                </div>
+            </li>
+            <?php if($item['filter_panel']['types']){ ?>
+                <li class="nav-item dropdown<?php echo !isset($item['filter_selected']['types']) ?'': ' active'; ?>">
+                    <a href="#" class="nav-link dropdown-toggle" id="filter-types" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $item['filter_panel']['types'][$item['filter_values']['types']]; ?>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="filter-types">
+                        <?php foreach($item['filter_panel']['types'] as $value => $name){ ?>
+                            <?php $url_params = $item['url_params']; $url_params['types'] = $value; ?>
+                            <a class="dropdown-item" href="<?php echo href_to($ctype['name'], $item['slug'].'.html?'.http_build_query($url_params)); ?>">
+                                <?php echo $name; ?>
+                                <?php if($item['filter_values']['types'] == $value){ ?>
+                                    <input type="hidden" name="types" value="<?php echo $value; ?>">
+                                    <i class="check">&larr;</i>
+                                <?php } ?>
+                            </a>
+                        <?php } ?>
+                    </div>
+                </li>
+            <?php } ?>
+
+            <li  class="nav-item dropdown<?php echo !isset($item['filter_selected']['orientation']) ?'': ' active'; ?>">
+                <a href="#" class="nav-link dropdown-toggle" id="filter-orientation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $item['filter_panel']['orientation'][$item['filter_values']['orientation']]; ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="filter-orientation">
+                    <?php foreach($item['filter_panel']['orientation'] as $value => $name){ ?>
+                        <?php $url_params = $item['url_params']; $url_params['orientation'] = $value; ?>
+                        <a class="dropdown-item" href="<?php echo href_to($ctype['name'], $item['slug'].'.html?'.http_build_query($url_params)); ?>">
+                            <?php echo $name; ?>
+                            <?php if($item['filter_values']['orientation'] == $value){ ?>
+                                <input type="hidden" name="orientation" value="<?php echo $value; ?>">
+                                <i class="check">&larr;</i>
+                            <?php } ?>
+                        </a>
+                    <?php } ?>
+                </div>
+            </li>
+            <li class="nav-item dropdown<?php if($item['filter_values']['width'] || $item['filter_values']['height']){ ?> active<?php } ?>">
+                <a href="#" class="nav-link dropdown-toggle" id="filter-size" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php if($item['filter_values']['width'] || $item['filter_values']['height']){ ?>
+                        <span class="box_menu"><?php echo LANG_PHOTOS_MORE_THAN; ?> <?php html($item['filter_values']['width']); ?> x <?php html($item['filter_values']['height']); ?></span>
+                    <?php } else { ?>
+                        <?php echo LANG_PHOTOS_SIZE; ?>
                     <?php } ?>
                 </a>
+                <div class="dropdown-menu" aria-labelledby="filter-size">
+                    <div class="size_search_params p-1">
+                        <fieldset>
+                            <legend class="font-size-lg"><?php echo LANG_PHOTOS_MORE_THAN; ?></legend>
+                            <div class="field">
+                                <label for="birth_date"><?php echo LANG_PHOTOS_SIZE_W; ?></label>
+                                <input type="text" name="width" value="<?php html($item['filter_values']['width']); ?>" placeholder="px" class="form-control">
+                            </div>
+                            <div class="field mt-1">
+                                <label for="birth_date"><?php echo LANG_PHOTOS_SIZE_H; ?></label>
+                                <input type="text" name="height" value="<?php html($item['filter_values']['height']); ?>" placeholder="px" class="form-control">
+                            </div>
+                        </fieldset>
+                        <div class="buttons mt-1">
+                            <input type="submit" class="button btn btn-secondary" value="<?php echo LANG_FIND; ?>">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <?php if($item['filter_selected']) { ?>
+            <li class="nav-item">
+                <a title="<?php echo LANG_PHOTOS_CLEAR_FILTER; ?>" class="nav-link clear_filter" href="<?php echo href_to($ctype['name'], $item['slug'].'.html'); ?>">
+                    <i class="fa fa-close"></i>
+                </a>
+            </li>
             <?php } ?>
+        </ul>
         </div>
-    <?php } ?>
-    <span class="box_menu <?php echo !isset($item['filter_selected']['orientation']) ?'': 'box_menu_select'; ?>">
-        <?php echo $item['filter_panel']['orientation'][$item['filter_values']['orientation']]; ?>
-    </span>
-    <div class="box_menu_dd">
-        <?php foreach($item['filter_panel']['orientation'] as $value => $name){ ?>
-            <?php $url_params = $item['url_params']; $url_params['orientation'] = $value; ?>
-            <a href="<?php echo href_to($ctype['name'], $item['slug'].'.html?'.http_build_query($url_params)); ?>">
-                <?php echo $name; ?>
-                <?php if($item['filter_values']['orientation'] == $value){ ?>
-                    <input type="hidden" name="orientation" value="<?php echo $value; ?>">
-                    <i class="check">&larr;</i>
-                <?php } ?>
-            </a>
-        <?php } ?>
-    </div>
-
-    <?php if($item['filter_values']['width'] || $item['filter_values']['height']){ ?>
-        <span class="box_menu box_menu_select"><?php echo LANG_PHOTOS_MORE_THAN; ?> <?php html($item['filter_values']['width']); ?> x <?php html($item['filter_values']['height']); ?></span>
-    <?php } else { ?>
-        <span class="box_menu"><?php echo LANG_PHOTOS_SIZE; ?></span>
-    <?php } ?>
-
-    <div class="box_menu_dd">
-        <div class="size_search_params">
-            <fieldset>
-                <legend><?php echo LANG_PHOTOS_MORE_THAN; ?></legend>
-                <div class="field">
-                    <label for="birth_date"><?php echo LANG_PHOTOS_SIZE_W; ?></label>
-                    <input type="text" name="width" value="<?php html($item['filter_values']['width']); ?>" placeholder="px" class="input">
-                </div>
-                <div class="field">
-                    <label for="birth_date"><?php echo LANG_PHOTOS_SIZE_H; ?></label>
-                    <input type="text" name="height" value="<?php html($item['filter_values']['height']); ?>" placeholder="px" class="input">
-                </div>
-            </fieldset>
-            <div class="buttons">
-                <input type="submit" class="button" value="<?php echo LANG_FIND; ?>">
-            </div>
-        </div>
-    </div>
-
-    <?php if($item['filter_selected']) { ?>
-        <a title="<?php echo LANG_PHOTOS_CLEAR_FILTER; ?>" class="box_menu clear_filter" href="<?php echo href_to($ctype['name'], $item['slug'].'.html'); ?>">x</a>
-    <?php } ?>
-
     </form>
 </div>
 
@@ -151,7 +176,7 @@ $show_bar = $is_tags || $item['parent_id'] ||
         <?php if ((empty($item[$field['name']]) || empty($field['html'])) && $item[$field['name']] !== '0') { continue; } ?>
         <?php if ($field['groups_read'] && !$user->isInGroups($field['groups_read'])) { continue; } ?>
 
-        <div class="field ft_<?php echo $field['type']; ?> f_<?php echo $field['name']; ?> <?php echo $field['options']['wrap_type']; ?>_field" <?php if($field['options']['wrap_width']){ ?> style="width: <?php echo $field['options']['wrap_width']; ?>;"<?php } ?>>
+        <div class="field mb-1 echo $field['type']; ?> f_<?php echo $field['name']; ?> <?php echo $field['options']['wrap_type']; ?>_field" <?php if($field['options']['wrap_width']){ ?> style="width: <?php echo $field['options']['wrap_width']; ?>;"<?php } ?>>
             <?php if ($field['options']['label_in_item'] != 'none'){ ?>
                 <div class="title_<?php echo $field['options']['label_in_item']; ?>"><?php html($field['title']); ?>: </div>
             <?php } ?>
@@ -166,12 +191,12 @@ $show_bar = $is_tags || $item['parent_id'] ||
             $props_fieldsets = cmsForm::mapFieldsToFieldsets($props);
         ?>
         <div class="content_item_props <?php echo $ctype['name']; ?>_item_props">
-            <table>
+            <table class="table table-bordered table-sm">
                 <tbody>
                     <?php foreach($props_fieldsets as $fieldset){ ?>
                         <?php if ($fieldset['title']){ ?>
                             <tr>
-                                <td class="heading" colspan="2"><?php html($fieldset['title']); ?></td>
+                                <td class="table-active" colspan="2"><?php html($fieldset['title']); ?></td>
                             </tr>
                         <?php } ?>
                         <?php if ($fieldset['fields']){ ?>
