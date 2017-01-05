@@ -9,34 +9,39 @@
         ?>
 
         <div class="photo float-xl-left pos-r photo-<?php echo $photo['id']; ?> <?php if ($is_photo_owner) { ?> is_my_photo<?php } ?> <?php echo (($photo_url=='#') ? 'unpublished' : ''); ?>" data-w="<?php echo $photo['sizes'][$preset_small]['width']; ?>" data-h="<?php echo $photo['sizes'][$preset_small]['height']; ?>" itemscope itemtype="http://schema.org/ImageObject">
-            <h3 class="title">
+            <a  class="photo-link" href="<?php echo $photo_url; ?>" title="<?php html($photo['title']); ?>">
+                <img src="<?php echo html_image_src($photo['image'], $preset_small, true, false); ?>" title="<?php html($photo['title']); ?>" alt="<?php html($photo['title']); ?>" itemprop="thumbnail" />
+            </a>
+            <h3 class="title text-xs-center">
                 <a href="<?php echo $photo_url; ?>" title="<?php html($photo['title']); ?>" itemprop="name">
                     <?php html($photo['title']); ?>
                 </a>
             </h3>
-            <a href="<?php echo $photo_url; ?>" title="<?php html($photo['title']); ?>">
-                <img src="<?php echo html_image_src($photo['image'], $preset_small, true, false); ?>" title="<?php html($photo['title']); ?>" alt="<?php html($photo['title']); ?>" itemprop="thumbnail" />
-            </a>
-            <div class="info">
-                <div class="photo-counts">
-                    <span class="hits-count" title="<?php echo LANG_HITS; ?>">
-                        <?php echo $photo['hits_count']; ?>
-                    </span>
-                    <span title="<?php echo LANG_RATING; ?>" class="rating <?php echo html_signed_class($photo['rating']); ?>">
-                        <?php echo html_signed_num($photo['rating']); ?>
-                    </span>
-                    <span class="comments" title="<?php echo LANG_COMMENTS; ?>">
-                        <?php echo $photo['comments']; ?>
-                    </span>
-                </div>
+            <div class="info clearfix">
                 <?php if(!empty($photo['user']['nickname'])){ ?>
-                    <a title="<?php echo LANG_AUTHOR; ?>" href="<?php echo href_to('users', $photo['user']['id']); ?>">
+                    <a title="<?php echo LANG_AUTHOR; ?>" href="<?php echo href_to('users', $photo['user']['id']); ?>" class="float-xl-left">
+                        <i class="fa fa-user"></i>
                         <?php html($photo['user']['nickname']); ?>
                     </a>
                 <?php } ?>
+                <div class="photo-counts float-xl-right list-inline">
+                    <span class="hits-count list-inline-item" title="<?php echo LANG_HITS; ?>">
+                        <i class="fa fa-photo"></i>
+                        <?php echo $photo['hits_count']; ?>
+                    </span>
+                    <span title="<?php echo LANG_RATING; ?>" class="rating list-inline-item <?php echo html_signed_class($photo['rating']); ?>">
+                        <i class="fa fa-star"></i>
+                        <?php echo html_signed_num($photo['rating']); ?>
+                    </span>
+                    <span class="comments list-inline-item" title="<?php echo LANG_COMMENTS; ?>">
+                        <i class="fa fa-comment"></i>
+                        <?php echo $photo['comments']; ?>
+                    </span>
+                </div>
             </div>
+
             <?php if ($is_photo_owner) { ?>
-                <a class="delete" href="#" data-id="<?php echo $photo['id']; ?>"><?php echo LANG_DELETE; ?></a>
+                <a class="delete  btn btn-sm btn-danger " href="#" data-id="<?php echo $photo['id']; ?>"><?php echo LANG_DELETE; ?></a>
             <?php } ?>
             <meta itemprop="height" content="<?php echo $photo['sizes'][$preset_small]['height']; ?> px">
             <meta itemprop="width" content="<?php echo $photo['sizes'][$preset_small]['width']; ?> px">

@@ -1,6 +1,6 @@
 <?php $this->addMainJS("templates/{$this->name}/addons/tether/tether.min.js"); ?>
 <?php if ($nav_posture == false) { ?>
-    <?php $this->addJS("templates/{$this->name}/addons/navigation/main.js"); ?>
+    <?php $this->addJS("templates/{$this->name}/addons/stretchynav/main.js"); ?>
 <?php } ?>
 <?php
 if (!isset($this->menus[$widget->options['menu']])) {
