@@ -40,11 +40,11 @@
 
 ?>
 
-<div id="album-photo-item" class="content_item" data-item-delete-url="<?php if ($is_can_delete){ echo $this->href_to('delete'); } ?>" data-id="<?php echo $photo['id']; ?>" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="left">
-        <div class="inside">
+<div id="album-photo-item" class="content_item row" data-item-delete-url="<?php if ($is_can_delete){ echo $this->href_to('delete'); } ?>" data-id="<?php echo $photo['id']; ?>" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="left col-lg-8 col-xs-12">
+        <div class="inside mb-1">
             <div class="inside_wrap orientation_<?php echo $photo['orientation']; ?>" id="fullscreen_cont">
-                <div id="photo_container" <?php if($full_size_img){?>data-full-size-img="<?php echo $full_size_img; ?>"<?php } ?>>
+                <div id="photo_container" <?php if($full_size_img){?>data-full-size-img="<?php echo $full_size_img; ?>"<?php } ?> class="mb-1">
                     <?php echo $this->renderChild('view_photo_container', array(
                         'photo'      => $photo,
                         'preset'     => $preset,
@@ -71,21 +71,23 @@
         </div>
     </div>
 
-    <div class="right">
-        <div class="photo_author">
-            <span class="album_user" title="<?php echo LANG_AUTHOR ?>">
+    <div class="right col-lg-4 col-xs-12">
+        <div class="photo_author media mb-1">
+            <div class="media-left album_user" title="<?php echo LANG_AUTHOR ?>">
                 <a href="<?php echo href_to('users', $photo['user']['id']); ?>">
                     <?php echo html_avatar_image($photo['user']['avatar'], 'micro', $photo['user']['nickname']); ?>
                 </a>
-            </span>
-            <a href="<?php echo href_to('users', $photo['user']['id']); ?>" title="<?php echo LANG_AUTHOR ?>">
-                <i class="fa fa-user-o"></i> 
-                <?php echo $photo['user']['nickname']; ?>
-            </a>
-            <span class="album_date" title="<?php echo LANG_DATE_PUB; ?>">
-                <i class="fa fa-calendar"></i>
-                <?php echo html_date_time($photo['date_pub']); ?>
-            </span>
+            </div>
+            <div class="media-body media-middle">
+                <a href="<?php echo href_to('users', $photo['user']['id']); ?>" title="<?php echo LANG_AUTHOR ?>" class="pr-1">
+                    <i class="fa fa-user-o"></i>
+                    <?php echo $photo['user']['nickname']; ?>
+                </a>
+                <span class="album_date text-muted" title="<?php echo LANG_DATE_PUB; ?>">
+                    <i class="fa fa-calendar"></i>
+                    <?php echo html_date_time($photo['date_pub']); ?>
+                </span>
+            </div>
         </div>
 
         <div class="like_buttons info_bar">
@@ -94,7 +96,7 @@
                 <?php echo $photo['rating_widget']; ?>
             </div>
         <?php } ?>
-            <div class="share">
+            <div class="bar_item share">
                 <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
 <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,viber,whatsapp" data-size="s"></div>
@@ -102,34 +104,31 @@
         </div>
 
         <?php if (!empty($photo['content'])){ ?>
-            <div class="photo_content" itemprop="description">
+            <div class="photo_content mt-1" itemprop="description">
                 <?php echo $photo['content']; ?>
             </div>
         <?php } ?>
 
         <?php if (!empty($downloads)){ ?>
-            <div class="download_menu">
-                <span id="download-button" class="download-button"><i class="photo_icon icon_download"></i> <?php echo LANG_DOWNLOAD; ?></span>
-                <div id="bubble">
-                    <table>
-                        <tbody>
+            <div class="download_menu pos-r">
+                <span id="download-button" class="download-button btn btn-primary display-b mt-1"><i class="photo_icon icon_download"></i> <?php echo LANG_DOWNLOAD; ?></span>
+                <div id="bubble" class="dropdown-menu p-1 w-100">
                             <?php foreach ($downloads as $download) { ?>
-                            <tr class="<?php echo $download['preset']; ?>_download_preset <?php echo (!$download['link'] ? 'disable_download' : ''); ?>">
-                                <td>
+                            <div class="row <?php echo $download['preset']; ?>_download_preset <?php echo (!$download['link'] ? 'disable_download' : ''); ?>">
+                                <div class="col-xs-8">
                                     <label><input <?php echo ($download['select'] ? 'checked=""' : ''); ?> type="radio" name="download" <?php echo (!$download['link'] ? 'disabled=""' : ''); ?> value="<?php echo $download['link']; ?>"> <?php echo $download['name']; ?> </label>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-xs-4">
                                     <?php echo $download['size']; ?>
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             <?php } ?>
-                        </tbody>
                     </table>
-                    <a class="download-button process_download" href=""><?php echo LANG_DOWNLOAD; ?></a>
+                    <a class="download-button process_download btn btn-outline-primary" href=""><?php echo LANG_DOWNLOAD; ?></a>
                 </div>
             </div>
         <?php } ?>
-
+        <div class="bg-faded p-1 mt-1">
         <?php if ($photo['exif'] || $photo['camera']){ ?>
             <div class="exif_wrap">
                 <?php if ($photo['camera']){ ?>
@@ -147,10 +146,10 @@
             </div>
         <?php } ?>
 
-        <dl class="photo_details">
+        <dl class="photo_details mt-1 row">
             <?php foreach ($photo_details as $detail) { ?>
-                <dt><?php echo $detail['name']; ?></dt>
-                <dd>
+                <dt class="col-xs-6"><?php echo $detail['name']; ?></dt>
+                <dd class="col-xs-6">
                     <?php if(isset($detail['link'])){ ?>
                         <a href="<?php echo $detail['link']; ?>" title="<?php html($detail['value']); ?>">
                             <?php echo $detail['value']; ?>
@@ -161,6 +160,7 @@
                 </dd>
             <?php } ?>
         </dl>
+        </div>
 
     </div>
     <meta itemprop="height" content="<?php echo $photo['sizes'][$preset]['height']; ?> px">

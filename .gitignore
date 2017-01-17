@@ -107,3 +107,4 @@ system/controllers/content/widgets/categories/
 system/controllers/content/widgets/filter/
 system/controllers/content/widgets/list/
 system/languages/ru/controllers/content/widgets/
+sftp-config.json

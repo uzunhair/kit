@@ -5,11 +5,12 @@
 }
 
 .album-photos-wrap {
+  overflow: hidden;
   margin: 0 -3px;
   .photo {
     margin: 3px;
-    position: relative;
     overflow: hidden;
+    float: left;
   }
   .title {
     font-size: $font-size-lg;
@@ -105,4 +106,16 @@
       }
     }
   }
+}
+
+.owl-carousel.album-photos-wrap .photo,
+.owl-carousel.album-photos-wrap {
+  margin: 0;
+}
+.owl-carousel.album-photos-wrap .photo {
+  float: none;
+}
+//
+#bubble {
+  display: none;
 }
