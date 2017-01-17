@@ -413,7 +413,7 @@ icms.comments = (function ($) {
     this.up = function(to_id, from_id){
         var c = $('#comment_'+to_id);
         $('#comments_widget .scroll-down').hide();
-        $('.nav .scroll-down', c).show().data('child-id', from_id);
+        $('.scroll-nav .scroll-down', c).show().data('child-id', from_id);
         this.show(to_id);
         return false;
     };

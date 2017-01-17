@@ -21,16 +21,16 @@
                     }
                 ?>
 
-                <h4 class="mt-1"><?php echo $date; ?></h4>
+                <h4 class="mt-3"><?php echo $date; ?></h4>
                 <?php $last_date = $item_date; ?>
-                <hr class="mb-1 mt-0">
+                <hr class="mb-3 mt-0">
 
             <?php } ?>
 
             <?php $url = href_to('users', $item['user']['id']); ?>
 
             <div class="media">
-                <div class="media-left">
+                <div class="d-flex mr-3">
                     <a href="<?php echo $url; ?>"><?php echo html_avatar_image($item['user']['avatar'], 'micro', $item['user']['nickname']); ?></a>
                 </div>
                 <div class="media-body">

@@ -13,7 +13,7 @@
 </div>
 
 <?php if($photos && ($has_next || (!$has_next && $page > 1))){ ?>
-<a class="show-more my-1 btn btn-secondary" href="<?php echo $item['base_url'].((strpos($item['base_url'], '?') !== false) ? '&' : '?').'photo_page='.($has_next ? ($page+1) : 1); ?>" onclick="return icms.photos.showMore(this);" data-url="<?php echo href_to('photos', 'more', array($item_type, $item['id'])); ?>" data-url-params="<?php html(json_encode($item['url_params'])); ?>" data-first-page-url="<?php echo $item['base_url']; ?>">
+<a class="show-more my-3 btn btn-secondary" href="<?php echo $item['base_url'].((strpos($item['base_url'], '?') !== false) ? '&' : '?').'photo_page='.($has_next ? ($page+1) : 1); ?>" onclick="return icms.photos.showMore(this);" data-url="<?php echo href_to('photos', 'more', array($item_type, $item['id'])); ?>" data-url-params="<?php html(json_encode($item['url_params'])); ?>" data-first-page-url="<?php echo $item['base_url']; ?>">
     <i class="fa fa-picture-o"></i> 
     <span data-to-first="<?php echo LANG_PHOTOS_RETURN_TO_FIRST; ?>">
         <?php if($has_next){ echo LANG_PHOTOS_SHOW_MORE; } else { echo LANG_PHOTOS_RETURN_TO_FIRST; } ?>

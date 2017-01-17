@@ -20,23 +20,23 @@
 
         <?php foreach($profiles as $profile){ ?>
 
-            <div class="media mt-next-1">
+            <div class="media mt-next-3">
 
                 <?php if ($dataset_name == 'rating') { ?>
-                    <div class="position media-left media-middle">
+                    <div class="position d-flex mr-3 align-self-center">
                         <?php $position = $index_first + $index; ?>
                         <?php echo $position; ?>
                     </div>
                 <?php } ?>
 
-                <div class="media-left">
+                <div class="d-flex mr-3">
 					<a href="<?php echo $this->href_to($profile['id']); ?>"><?php echo html_avatar_image($profile['avatar'], 'micro', $profile['nickname']); ?></a>
                 </div>
                 <div class="media-body">
                     <a class=" font-size-lg" href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a>
                 </div>
 
-                <div class="media-right media-middle">
+                <div class="media-right align-self-center">
 
                     <?php if ($dataset_name == 'popular') { ?>
 

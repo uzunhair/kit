@@ -58,18 +58,18 @@
     $rss_query = "?user={$profile['id']}";
 
 ?>
-<div class="media mb-1">
-    <div class="media-left">
+<div class="media mb-3">
+    <div class="d-flex mr-3">
         <a class="avatar" href="<?php echo $this->href_to($profile['id']); ?>"><?php echo html_avatar_image($profile['avatar'], 'micro', $profile['nickname']); ?></a>
     </div>
-    <div class="media-body media-middle">
+    <div class="media-body align-self-center">
         <h1 class="h4 mb-0">
             <a href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a> <i class="fa fa-angle-double-right font-size-lg"></i>
             <span><?php echo $list_header; ?></span>
         </h1>
     </div>
     <?php if (!empty($ctype['options']['is_rss']) && $this->controller->isControllerEnabled('rss')){ ?>
-        <div class="media-right media-middle">
+        <div class="media-right align-self-center">
             <a href="<?php echo href_to('rss', 'feed', $ctype['name']) . $rss_query; ?>">RSS</a>
         </div>
     <?php } ?>

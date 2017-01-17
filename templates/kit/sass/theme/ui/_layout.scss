@@ -1,20 +1,6 @@
-a:focus {
-  outline: thin none;
-}
 .height-one-line{
   overflow: hidden;
   height: ($line-height-base * 1rem);
-}
-
-html {
-  min-height: 100%;
-  position: relative;
-}
-body {
-  font-family: "Roboto";
-}
-html, body {
-  height: 100%;
 }
 /* Header =================================================================== */
 /* Main Navigation =========================================================== */

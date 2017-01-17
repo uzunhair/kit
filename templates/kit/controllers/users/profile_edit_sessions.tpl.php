@@ -9,7 +9,7 @@
 
     $this->renderChild('profile_edit_header', array('profile'=>$profile));
 ?>
-<div class="sess_messages bg-success text-white p-1 mb-1">
+<div class="sess_messages bg-success text-white p-3 mb-3">
     <?php echo LANG_SESSIONS_HINT; ?>
 </div>
     <table class="data_list table">

@@ -70,19 +70,24 @@
 <body id="<?php echo $device_type; ?>_device_type" <?php if($body_padding) {?>style="<?php echo $body_padding; ?>"<?php } ?>>
     <div id="layout">
         <header>
-        <?php if($this->hasWidgetsOn('top')) { ?>
-            <?php if ($header_nav_width) { ?>
-                <div id="widget_pos_top" class="container">
+            <?php if($this->hasWidgetsOn('top')) { ?>
+                <?php if ($header_nav_width) { ?>
+                    <div id="widget_pos_top" class="container">
+                <?php } ?>
+                <nav class="<?php echo $header_nav_class; ?> navbar-toggleable-md">
+                    <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                            <?php $this->widgets('top'); ?>
+                        </div>
+                    <?php if (!$header_nav_width) { ?></div><?php } ?>
+                </nav>
+                <?php if ($header_nav_width) { ?>
+                    </div>
+                <?php } ?>
             <?php } ?>
-            <nav class="<?php echo $header_nav_class; ?>">
-                <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
-                    <?php $this->widgets('top'); ?>
-                <?php if (!$header_nav_width) { ?></div><?php } ?>
-            </nav>
-            <?php if ($header_nav_width) { ?>
-                </div>
-            <?php } ?>
-        <?php } ?>
             <div class="container">
                 <div id="logo">
                     <?php if($core->uri) { ?>
@@ -93,6 +98,7 @@
                 </div>
             </div>
         </header>
+
         <div class="container">
 
             <div class="widget_ajax_wrap" id="widget_pos_header"><?php $this->widgets('header', false, 'wrapper_plain'); ?></div>
@@ -103,7 +109,7 @@
 
             <?php
                 $is_sidebar = $this->hasWidgetsOn('right-top', 'right-center', 'right-bottom');
-                $section_width = $is_sidebar ? 'col-xs-9' : 'col-xs-12';
+                $section_width = $is_sidebar ? 'col-9' : 'col-12';
             ?>
 
             <section class="<?php echo $section_width; ?> section-content">
@@ -143,7 +149,7 @@
             </section>
 
             <?php if($is_sidebar){ ?>
-                <aside class="col-xs-3">
+                <aside class="col-3">
                     <div class="widget_ajax_wrap" id="widget_pos_right-top"><?php $this->widgets('right-top'); ?></div>
                     <div class="widget_ajax_wrap" id="widget_pos_right-center"><?php $this->widgets('right-center'); ?></div>
                     <div class="widget_ajax_wrap" id="widget_pos_right-bottom"><?php $this->widgets('right-bottom'); ?></div>

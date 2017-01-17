@@ -32,21 +32,21 @@
 
 ?>
 
-<div id="comment_<?php echo $entry['id']; ?>" class="mt-next-1 comment<?php if($is_selected){ ?> selected-comment<?php } ?><?php if($target_user_id == $entry['user_id']){ ?> is_topic_starter<?php } ?>" <?php if ($is_levels) { ?>style="margin-left: <?php echo $level; ?>px" data-level="<?php echo $entry['level']; ?>"<?php } ?>>
+<div id="comment_<?php echo $entry['id']; ?>" class="mt-next-3 comment<?php if($is_selected){ ?> selected-comment<?php } ?><?php if($target_user_id == $entry['user_id']){ ?> is_topic_starter<?php } ?>" <?php if ($is_levels) { ?>style="margin-left: <?php echo $level; ?>px" data-level="<?php echo $entry['level']; ?>"<?php } ?>>
     <div class="media">
         <?php if(!$entry['is_deleted']){ ?>
-            <div <?php if (!empty($entry['user']['is_online'])){ ?>class="media-left avatar comment_user_online" title="<?php echo LANG_ONLINE; ?>"<?php } else { ?> class="media-left avatar"<?php } ?>>
+            <div <?php if (!empty($entry['user']['is_online'])){ ?>class="d-flex mr-3 avatar comment_user_online" title="<?php echo LANG_ONLINE; ?>"<?php } else { ?> class="d-flex mr-3 avatar"<?php } ?>>
                 <a href="<?php echo href_to('users', $entry['user']['id']); ?>">
                     <?php echo html_avatar_image($entry['user']['avatar'], 'micro', $entry['user']['nickname']); ?>
                 </a>
             </div>
         <?php } ?>
 
-        <div class="media-body<?php if($entry['is_deleted'] && ($entry['level'] != 1 )){ ?> m-l10<?php }?>">
+        <div class="media-body<?php if($entry['is_deleted'] && ($entry['level'] != 1 )){ ?> ml-3<?php }?>">
 
         <?php if($entry['is_deleted']){ ?>
             <span><?php echo LANG_COMMENT_DELETED; ?></span>
-            <span class="nav">
+            <span class="scroll-nav">
                 <?php if ($entry['parent_id']){ ?>
                     <a href="#up" class="scroll-up" onclick="return icms.comments.up(<?php echo $entry['parent_id']; ?>, <?php echo $entry['id']; ?>)" data-toggle="tooltip" title="<?php html( LANG_COMMENT_SHOW_PARENT ); ?>"><i class="fa fa-level-up"></i></a>
                 <?php } ?>
@@ -84,7 +84,7 @@
                 <li class="list-inline-item">
                     <a href="#comment_<?php echo $entry['id']; ?>" name="comment_<?php echo $entry['id']; ?>" data-toggle="tooltip" title="<?php html( LANG_COMMENT_ANCHOR ); ?>"><i class="fa fa-link"></i></a>
                 </li>
-                <li class="list-inline-item mr-0 nav">
+                <li class="list-inline-item mr-0 scroll-nav">
                     <?php if ($entry['parent_id']){ ?>
                         <a href="#up" class="scroll-up m-r5" onclick="return icms.comments.up(<?php echo $entry['parent_id']; ?>, <?php echo $entry['id']; ?>)" data-toggle="tooltip" title="<?php html( LANG_COMMENT_SHOW_PARENT ); ?>"><i class="fa fa-level-up"></i></a>
                     <?php } ?>

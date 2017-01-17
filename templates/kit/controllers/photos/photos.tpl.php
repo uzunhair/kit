@@ -12,7 +12,7 @@
             <a  class="photo-link" href="<?php echo $photo_url; ?>" title="<?php html($photo['title']); ?>">
                 <img src="<?php echo html_image_src($photo['image'], $preset_small, true, false); ?>" title="<?php html($photo['title']); ?>" alt="<?php html($photo['title']); ?>" itemprop="thumbnail" />
             </a>
-            <h3 class="title text-xs-center">
+            <h3 class="title text-center">
                 <a href="<?php echo $photo_url; ?>" title="<?php html($photo['title']); ?>" itemprop="name">
                     <?php html($photo['title']); ?>
                 </a>

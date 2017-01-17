@@ -32,7 +32,7 @@
 <div id="group_staff_add" class="gui-panel">
 
     <h4><?php echo LANG_GROUPS_ADD_STAFF; ?></h4>
-    <div class="mb-1"><?php echo LANG_GROUPS_ADD_STAFF_HINT; ?></div>
+    <div class="mb-3"><?php echo LANG_GROUPS_ADD_STAFF_HINT; ?></div>
     <div class="form-inline">
         <?php echo html_input('text', 'username', '', array('id'=>'staff-username', 'autocomplete'=>'off')); ?>
         <?php echo html_button(LANG_ADD, 'add', 'icms.groups.addStaff()', array('id'=>'staff-submit', 'disabled'=>'disabled')); ?>

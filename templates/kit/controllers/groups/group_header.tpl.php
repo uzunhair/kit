@@ -79,7 +79,7 @@
 
 <?php if (!$group['is_closed'] || ($is_member || $user->is_admin)){ ?>
 
-    <div id="group_profile_tabs" class="mb-1">
+    <div id="group_profile_tabs" class="mb-3">
         <div class="tabs-menu">
             <?php $this->menu('group_tabs', true, 'nav nav-tabs'); ?>
         </div>

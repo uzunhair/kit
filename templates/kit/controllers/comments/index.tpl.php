@@ -11,7 +11,7 @@
 
 <?php if (sizeof($datasets)>1){ ?>
     <div class="content_datasets">
-        <ul class="nav nav-tabs mb-1">
+        <ul class="nav nav-tabs mb-3">
             <?php $ds_counter = 0; ?>
             <?php foreach($datasets as $set){ ?>
                 <?php $ds_selected = ($dataset_name == $set['name'] || (!$dataset_name && $ds_counter==0)); ?>

@@ -38,8 +38,8 @@
     </div>
 
     <div class="loading block" style="display:none">
-        <div class="card text-xs-center"  style="max-width: 10rem;">
-            <div class="pt-1 pb-1 bg-success">
+        <div class="card text-center"  style="max-width: 10rem;">
+            <div class="py-3 bg-success">
                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
             </div>
             <span class="btn btn-link btn-block"><?php echo LANG_LOADING; ?></span>

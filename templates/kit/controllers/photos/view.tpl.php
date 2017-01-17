@@ -41,10 +41,10 @@
 ?>
 
 <div id="album-photo-item" class="content_item row" data-item-delete-url="<?php if ($is_can_delete){ echo $this->href_to('delete'); } ?>" data-id="<?php echo $photo['id']; ?>" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="left col-lg-8 col-xs-12">
-        <div class="inside mb-1">
+    <div class="left col-lg-8 col-12">
+        <div class="inside mb-3">
             <div class="inside_wrap orientation_<?php echo $photo['orientation']; ?>" id="fullscreen_cont">
-                <div id="photo_container" <?php if($full_size_img){?>data-full-size-img="<?php echo $full_size_img; ?>"<?php } ?> class="mb-1">
+                <div id="photo_container" <?php if($full_size_img){?>data-full-size-img="<?php echo $full_size_img; ?>"<?php } ?> class="mb-3">
                     <?php echo $this->renderChild('view_photo_container', array(
                         'photo'      => $photo,
                         'preset'     => $preset,
@@ -71,15 +71,15 @@
         </div>
     </div>
 
-    <div class="right col-lg-4 col-xs-12">
-        <div class="photo_author media mb-1">
-            <div class="media-left album_user" title="<?php echo LANG_AUTHOR ?>">
+    <div class="right col-lg-4 col-12">
+        <div class="photo_author media mb-3">
+            <div class="d-flex mr-3 album_user" title="<?php echo LANG_AUTHOR ?>">
                 <a href="<?php echo href_to('users', $photo['user']['id']); ?>">
                     <?php echo html_avatar_image($photo['user']['avatar'], 'micro', $photo['user']['nickname']); ?>
                 </a>
             </div>
-            <div class="media-body media-middle">
-                <a href="<?php echo href_to('users', $photo['user']['id']); ?>" title="<?php echo LANG_AUTHOR ?>" class="pr-1">
+            <div class="media-body align-self-center">
+                <a href="<?php echo href_to('users', $photo['user']['id']); ?>" title="<?php echo LANG_AUTHOR ?>" class="pr-3">
                     <i class="fa fa-user-o"></i>
                     <?php echo $photo['user']['nickname']; ?>
                 </a>
@@ -104,21 +104,21 @@
         </div>
 
         <?php if (!empty($photo['content'])){ ?>
-            <div class="photo_content mt-1" itemprop="description">
+            <div class="photo_content mt-3" itemprop="description">
                 <?php echo $photo['content']; ?>
             </div>
         <?php } ?>
 
         <?php if (!empty($downloads)){ ?>
             <div class="download_menu pos-r">
-                <span id="download-button" class="download-button btn btn-primary display-b mt-1"><i class="photo_icon icon_download"></i> <?php echo LANG_DOWNLOAD; ?></span>
-                <div id="bubble" class="dropdown-menu p-1 w-100">
+                <span id="download-button" class="download-button btn btn-primary display-b mt-3"><i class="photo_icon icon_download"></i> <?php echo LANG_DOWNLOAD; ?></span>
+                <div id="bubble" class="dropdown-menu p-3 w-100">
                             <?php foreach ($downloads as $download) { ?>
                             <div class="row <?php echo $download['preset']; ?>_download_preset <?php echo (!$download['link'] ? 'disable_download' : ''); ?>">
-                                <div class="col-xs-8">
+                                <div class="col-8">
                                     <label><input <?php echo ($download['select'] ? 'checked=""' : ''); ?> type="radio" name="download" <?php echo (!$download['link'] ? 'disabled=""' : ''); ?> value="<?php echo $download['link']; ?>"> <?php echo $download['name']; ?> </label>
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-4">
                                     <?php echo $download['size']; ?>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                 </div>
             </div>
         <?php } ?>
-        <div class="bg-faded p-1 mt-1">
+        <div class="bg-faded p-3 mt-3">
         <?php if ($photo['exif'] || $photo['camera']){ ?>
             <div class="exif_wrap">
                 <?php if ($photo['camera']){ ?>
@@ -146,10 +146,10 @@
             </div>
         <?php } ?>
 
-        <dl class="photo_details mt-1 row">
+        <dl class="photo_details mt-3 row">
             <?php foreach ($photo_details as $detail) { ?>
-                <dt class="col-xs-6"><?php echo $detail['name']; ?></dt>
-                <dd class="col-xs-6">
+                <dt class="col-6"><?php echo $detail['name']; ?></dt>
+                <dd class="col-6">
                     <?php if(isset($detail['link'])){ ?>
                         <a href="<?php echo $detail['link']; ?>" title="<?php html($detail['value']); ?>">
                             <?php echo $detail['value']; ?>

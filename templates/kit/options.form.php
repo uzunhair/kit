@@ -56,7 +56,7 @@ class formKitTemplateOptions extends cmsForm {
 
                     new fieldString('header_nav_class', array(
                         'title' => LANG_THEME_KIT_HEADER_NAV_CLASS,
-                        'default' => 'navbar navbar-dark bg-inverse',
+                        'default' => 'navbar navbar-inverse bg-inverse',
                     )),
 
                     new fieldNumber('body_padding_top', array(

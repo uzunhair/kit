@@ -29,7 +29,7 @@
     padding:$navbar-padding-y $navbar-padding-x;
   }
   .deleted {
-    @extend .m-l10;
+    margin-left: 1rem;
   }
   .info {
     margin-bottom:$navbar-padding-y;

@@ -51,7 +51,7 @@
 
 <div id="user_profile" class="row">
 
-    <div id="left_column" class="col-xs-12 col-lg-4">
+    <div id="left_column" class="col-12 col-lg-4">
         <div class="card">
             <img id="avatar" class="card-img-top img-fluid" src="<?php echo html_avatar_image_src($profile['avatar'], 'normal'); ?>" alt="<?php html($profile['nickname']); ?>">
             <div class="card-block">
@@ -67,8 +67,8 @@
         </div>
     </div>
 
-    <div id="right_column" class="col-xs-12 col-lg-8">
-        <div class="height-full text-xs-center">
+    <div id="right_column" class="col-12 col-lg-8">
+        <div class="height-full text-center">
             <div class="display-1">
                 <i class="fa fa-lock"></i>
             </div>

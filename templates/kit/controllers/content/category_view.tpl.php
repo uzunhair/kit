@@ -90,12 +90,12 @@
 ?>
 
 <?php if ($page_header && !$request->isInternal() && !$is_frontpage) { ?>
-    <div class="media mb-1">
+    <div class="media mb-3">
         <div class="media-body">
             <h1><?php echo $page_header; ?></h1>
         </div>
         <?php if (!empty($ctype['options']['is_rss']) && $this->controller->isControllerEnabled('rss')) { ?>
-            <div class="media-right media-middle">
+            <div class="media-right align-self-center">
                 <a href="<?php echo href_to('rss', 'feed', $ctype['name']) . $rss_query; ?>"><i class="fa fa-rss"></i></a>
             </div>
         <?php } ?>
@@ -103,7 +103,7 @@
 <?php } ?>
 
 <?php if ($datasets && !$is_hide_items){ ?>
-    <div class="content_datasets <?php if (!empty($current_dataset['description'])){ echo ' mb-0';} else { echo 'mb-1';} ?>">
+    <div class="content_datasets <?php if (!empty($current_dataset['description'])){ echo ' mb-0';} else { echo 'mb-3';} ?>">
         <ul class="nav nav-tabs">
             <?php $ds_counter = 0; ?>
             <?php foreach($datasets as $set){ ?>
@@ -122,18 +122,18 @@
         </ul>
     </div>
     <?php if (!empty($current_dataset['description'])){ ?>
-    <div class="content_datasets_description mb-1 p-1">
+    <div class="content_datasets_description mb-3 p-3">
         <?php echo $current_dataset['description']; ?>
     </div>
     <?php } ?>
 <?php } ?>
 
 <?php if (!empty($category['description'])){?>
-    <div class="category_description mb-1"><?php echo $category['description']; ?></div>
+    <div class="category_description mb-3"><?php echo $category['description']; ?></div>
 <?php } ?>
 
 <?php if ($subcats && $ctype['is_cats'] && !empty($ctype['options']['is_show_cats'])){ ?>
-    <div class="gui-panel content_categories<?php if (count($subcats)>8){ ?> categories_small<?php } ?> mb-1">
+    <div class="gui-panel content_categories<?php if (count($subcats)>8){ ?> categories_small<?php } ?> mb-3">
         <ul class="nav nav nav-inline <?php echo $ctype['name'];?>_icon">
             <?php foreach($subcats as $c){ ?>
                 <li class="nav-item <?php echo str_replace('/', '-', $c['slug']);?>">

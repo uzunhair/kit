@@ -1,4 +1,4 @@
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav flex-column">
 
     <?php $last_level = 0; ?>
 

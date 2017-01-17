@@ -20,7 +20,7 @@ $is_karma_allowed = $user->is_logged && !cmsUser::isPermittedLimitHigher('commen
     </div>
 <?php } ?>
 
-<div id="comments_list" class="mb-1">
+<div id="comments_list" class="mb-3">
 
     <?php if (!$comments){ ?>
 

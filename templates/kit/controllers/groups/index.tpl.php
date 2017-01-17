@@ -27,7 +27,7 @@
 <h1><?php echo LANG_GROUPS; ?></h1>
 
 <?php if (sizeof($datasets)>1){ ?>
-    <div class="content_datasets mb-1">
+    <div class="content_datasets mb-3">
         <ul class="nav nav-tabs">
             <?php $ds_counter = 0; ?>
             <?php foreach($datasets as $set){ ?>

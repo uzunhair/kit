@@ -32,7 +32,7 @@
 
             <div class="item media">
                 <?php if ($show_avatars){ ?>
-                    <div class="image media-left">
+                    <div class="image d-flex mr-3">
                         <a href="<?php echo $url; ?>"><?php echo html_avatar_image($item['user']['avatar'], 'micro', $item['user']['nickname']); ?></a>
                     </div>
                 <?php } ?>

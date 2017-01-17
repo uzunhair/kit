@@ -1,10 +1,10 @@
 <?php $index = 0; ?>
 <?php $index_tab = 0; ?>
-<div id="comments_widget" class="tabs-menu mt-1">
+<div id="comments_widget" class="tabs-menu mt-3">
 
     <a name="comments"></a>
 
-    <ul class="nav nav-tabs mb-1" role="tablist">
+    <ul class="nav nav-tabs mb-3" role="tablist">
         <?php foreach ($comment_systems as $comment_system) { ?>
             <?php
                 if ($comment_system['name']=='icms') {
@@ -26,7 +26,7 @@
     </ul>
     <div class="tab-content">
     <?php foreach ($comment_systems as $comment_system) { ?>
-        <div id="tabs-<?php echo $comment_system['name']; ?>" class="tab-pane fade<?php if(!$index){ ?> in active<?php } ?>" role="tabpanel">
+        <div id="tabs-<?php echo $comment_system['name']; ?>" class="tab-pane fade<?php if(!$index){ ?> show active<?php } ?>" role="tabpanel">
             <?php echo $comment_system['html']; ?>
         </div>
         <?php $index++; ?>

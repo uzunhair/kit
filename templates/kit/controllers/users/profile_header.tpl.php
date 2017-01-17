@@ -2,16 +2,16 @@
 <?php $user = cmsUser::getInstance(); ?>
 
 <div id="user_profile_title">
-    <div class="media mb-1">
-        <div class="media-left">
+    <div class="media mb-3">
+        <div class="d-flex mr-3">
             <a class="avatar" href="<?php echo $this->href_to($profile['id']); ?>"><?php echo html_avatar_image($profile['avatar'], 'micro', $profile['nickname']); ?></a>
         </div>
-        <div class="media-body media-middle">
+        <div class="media-body align-self-center">
             <h1 class="font-size-lg mb-0">
                 <a href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a>
             </h1>
         </div>
-        <div class="media-right media-middle">
+        <div class="media-right align-self-center">
             <div id="user_profile_rates" class="rates"
                  data-url="<?php echo $this->href_to('karma_vote', $profile['id']); ?>"
                  data-log-url="<?php echo $this->href_to('karma_log', $profile['id']); ?>"
@@ -39,12 +39,12 @@
 
 
         <?php if ($profile['is_locked']){ ?>
-            <div class="is_locked bg-warning mb-1 p-1 text-white"><i class="fa fa-exclamation-triangle"></i> <?php echo LANG_USERS_LOCKED_NOTICE_PUBLIC; ?></div>
+            <div class="is_locked bg-warning mb-3 p-3 text-white"><i class="fa fa-exclamation-triangle"></i> <?php echo LANG_USERS_LOCKED_NOTICE_PUBLIC; ?></div>
         <?php } ?>
 
         <?php if ($this->controller->options['is_status']) { ?>
-            <div class="status bg-faded mb-1 p-1" <?php if (!$profile['status']){ ?>style="display:none"<?php } ?>>
-                <span class="text pr-1">
+            <div class="status bg-faded mb-3 p-3" <?php if (!$profile['status']){ ?>style="display:none"<?php } ?>>
+                <span class="text pr-3">
                     <?php if ($profile['status']) { ?>
                         <?php html($profile['status']['content']); ?>
                     <?php } ?>
@@ -76,7 +76,7 @@
     <script><?php
         echo $this->getLangJS('LANG_REPLY', 'LANG_USERS_DELETE_STATUS_CONFIRM');
     ?></script>
-    <div id="user_status_widget" class="mb-1">
+    <div id="user_status_widget" class="mb-3">
         <?php
             echo html_input('text', 'status', '', array(
                 'maxlength' => 140,
@@ -97,7 +97,7 @@
 		<?php $this->addMenuItems('profile_tabs', $tabs); ?>
 
 		<div id="user_profile_tabs">
-			<div class="mb-1">
+			<div class="mb-3">
 				<?php $this->menu('profile_tabs', true, 'nav nav-tabs', $this->controller->options['max_tabs']); ?>
 			</div>
 		</div>

@@ -7,7 +7,7 @@
 <h1><?php echo LANG_USERS_EDIT_PROFILE; ?></h1>
 
 <div id="user_profile_tabs">
-    <div class="tabs-menu mb-1">
+    <div class="tabs-menu mb-3">
         <?php $this->menu('profile_tabs', true, 'nav nav-tabs', 6); ?>
     </div>
 </div>

@@ -14,10 +14,10 @@
 
 <div id="group_profile" class="row">
 
-    <div id="left_column" class="col-xs-12 col-lg-4">
+    <div id="left_column" class="col-12 col-lg-4">
         <div class="card">
             <?php if ($group['logo']) { ?>
-                <?php echo html_image($group['logo'], 'normal', $group['title'], array('class' => 'card-img-top img-fluid mb-1')); ?>
+                <?php echo html_image($group['logo'], 'normal', $group['title'], array('class' => 'card-img-top img-fluid mb-3')); ?>
             <?php } ?>
 
             <?php if ($content_counts) { ?>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <div id="right_column" class="col-xs-12 col-lg-4">
+    <div id="right_column" class="col-12 col-lg-4">
 
         <div id="information" class="content_item block">
 

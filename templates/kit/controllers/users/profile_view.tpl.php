@@ -77,7 +77,7 @@
 
 <div id="user_profile" class="row">
 
-    <div id="left_column" class="col-xs-4">
+    <div id="left_column" class="col-4">
         <div class="card">
             <img id="avatar" class="card-img-top img-fluid"
                  src="<?php echo html_avatar_image_src($profile['avatar'], 'normal'); ?>"
@@ -137,7 +137,7 @@
 
     </div>
 
-    <div id="right_column" class="col-xs-8">
+    <div id="right_column" class="col-8">
 
             <div id="information" class="content_item block">
                 <?php
@@ -151,7 +151,7 @@
 
                     <?php if (!$fieldset['fields']) { continue; } ?>
 
-                    <div class="fieldset mb-1">
+                    <div class="fieldset mb-3">
 
                     <?php if ($fieldset['title']){ ?>
                         <div class="fieldset_title">

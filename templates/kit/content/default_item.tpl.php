@@ -37,7 +37,7 @@
             $props_fields = $this->controller->getPropsFields($props);
             $props_fieldsets = cmsForm::mapFieldsToFieldsets($props);
         ?>
-        <div class="content_item_props <?php echo $ctype['name']; ?>_item_props mt-1">
+        <div class="content_item_props <?php echo $ctype['name']; ?>_item_props mt-3">
             <table class="table table-bordered table-sm">
                 <tbody>
                     <?php foreach($props_fieldsets as $fieldset){ ?>

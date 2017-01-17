@@ -1,6 +1,17 @@
+html {
+  min-height: 100%;
+  position: relative;
+  font-size: 14px;
+}
+body {
+  font-family: "Roboto";
+}
+html, body {
+  height: 100%;
+}
+
 a {
   &:focus {
-    @include tab-focus();
     outline: thin none;
   }
 }

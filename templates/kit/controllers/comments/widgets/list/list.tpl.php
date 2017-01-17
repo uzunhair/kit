@@ -6,9 +6,9 @@
             <?php $author_url = href_to('users', $item['user']['id']); ?>
             <?php $target_url = href_to($item['target_url']) . "#comment_{$item['id']}"; ?>
 
-            <div class="media mt-next-1">
+            <div class="media mt-next-3">
                 <?php if ($show_avatars){ ?>
-                <div class="media-left">
+                <div class="d-flex mr-3">
                     <a href="<?php echo $author_url; ?>"><?php echo html_avatar_image($item['user']['avatar'], 'micro', $item['user']['nickname']); ?></a>
                 </div>
                 <?php } ?>

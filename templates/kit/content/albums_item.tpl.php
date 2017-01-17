@@ -22,15 +22,15 @@ $show_bar = $is_tags || $item['parent_id'] ||
         <?php } ?>
     </h1>
     <?php if ($show_bar){ ?>
-        <h2 class="parent_title media mb-1">
+        <h2 class="parent_title media mb-3">
             <?php if ($fields['user']['is_in_item']){ ?>
-                <div class="media-left album_user ">
+                <div class="d-flex mr-3 album_user ">
                     <a href="<?php echo href_to('users', $item['user']['id']); ?>">
                         <?php echo html_avatar_image($item['user']['avatar'], 'micro', $item['user']['nickname']); ?>
                     </a>
                 </div>
             <?php } ?>
-            <div class="media-body media-middle font-size-base">
+            <div class="media-body align-self-center font-size-base">
                 <div class="info_bar mt-0">
                     <?php if ($fields['user']['is_in_item']){ ?>
                         <div class="bar_item">
@@ -71,9 +71,9 @@ $show_bar = $is_tags || $item['parent_id'] ||
     <?php unset($fields['title']); ?>
 <?php } ?>
 
-<div class="photo_filter mb-1">
+<div class="photo_filter mb-3">
     <form action="<?php echo $item['base_url']; ?>" method="get">
-        <div class="navbar navbar-dark bg-inverse">
+        <div class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
         <ul class="nav navbar-nav">
             <li class="nav-item dropdown<?php echo !isset($item['filter_selected']['ordering']) ?'': ' active'; ?>">
                 <a href="#" title="<?php echo LANG_SORTING; ?>" class="nav-link dropdown-toggle" id="filter-ordering" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -138,19 +138,19 @@ $show_bar = $is_tags || $item['parent_id'] ||
                     <?php } ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="filter-size">
-                    <div class="size_search_params p-1">
+                    <div class="size_search_params p-3">
                         <fieldset>
                             <legend class="font-size-lg"><?php echo LANG_PHOTOS_MORE_THAN; ?></legend>
                             <div class="field">
                                 <label for="birth_date"><?php echo LANG_PHOTOS_SIZE_W; ?></label>
                                 <input type="text" name="width" value="<?php html($item['filter_values']['width']); ?>" placeholder="px" class="form-control">
                             </div>
-                            <div class="field mt-1">
+                            <div class="field mt-3">
                                 <label for="birth_date"><?php echo LANG_PHOTOS_SIZE_H; ?></label>
                                 <input type="text" name="height" value="<?php html($item['filter_values']['height']); ?>" placeholder="px" class="form-control">
                             </div>
                         </fieldset>
-                        <div class="buttons mt-1">
+                        <div class="buttons mt-3">
                             <input type="submit" class="button btn btn-secondary" value="<?php echo LANG_FIND; ?>">
                         </div>
                     </div>
@@ -176,7 +176,7 @@ $show_bar = $is_tags || $item['parent_id'] ||
         <?php if ((empty($item[$field['name']]) || empty($field['html'])) && $item[$field['name']] !== '0') { continue; } ?>
         <?php if ($field['groups_read'] && !$user->isInGroups($field['groups_read'])) { continue; } ?>
 
-        <div class="field mb-1 echo $field['type']; ?> f_<?php echo $field['name']; ?> <?php echo $field['options']['wrap_type']; ?>_field" <?php if($field['options']['wrap_width']){ ?> style="width: <?php echo $field['options']['wrap_width']; ?>;"<?php } ?>>
+        <div class="field mb-3 echo $field['type']; ?> f_<?php echo $field['name']; ?> <?php echo $field['options']['wrap_type']; ?>_field" <?php if($field['options']['wrap_width']){ ?> style="width: <?php echo $field['options']['wrap_width']; ?>;"<?php } ?>>
             <?php if ($field['options']['label_in_item'] != 'none'){ ?>
                 <div class="title_<?php echo $field['options']['label_in_item']; ?>"><?php html($field['title']); ?>: </div>
             <?php } ?>

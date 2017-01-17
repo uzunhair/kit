@@ -12,8 +12,8 @@
             <?php if ($photos){ ?>
                 <?php foreach($photos as $photo){ ?>
                     <?php $presets = array_keys($photo['image']); $small_preset = end($presets); ?>
-                    <div class="preview media mb-1" rel="<?php echo $photo['id']; ?>">
-                        <div class="thumb media-left">
+                    <div class="preview media mb-3" rel="<?php echo $photo['id']; ?>">
+                        <div class="thumb d-flex mr-3 flex-column">
                             <a rel="edit_list" class="ajax-modal hover_image" href="<?php echo html_image_src($photo['image'], $preset_big, true); ?>">
                                 <?php echo html_image($photo['image'], $small_preset, $photo['title']); ?>
                             </a>
@@ -23,6 +23,7 @@
                                     <?php echo LANG_DELETE; ?>
                                 </a>
                             </div>
+
                             <?php } else { ?>
                                 <?php foreach ($photo['image'] as $preset => $path) { ?>
                                     <?php if($preset == $small_preset){ continue; } ?>
@@ -38,11 +39,11 @@
                                 <?php echo html_editor('content['.$photo['id'].']', $photo['content_source'], array('set_name' => 'photos')); ?>
                             </div>
                             <div class="photo_additional row">
-                                <div class="photo_privacy col-md-6 col-xs-12">
+                                <div class="photo_privacy col-md-6 col-12">
                                     <?php echo html_select('is_private['.$photo['id'].']', array(LANG_PRIVACY_PUBLIC, LANG_PRIVACY_PRIVATE, LANG_PHOTOS_ACCESS_BY_LINK), $photo['is_private']); ?>
                                 </div>
                                 <?php if($types){ ?>
-                                    <div class="photo_type col-md-6 col-xs-12">
+                                    <div class="photo_type col-md-6 col-12">
                                         <?php echo html_select('type['.$photo['id'].']', $types, $photo['type']); ?>
                                     </div>
                                 <?php } ?>
@@ -55,9 +56,9 @@
 
         <?php if(empty($is_edit)){ ?>
 
-            <div class="preview_template mb-1" style="display:none">
+            <div class="preview_template mb-3" style="display:none">
                 <div class="media">
-                <div class="thumb media-left">
+                <div class="thumb d-flex mr-3 flex-column">
                     <a class="ajax-modal hover_image" href="">
                         <img src="" />
                     </a>
@@ -75,11 +76,11 @@
                         <textarea id="" class="textarea" name="" data-upload-url="<?php echo href_to('markitup', 'upload'); ?>"></textarea>
                     </div>
                     <div class="photo_additional row">
-                        <div class="photo_privacy col-md-6 col-xs-12">
+                        <div class="photo_privacy col-md-6 col-12">
                             <?php echo html_select('', array(LANG_PRIVACY_PUBLIC, LANG_PRIVACY_PRIVATE, LANG_PHOTOS_ACCESS_BY_LINK), (isset($album['is_private']) ? $album['is_private'] : 0)); ?>
                         </div>
                         <?php if($types){ ?>
-                            <div class="photo_type col-md-6 col-xs-12">
+                            <div class="photo_type col-md-6 col-12">
                                 <?php echo html_select('', $types); ?>
                             </div>
                         <?php } ?>
@@ -91,7 +92,7 @@
             <div style="display:none"><?php echo html_editor('', '', array('set_name' => 'photos')); ?></div> <!-- чтобы редактор был подключен -->
 
 
-            <div id="album-photos-uploader" class="mb-1"></div>
+            <div id="album-photos-uploader" class="mb-3"></div>
 
             <script type="text/javascript">
                 <?php echo $this->getLangJS('LANG_SELECT_UPLOAD', 'LANG_DROP_TO_UPLOAD', 'LANG_CANCEL', 'LANG_ERROR'); ?>

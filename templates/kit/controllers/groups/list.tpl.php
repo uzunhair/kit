@@ -9,16 +9,16 @@
 
         <?php foreach($groups as $group){ ?>
 
-            <div class="media mt-next-1">
+            <div class="media mt-next-3">
 
                 <?php if ($dataset_name == 'rating') { ?>
-                    <div class="media-left">
+                    <div class="d-flex mr-3">
                         <?php $position = $index_first + $index; ?>
                         <?php echo $position; ?>
                     </div>
                 <?php } ?>
 
-                <div class="media-left">
+                <div class="d-flex mr-3">
                     <?php
                         echo html_image($group['logo'], 'small', $group['title']);
                     ?>

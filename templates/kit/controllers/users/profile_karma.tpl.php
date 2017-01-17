@@ -21,9 +21,9 @@
 
             <?php foreach($log as $entry){ ?>
 
-                <div class="media mt-next-1">
+                <div class="media mt-next-3">
 
-                    <div class="media-left">
+                    <div class="d-flex mr-3">
                         <?php echo html_avatar_image($entry['user']['avatar'], 'micro', $entry['user']['nickname']); ?>
                     </div>
                     <div class="media-body">

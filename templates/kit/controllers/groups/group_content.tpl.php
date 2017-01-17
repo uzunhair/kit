@@ -56,7 +56,7 @@
 </div>
 
 <div id="group_content_pills">
-    <?php $this->menu('group_content_types', true, 'nav nav-tabs mb-1'); ?>
+    <?php $this->menu('group_content_types', true, 'nav nav-tabs mb-3'); ?>
 </div>
 
 <div id="group_content_list"><?php echo $html; ?></div>

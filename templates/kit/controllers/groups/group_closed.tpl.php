@@ -12,12 +12,12 @@
 </div>
 
 <div id="group_profile" class="row">
-    <div id="left_column" class="col-xs-12 col-lg-4">
+    <div id="left_column" class="col-12 col-lg-4">
         <div class="card">
-            <?php echo html_image($group['logo'], 'normal', $group['title'], array('class' => 'card-img-top img-fluid mb-1')); ?>
+            <?php echo html_image($group['logo'], 'normal', $group['title'], array('class' => 'card-img-top img-fluid mb-3')); ?>
         </div>
     </div>
-    <div id="right_column" class="col-xs-12 col-lg-8">
+    <div id="right_column" class="col-12 col-lg-8">
         <div id="information" class="content_item block">
             <i class="fa fa-exclamation-triangle" ></i>
             <?php echo LANG_GROUP_IS_CLOSED; ?>

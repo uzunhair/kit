@@ -7,11 +7,11 @@
 
 <div id="pm_notices_window" data-action-url="<?php echo $this->href_to('notice_action'); ?>">
 
-    <div id="pm_notices_list" class="p-1">
+    <div id="pm_notices_list" class="p-3">
 
         <?php foreach($notices as $notice){ ?>
 
-            <div id="notice-<?php echo $notice['id']; ?>" class="item alert alert-info mb-1">
+            <div id="notice-<?php echo $notice['id']; ?>" class="item alert alert-info mb-3">
 
                 <?php if ($notice['options']['is_closeable']){ ?>
                     <a href="#close" onclick="return icms.messages.noticeAction(<?php echo $notice['id']; ?>, 'close')" title="<?php echo LANG_CLOSE; ?>" class="close">
@@ -19,7 +19,7 @@
                     </a>
                 <?php } ?>
                 <div class="date"><?php echo html_date_time($notice['date_pub']); ?></div>
-                <div class="content mb-1"><?php echo $notice['content']; ?></div>
+                <div class="content mb-3"><?php echo $notice['content']; ?></div>
                 <?php if ($notice['actions']){ ?>
                     <div class="buttons">
                         <?php foreach($notice['actions'] as $name=>$action){ ?>

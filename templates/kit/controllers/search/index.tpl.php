@@ -76,7 +76,7 @@
         <?php foreach($search_data['items'] as $item){ ?>
             <div class="media">
                 <?php if(!empty($item['image'])){ ?>
-                    <div class="media-left"><?php echo $item['image']; ?></div>
+                    <div class="d-flex mr-3"><?php echo $item['image']; ?></div>
                 <?php } ?>
                 <div class="media-body">
                     <h4 class="media-heading">
