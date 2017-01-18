@@ -16,7 +16,7 @@
 
     <div class="content_list table <?php echo $ctype['name']; ?>_list">
 
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <?php if (isset($fields['photo']) && $fields['photo']['is_in_list']){ ?>
@@ -67,7 +67,7 @@
                             } ?>
                             <td class="field ft_<?php echo $field['type']; ?> f_<?php echo $field['name']; ?>">
                                 <?php if ($field['name'] == 'title' && $ctype['options']['item_on']){ ?>
-                                    <h2>
+                                    <h2 class="h4 title">
                                     <?php if ($item['parent_id']){ ?>
                                         <a class="parent_title" href="<?php echo rel_to_href($item['parent_url']); ?>"><?php echo htmlspecialchars($item['parent_title']); ?></a>
                                         &rarr;
