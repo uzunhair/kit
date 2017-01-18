@@ -1,6 +1,6 @@
 <?php if ($items){ ?>
 
-    <div class="widget_content_list tiles-small">
+    <div class="widget_content_list tiles-small d-flex flex-wrap">
         <?php foreach($items as $item) { ?>
 
             <?php
