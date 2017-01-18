@@ -22,7 +22,8 @@
                         }
                     ?>
 
-                    <h4><?php echo $date; ?></h4>
+                    <h4 class="mt-3"><?php echo $date; ?></h4>
+                    <hr class="mb-3 mt-0">
                     <?php $last_date = $item_date; ?>
 
                 <?php } ?>
@@ -37,7 +38,7 @@
                     </div>
                 <?php } ?>
                 <div class="info media-body">
-                    <div class="title">
+                    <div class="name">
                         <a class="author" href="<?php echo $url; ?>"><?php html($item['user']['nickname']); ?></a>
                         <span class="activity-list-description">
                             <?php echo $item['description']; ?>
@@ -46,8 +47,8 @@
                             <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-eye-slash"></i></span>
                         <?php } ?>
                     </div>
-                    <div class="details details-muted ">
-                        <span class="date"><i class="fa fa-calendar"></i> <?php echo $item['date_diff']; ?></span>
+                    <div class="details details-muted">
+                        <span class="date text-muted"><i class="fa fa-calendar"></i> <?php echo $item['date_diff']; ?></span>
                         <?php if (!empty($item['reply_url']) && cmsUser::isLogged()) { ?>
                             <span class="reply">
                                 <a href="<?php echo $item['reply_url']; ?>"><i class="fa fa-comment"></i> <?php echo LANG_REPLY; ?></a>
@@ -55,16 +56,16 @@
                         <?php } ?>
                     </div>
                     <?php if (!empty($item['images'])) { ?>
-                        <div class="images">
+                        <div class="images d-flex flex-wrap mt-2">
                             <?php foreach($item['images'] as $image){ ?>
-                                <div class="image">
+                                <div class="image mr-1">
                                     <a href="<?php echo $image['url']; ?>">
                                         <img alt="<?php html($item['subject_title']); ?>" src="<?php echo $image['src']; ?>" class="img-fluid">
                                     </a>
                                 </div>
                             <?php } ?>
                             <?php if($item['images_count'] > 5){ ?>
-                                <div class="image more">
+                                <div class="more px-4 d-flex align-items-center bg-faded">
                                     <a href="<?php echo $item['subject_url']; ?>">+<span><?php echo ($item['images_count']-4); ?></span></a>
                                 </div>
                             <?php } ?>

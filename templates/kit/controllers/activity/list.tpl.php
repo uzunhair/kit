@@ -48,16 +48,16 @@
                         <?php } ?>
                     </div>
                     <?php if (!empty($item['images'])) { ?>
-                        <div class="images">
+                        <div class="images d-flex flex-wrap mt-2">
                             <?php foreach($item['images'] as $image){ ?>
-                                <div class="display-i-b">
+                                <div class="mr-1">
                                     <a href="<?php echo $image['url']; ?>">
 										<img src="<?php echo $image['src']; ?>" alt="">
                                     </a>
                                 </div>
                             <?php } ?>
                             <?php if($item['images_count'] > 5){ ?>
-                                <div class="display-i-b more">
+                                <div class="more px-4 d-flex align-items-center bg-faded">
                                     <a href="<?php echo $item['subject_url']; ?>">+<span><?php echo ($item['images_count']-4); ?></span></a>
                                 </div>
                             <?php } ?>

@@ -32,7 +32,7 @@
                              <i class="fa fa-calendar"></i>
                              <?php echo string_date_age_max($item['date_pub'], true); ?>
                          </span>
-                        <?php if (!$item['is_private']) { ?>
+                        <?php if ($item['is_private']) { ?>
                             <span class="is_private cursor-pointer" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>">
                                 <i class="fa fa-eye-slash"></i>
                             </span>
