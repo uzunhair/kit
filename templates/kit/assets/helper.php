@@ -417,7 +417,7 @@ function html_select($name, $items, $selected = '', $attributes = array()){
  */
 function html_select_multiple($name, $items, $selected=array(), $attributes=array(), $is_tree=false){
     $attr_str = html_attr_str($attributes);
-	$html = '<div class="input_checkbox_list" '.$attr_str.'>'."\n";
+	$html = '<div class="input_checkbox_list " '.$attr_str.'>'."\n";
     $start_level = false;
     if(is_array($selected) && $selected){
         foreach ($selected as $k => $v) {
@@ -438,15 +438,15 @@ function html_select_multiple($name, $items, $selected=array(), $attributes=arra
 
             $title = ltrim($title, '- ');
 
-            $html .= "\t" . '<label class="form-check-inline" '. ($level>0 ? 'style="margin-left:'.($level*20).'px"' : ''). '>' .
+            $html .= "\t" . '<div class="form-check"><label class="form-check-label" '. ($level>0 ? 'style="margin-left:'.($level*20).'px"' : ''). '>' .
                     html_checkbox($name.'[]', $checked, $value) . ' ' .
-                    htmlspecialchars($title) . '</label><br>' . "\n";
+                    htmlspecialchars($title) . '</label></div>' . "\n";
 
         } else {
 
-            $html .= "\t" . '<label class="form-check-inline">' .
+            $html .= "\t" . '<div class="form-check form-check-inline"><label class="form-check-label">' .
                     html_checkbox($name.'[]', $checked, $value) . ' ' .
-                    htmlspecialchars($title) . '</label>' . "\n";
+                    htmlspecialchars($title) . '</label></div>' . "\n";
 
         }
 
