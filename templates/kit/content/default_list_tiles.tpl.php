@@ -14,7 +14,7 @@
 
 <?php if ($items){ ?>
 
-    <div class="content_list tiled <?php echo $ctype['name']; ?>_list">
+    <div class="content_list tiled <?php echo $ctype['name']; ?>_list row">
 
         <?php $columns = 3; $index = 1; ?>
 
@@ -26,17 +26,11 @@
                 $stop = 0;
                 $preset = $fields['photo']['options']['size_teaser'];
             ?>
-
-            <div class="tile <?php echo $ctype['name']; ?>_list_item<?php if (!empty($item['is_vip'])){ ?> is_vip<?php } ?>">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="tile card h-100 <?php echo $ctype['name']; ?>_list_item<?php if (!empty($item['is_vip'])){ ?> is_vip<?php } ?>">
 
                 <?php if (isset($fields['photo']) && $fields['photo']['is_in_list'] && !empty($item['photo'])){ ?>
-                    <div class="photo">
-                        <?php if ($fields['date_pub']['is_in_list']){ ?>
-                            <div class="note" title="<?php echo $fields['date_pub']['title']; ?>">
-                                <i class="fa fa-calendar"></i>
-                                <?php echo $fields['date_pub']['handler']->parse( $item['date_pub'] ); ?>
-                            </div>
-                        <?php } ?>
+                    <div class="photo pos-r">
                         <?php if ($is_private) { ?>
                             <?php echo html_image(default_images('private', $preset), $preset, $item['title']); ?>
                         <?php } else { ?>
@@ -45,10 +39,19 @@
                             </a>
                         <?php } ?>
                         <?php unset($item['photo']); ?>
+
+                        <?php if ($fields['date_pub']['is_in_list']){ ?>
+                            <div class="note card-img-overlay d-flex align-items-end" title="<?php echo $fields['date_pub']['title']; ?>">
+                                <span class="bg-faded py-1 px-2  d-inline-block">
+                                    <i class="fa fa-calendar"></i>
+                                    <?php echo $fields['date_pub']['handler']->parse( $item['date_pub'] ); ?>
+                                </span>
+                            </div>
+                        <?php } ?>
                     </div>
                 <?php } ?>
 
-                <div class="fields">
+                <div class="fields card-block">
 
                 <?php foreach($fields as $field){ ?>
 
@@ -72,7 +75,7 @@
                         <?php } ?>
 
                         <?php if ($field['name'] == 'title' && $ctype['options']['item_on']){ ?>
-                            <h2 class="value">
+                            <h2 class="value title h4">
                                 <?php if ($item['parent_id']){ ?>
                                     <a class="parent_title" href="<?php echo rel_to_href($item['parent_url']); ?>"><?php html($item['parent_title']); ?></a>
                                     &rarr;
@@ -110,7 +113,7 @@
                 ?>
 
                 <?php if ($show_bar){ ?>
-                    <div class="info_bar">
+                    <div class="info_bar card-footer mt-0">
                         <?php if (!empty($item['rating_widget'])){ ?>
                             <div class="bar_item bi_rating">
                                 <?php echo $item['rating_widget']; ?>
@@ -144,6 +147,7 @@
                     </div>
                 <?php } ?>
 
+            </div>
             </div>
 
             <?php if ($index % $columns == 0) { ?>
