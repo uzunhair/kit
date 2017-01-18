@@ -17,6 +17,7 @@
     <?php if (cmsUser::isLogged()){ ?>
         <?php $this->addMainJS("templates/{$this->name}/js/messages.js"); ?>
     <?php } ?>
+    <?php $this->addMainJS("templates/{$this->name}/addons/tether/tether.min.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/addons/bootstrap/bootstrap.min.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/addons/setting.js"); ?>
     <!--[if lt IE 9]>
