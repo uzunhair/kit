@@ -15,9 +15,9 @@
                 }
             ?>
 
-            <div class="item">
+            <div class="media mt-next-3">
                 <?php if ($image) { ?>
-                    <div class="image">
+                    <div class="d-flex mr-3">
                         <?php if ($url) { ?>
                             <a href="<?php echo $url; ?>" title="<?php html($item['title']); ?>">
                                 <?php echo html_image($image, 'micro', $item['title']); ?>
@@ -27,7 +27,7 @@
                         <?php } ?>
                     </div>
                 <?php } ?>
-                <div class="info">
+                <div class="media-body">
                     <div class="title">
                         <?php if ($url) { ?>
                             <a href="<?php echo $url; ?>"><?php html($item['title']); ?></a>
