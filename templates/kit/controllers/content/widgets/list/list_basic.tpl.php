@@ -33,7 +33,7 @@
                             <?php html($item['title']); ?>
                         <?php } ?>
                         <?php if ($item['is_private']) { ?>
-                            <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"></span>
+                            <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
                         <?php } ?>
                     </div>
                     <?php if ($teaser_field && !empty($item[$teaser_field])) { ?>
@@ -41,7 +41,7 @@
                             <?php if (!$is_private) { ?>
                                 <?php echo string_short($item[$teaser_field], $teaser_len); ?>
                             <?php } else { ?>
-                                <!--noindex--><div class="private_field_hint"><?php echo LANG_PRIVACY_PRIVATE_HINT; ?></div><!--/noindex-->
+                                <!--noindex--><div class="private_field_hint"><i class="fa fa-low-vision"></i> <?php echo LANG_PRIVACY_PRIVATE_HINT; ?></div><!--/noindex-->
                             <?php } ?>
                         </div>
                     <?php } ?>

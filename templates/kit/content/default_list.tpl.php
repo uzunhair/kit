@@ -71,18 +71,18 @@
                             <?php } ?>
 
                             <?php if ($is_private) { $stop++; ?>
-                                <?php html($item[$field['name']]); ?> <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"></span>
+                                <?php html($item[$field['name']]); ?> <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
                             <?php } else { ?>
                                 <a href="<?php echo href_to($ctype['name'], $item['slug'].'.html'); ?>"><?php html($item[$field['name']]); ?></a>
                                 <?php if ($item['is_private']) { ?>
-                                    <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"></span>
+                                    <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
                                 <?php } ?>
                             <?php } ?>
                             </h2>
                         <?php } else { ?>
                             <div class="value">
                                 <?php if ($is_private) { ?>
-                                     <!--noindex--><div class="private_field_hint"><?php echo LANG_PRIVACY_PRIVATE_HINT; ?></div><!--/noindex-->
+                                     <!--noindex--><div class="private_field_hint"><i class="fa fa-low-vision"></i> <?php echo LANG_PRIVACY_PRIVATE_HINT; ?></div><!--/noindex-->
                                 <?php } else { ?>
                                      <?php echo $field['handler']->setItem($item)->parseTeaser($item[$field['name']]); ?>
                                 <?php } ?>

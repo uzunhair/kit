@@ -44,7 +44,7 @@
                             <?php echo $item['description']; ?>
                         </span>
                         <?php if ($item['is_private']) { ?>
-                            <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-eye-slash"></i></span>
+                            <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
                         <?php } ?>
                     </div>
                     <div class="details details-muted">

@@ -1,7 +1,7 @@
 <h1 itemprop="name">
     <?php html($photo['title']); ?>
     <?php if ($photo['is_private'] == 1) { ?>
-        <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"></span>
+        <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
     <?php } ?>
 </h1>
 <img data-page-url="<?php echo href_to('photos', $photo['slug'].'.html'); ?>" src="<?php echo html_image_src($photo['image'], $preset, true, false); ?>" alt="<?php html($photo['title']); ?>" itemprop="contentUrl" />

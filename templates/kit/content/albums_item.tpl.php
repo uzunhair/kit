@@ -18,7 +18,7 @@ $show_bar = $is_tags || $item['parent_id'] ||
         <?php } ?>
         <?php html($item['title']); ?>
         <?php if ($item['is_private']) { ?>
-            <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-eye-slash"></i></span>
+            <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-eye-slash"></i></span>
         <?php } ?>
     </h1>
     <?php if ($show_bar){ ?>

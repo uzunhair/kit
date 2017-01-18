@@ -4,7 +4,7 @@
     <h1>
         <?php html($item['title']); ?>
         <?php if ($item['is_private']) { ?>
-            <span class="is_private" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"></span>
+            <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
         <?php } ?>
     </h1>
     <?php if ($item['parent_id']){ ?>

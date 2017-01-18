@@ -34,6 +34,7 @@
                                 <?php } else { ?>
                                     <!--noindex-->
                                     <span class="private_field_hint">
+                                        <i class="fa fa-low-vision"></i>
                                         <?php echo LANG_PRIVACY_PRIVATE_HINT; ?>
                                     </span>
                                     <!--/noindex-->
@@ -75,6 +76,7 @@
                                     <?php } else { ?>
                                         <!--noindex-->
                                         <span class="private_field_hint">
+                                            <i class="fa fa-low-vision"></i>
                                             <?php echo LANG_PRIVACY_PRIVATE_HINT; ?>
                                         </span>
                                         <!--/noindex-->
