@@ -75,16 +75,16 @@
                 <?php if ($header_nav_width) { ?>
                     <div id="widget_pos_top" class="container">
                 <?php } ?>
-                <nav class="<?php echo $header_nav_class; ?> navbar-toggleable-md">
-                    <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                            <?php $this->widgets('top'); ?>
-                        </div>
-                    <?php if (!$header_nav_width) { ?></div><?php } ?>
-                </nav>
+                        <nav class="<?php echo $header_nav_class; ?> navbar-toggleable-md">
+                            <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-toggle" aria-controls="header-toggle" aria-expanded="false">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="header-toggle">
+                                    <?php $this->widgets('top'); ?>
+                                </div>
+                            <?php if (!$header_nav_width) { ?></div><?php } ?>
+                        </nav>
                 <?php if ($header_nav_width) { ?>
                     </div>
                 <?php } ?>
@@ -103,8 +103,6 @@
         <div class="container">
 
             <div class="widget_ajax_wrap" id="widget_pos_header"><?php $this->widgets('header', false, 'wrapper_plain'); ?></div>
-
-
 
         <div id="body" class="row">
 
@@ -150,7 +148,7 @@
             </section>
 
             <?php if($is_sidebar){ ?>
-                <aside class="col-3">
+                <aside class="col-12 col-lg-3">
                     <div class="widget_ajax_wrap" id="widget_pos_right-top"><?php $this->widgets('right-top'); ?></div>
                     <div class="widget_ajax_wrap" id="widget_pos_right-center"><?php $this->widgets('right-center'); ?></div>
                     <div class="widget_ajax_wrap" id="widget_pos_right-bottom"><?php $this->widgets('right-bottom'); ?></div>
