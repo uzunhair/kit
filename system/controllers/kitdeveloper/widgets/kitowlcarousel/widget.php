@@ -13,6 +13,38 @@ class widgetKitdeveloperKitowlcarousel extends cmsWidget {
         $limit           = $this->getOption('limit', 10);
         $teaser_len      = $this->getOption('teaser_len', 100);
 
+        // design
+        $p_overlay  = $this->getOption('p_overlay', 'p-3');
+
+        $title_bg = $this->getOption('bg_title', 'bg-inverse');
+        $title_color = $this->getOption('color_title', 'text-white');
+        $p_y_title = $this->getOption('p_y_title', 'py-2');
+        $p_x_title = $this->getOption('p_x_title', 'px-3');
+        $font_size_title = $this->getOption('font_size_title', 'h5');
+
+        $details_bg = $this->getOption('bg_details', 'bg-inverse');
+        $details_color = $this->getOption('color_details', 'text-white');
+        $p_y_details = $this->getOption('p_y_details', 'py-2');
+        $p_x_details = $this->getOption('p_x_details', 'px-3');
+        $details_self = $this->getOption('details_self', 'align-self-start');
+
+        $title_class = array(
+            'title_bg'          => $title_bg,
+            'title_color'       => $title_color,
+            'p_y_title'         => $p_y_title,
+            'p_x_title'         => $p_x_title,
+            'font_size_title'   => $font_size_title,
+        );
+
+        $details_class = array(
+            'details_bg'          => $details_bg,
+            'details_color'       => $details_color,
+            'p_y_details'         => $p_y_details,
+            'p_x_details'         => $p_x_details,
+            'details_self'        => $details_self,
+        );
+
+
         $model = cmsCore::getModel('content');
 
         $ctype = $model->getContentType($ctype_id);
@@ -104,6 +136,9 @@ class widgetKitdeveloperKitowlcarousel extends cmsWidget {
             'teaser_field'      => $teaser_field,
             'is_show_details'   => $is_show_details,
             'style'             => $style,
+            'title_class'       => $title_class,
+            'p_overlay'         => $p_overlay,
+            'details_class'     => $details_class,
             'items'             => $items
         );
 

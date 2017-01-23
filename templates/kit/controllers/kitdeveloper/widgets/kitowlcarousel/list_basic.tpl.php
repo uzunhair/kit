@@ -1,5 +1,8 @@
 <?php if ($items){ ?>
-
+    <div class="hand-control">
+        <a href="#" class="prevbtn_nav"><i class="fa fa-chevron-left"></i></a>
+        <a href="#" class="nextbtn_nav"><i class="fa fa-chevron-right"></i></a>
+    </div>
     <div class="widget_content_list owl-carousel owl-theme">
         <?php foreach($items as $item) { ?>
 
@@ -20,11 +23,11 @@
                         <?php if ($url) { ?>
                             <a href="<?php echo $url; ?>"><?php echo html_image($image, 'big', $item['title']); ?></a>
                         <?php } else { ?>
-                            <?php echo html_image($image, 'small', $item['title']); ?>
+                            <?php echo html_image($image, 'big', $item['title']); ?>
                         <?php } ?>
                     <?php } ?>
-                    <div class="card-img-overlay info">
-                            <div class="title">
+                    <div class="card-img-overlay info d-flex flex-column justify-content-end <?php echo $p_overlay; ?>">
+                            <div class="title flex-last mb-0 <?php echo implode(' ', $title_class); ?>">
                                 <?php if ($url) { ?>
                                     <a href="<?php echo $url; ?>"><?php html($item['title']); ?></a>
                                 <?php } else { ?>
@@ -34,17 +37,8 @@
                                     <span class="is_private" data-toggle="tooltip" title="<?php html(LANG_PRIVACY_PRIVATE); ?>"><i class="fa fa-low-vision"></i></span>
                                 <?php } ?>
                             </div>
-                            <?php if ($teaser_field && !empty($item[$teaser_field])) { ?>
-                                <div class="teaser">
-                                    <?php if (!$is_private) { ?>
-                                        <?php echo string_short($item[$teaser_field], $teaser_len); ?>
-                                    <?php } else { ?>
-                                        <!--noindex--><div class="private_field_hint"><i class="fa fa-low-vision"></i> <?php echo LANG_PRIVACY_PRIVATE_HINT; ?></div><!--/noindex-->
-                                    <?php } ?>
-                                </div>
-                            <?php } ?>
                             <?php if ($is_show_details) { ?>
-                                <div class="details text-muted">
+                                <div class="details align-self-start <?php echo implode(' ', $details_class); ?>">
                                     <span class="author list-inline-item">
                                         <a href="<?php echo href_to('users', $item['user']['id']); ?>"><i class="fa fa-user"></i> <?php html($item['user']['nickname']); ?></a>
                                         <?php if ($item['parent_id']){ ?>
@@ -71,7 +65,6 @@
                                 </div>
                             <?php } ?>
                         </div>
-
                 </div>
             </div>
 
@@ -80,7 +73,8 @@
 
     <script src="/templates/kit/js/owl.carousel.min.js"></script>
     <script>
-        $('.owl-carousel').owlCarousel({
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
             loop:true,
             margin:10,
             nav:true,
@@ -89,13 +83,21 @@
                     items:1
                 },
                 600:{
-                    items:3
+                    items:2
                 },
                 1000:{
-                    items:3
+                    items:2
                 }
             }
+        });
+
+        $('.nextbtn_nav').click(function () {
+            owl.trigger('next.owl.carousel');
         })
+        $('.prevbtn_nav').click(function () {
+            owl.trigger('prev.owl.carousel');
+        })
+
     </script>
 
 <?php } ?>

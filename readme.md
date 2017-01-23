@@ -1,6 +1,9 @@
 Kit default 
 -----------
 
-## Btn class
-$this->options['btn_class']
+Demo 
 
+## Btn class
+```
+$this->options['btn_class']
+```
