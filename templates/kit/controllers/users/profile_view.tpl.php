@@ -200,7 +200,7 @@
                         </h4>
                         <div class="friends-list">
                             <?php foreach($friends as $friend){ ?>
-                                <a href="<?php echo $this->href_to($friend['id']); ?>" data-toggle="tooltip" title="<?php html($friend['nickname']); ?>" class="display-i-b">
+                                <a href="<?php echo $this->href_to($friend['id']); ?>" data-toggle="tooltip" title="<?php html($friend['nickname']); ?>" class="d-inline-block">
                                     <span><?php echo html_avatar_image($friend['avatar'], 'micro', $friend['nickname']); ?></span>
                                 </a>
                             <?php } ?>

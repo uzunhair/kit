@@ -108,7 +108,7 @@
 
             <?php
                 $is_sidebar = $this->hasWidgetsOn('right-top', 'right-center', 'right-bottom');
-                $section_width = $is_sidebar ? 'col-9' : 'col-12';
+                $section_width = $is_sidebar ? 'col-lg-9 col-12' : 'col-12';
             ?>
 
             <section class="<?php echo $section_width; ?> section-content">

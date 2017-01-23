@@ -111,7 +111,7 @@
 
         <?php if (!empty($downloads)){ ?>
             <div class="download_menu pos-r">
-                <span id="download-button" class="download-button btn btn-primary display-b mt-3"><i class="photo_icon icon_download"></i> <?php echo LANG_DOWNLOAD; ?></span>
+                <span id="download-button" class="download-button btn btn-primary d-block mt-3"><i class="photo_icon icon_download"></i> <?php echo LANG_DOWNLOAD; ?></span>
                 <div id="bubble" class="dropdown-menu p-3 w-100">
                             <?php foreach ($downloads as $download) { ?>
                             <div class="row <?php echo $download['preset']; ?>_download_preset <?php echo (!$download['link'] ? 'disable_download' : ''); ?>">
