@@ -137,6 +137,10 @@ class formWidgetKitdeveloperKitowlcarouselOptions extends cmsForm {
                 'title' => LANG_WD_KITOWLCAROUSEL_DESIGN,
                 'childs' => array(
 
+                    new fieldCheckbox('options:show_img_overlay', array(
+                        'title' =>  LANG_WD_KITOWLCAROUSEL_SHOW_IMG_OVERLAY,
+                    )),
+
                     new fieldList('options:p_overlay', array(
                         'title' => LANG_WD_KITOWLCAROUSEL_PADDING_OVERLAY,
                         'default' => 'p-3',
@@ -298,7 +302,9 @@ class formWidgetKitdeveloperKitowlcarouselOptions extends cmsForm {
                 'type' => 'fieldset',
                 'title' => LANG_WD_KITOWLCAROUSEL_SCRIPT,
                 'childs' => array(
-
+                    new fieldCheckbox('options:show_control', array(
+                        'title' =>  LANG_WD_KITOWLCAROUSEL_CONTROL,
+                    )),
                 )
             ),
 

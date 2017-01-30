@@ -14,6 +14,7 @@ class widgetKitdeveloperKitowlcarousel extends cmsWidget {
         $teaser_len      = $this->getOption('teaser_len', 100);
 
         // design
+        $show_img_overlay = $this->getOption('show_img_overlay');
         $p_overlay  = $this->getOption('p_overlay', 'p-3');
 
         $title_bg = $this->getOption('bg_title', 'bg-inverse');
@@ -27,6 +28,10 @@ class widgetKitdeveloperKitowlcarousel extends cmsWidget {
         $p_y_details = $this->getOption('p_y_details', 'py-2');
         $p_x_details = $this->getOption('p_x_details', 'px-3');
         $details_self = $this->getOption('details_self', 'align-self-start');
+
+        // options script
+        $show_control = $this->getOption('show_control');
+
 
         $title_class = array(
             'title_bg'          => $title_bg,
@@ -44,6 +49,7 @@ class widgetKitdeveloperKitowlcarousel extends cmsWidget {
             'details_self'        => $details_self,
         );
 
+        $this->css_class_title = "owl_nav_$this->id";
 
         $model = cmsCore::getModel('content');
 
@@ -134,11 +140,13 @@ class widgetKitdeveloperKitowlcarousel extends cmsWidget {
             'teaser_len'        => $teaser_len,
             'image_field'       => $image_field,
             'teaser_field'      => $teaser_field,
+            'show_img_overlay'  => $show_img_overlay,
             'is_show_details'   => $is_show_details,
             'style'             => $style,
             'title_class'       => $title_class,
             'p_overlay'         => $p_overlay,
             'details_class'     => $details_class,
+            'show_control'      => $show_control,
             'items'             => $items
         );
 

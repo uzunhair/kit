@@ -1,6 +1,7 @@
 <?php
 define('LANG_WD_KITOWLCAROUSEL_DESIGN',  'Оформление');
 
+define('LANG_WD_KITOWLCAROUSEL_SHOW_IMG_OVERLAY', 'Выводить текст поверх картинки?');
 define('LANG_WD_KITOWLCAROUSEL_PADDING_OVERLAY', 'Padding от краев картинки');
 define('LANG_WD_KITOWLCAROUSEL_PADDING_0', 'p-0');
 define('LANG_WD_KITOWLCAROUSEL_PADDING_1', 'p-1');
@@ -79,3 +80,4 @@ define('LANG_WD_KITOWLCAROUSEL_CONTENT_TYPE1',    'Выводить обычны
 define('LANG_WD_KITOWLCAROUSEL_CONTENT_TYPE2',    'Выводить список похожих');
 
 define('LANG_WD_KITOWLCAROUSEL_SCRIPT',    'Настройка скрипта');
+define('LANG_WD_KITOWLCAROUSEL_CONTROL',   'Показать кнопки перелистывания');

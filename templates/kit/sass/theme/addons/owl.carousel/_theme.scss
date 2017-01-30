@@ -14,7 +14,7 @@
 			background: $nav-background;
 			display: inline-block;
 			cursor: pointer;
-			border-radius: 3px;
+			border-radius: $border-radius;
 
 			&:hover {
 				background: $nav-background-hover;

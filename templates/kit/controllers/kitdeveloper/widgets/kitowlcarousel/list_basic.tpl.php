@@ -1,9 +1,5 @@
 <?php if ($items){ ?>
-    <div class="hand-control">
-        <a href="#" class="prevbtn_nav"><i class="fa fa-chevron-left"></i></a>
-        <a href="#" class="nextbtn_nav"><i class="fa fa-chevron-right"></i></a>
-    </div>
-    <div class="widget_content_list owl-carousel owl-theme">
+    <div class="widget_content_list owl-carousel owl-carousel-<?php echo $widget->id; ?> owl-theme">
         <?php foreach($items as $item) { ?>
 
             <?php
@@ -26,7 +22,7 @@
                             <?php echo html_image($image, 'big', $item['title']); ?>
                         <?php } ?>
                     <?php } ?>
-                    <div class="card-img-overlay info d-flex flex-column justify-content-end <?php echo $p_overlay; ?>">
+                    <div class="<?php if($show_img_overlay && $image) { echo 'card-img-overlay ';} ?>info d-flex flex-column justify-content-end <?php echo $p_overlay; ?>">
                             <div class="title flex-last mb-0 <?php echo implode(' ', $title_class); ?>">
                                 <?php if ($url) { ?>
                                     <a href="<?php echo $url; ?>"><?php html($item['title']); ?></a>
@@ -70,14 +66,22 @@
 
         <?php } ?>
     </div>
-
+    <?php if ($show_control) { ?>
+        <div class="owl-control d-flex">
+            <a href="#" class="prevbtn_nav d-block pl-2 pr-1"><i class="fa fa-chevron-left"></i></a>
+            <a href="#" class="nextbtn_nav d-block pl-1"><i class="fa fa-chevron-right"></i></a>
+        </div>
+    <?php } ?>
     <script src="/templates/kit/js/owl.carousel.min.js"></script>
     <script>
-        var owl = $('.owl-carousel');
+        <?php if ($show_control) { ?>
+            $(".owl-control").appendTo(".owl_nav_<?php echo $widget->id; ?>");
+        <?php } ?>
+        var owl = $('.owl-carousel-<?php echo $widget->id; ?>');
         owl.owlCarousel({
             loop:true,
             margin:10,
-            nav:true,
+            dots:false,
             responsive:{
                 0:{
                     items:1
