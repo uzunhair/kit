@@ -2,7 +2,7 @@
 
     $this->addJS('templates/default/js/content.js');
     $this->addJS('templates/default/js/jquery-chosen.js');
-    $this->addCSS('templates/oneminima/css/jquery-chosen.css');
+    $this->addCSS('templates/kit/css/jquery-chosen.css');
 
     $page_title =   $do=='add' ?
                     sprintf(LANG_CONTENT_ADD_ITEM, $ctype['labels']['create']) :

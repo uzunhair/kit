@@ -8,8 +8,8 @@
     } else {
 
         if (!$field->native_tag) {
-            $this->addJSFromContext('templates/default/js/jquery-chosen.js');
-            $this->addCSSFromContext('templates/default/css/jquery-chosen.css');
+            $this->addJSFromContext('templates/kit/js/jquery-chosen.js');
+            $this->addCSSFromContext('templates/kit/css/jquery-chosen.css');
         }
 
         echo html_select($field->element_name, $field->data['items'], $value, $field->data['dom_attr']);

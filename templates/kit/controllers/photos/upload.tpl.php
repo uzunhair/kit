@@ -2,7 +2,7 @@
 
     $this->addJS( $this->getJavascriptFileName('photos') );
     $this->addJS($this->getJavascriptFileName('jquery-chosen'));
-    $this->addCSS('templates/default/css/jquery-chosen.css');
+    $this->addCSS('templates/kit/css/jquery-chosen.css');
 
     $this->setPageTitle($title);
 
