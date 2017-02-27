@@ -1,6 +1,6 @@
 <?php $index = 0; ?>
 <?php $index_tab = 0; ?>
-<div id="comments_widget" class="tabs-menu mt-3">
+<div id="comments_widget" class="mt-3">
 
     <a name="comments"></a>
 

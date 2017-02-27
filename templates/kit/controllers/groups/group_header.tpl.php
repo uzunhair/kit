@@ -72,6 +72,9 @@
 
 <h1 id="group_profile_title">
     <?php html($group['title']); ?>
+    <?php if (!empty($group['sub_title'])) { ?>
+        <span>/ <?php html($group['sub_title']); ?></span>
+    <?php } ?>
     <?php if ($group['is_closed']) { ?>
         <span class="is_closed" title="<?php html(LANG_GROUP_IS_CLOSED_ICON); ?>"></span>
     <?php } ?>

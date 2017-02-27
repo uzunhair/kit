@@ -47,10 +47,52 @@ $(document).ready(function(){
     $("nav select").change(function() {
         window.location = $(this).find("option:selected").val();
     });
-    
+
+    if ($('.tabs-menu').length){
+
+        $(".tabs-menu").each(function() {
+
+            var tabs = $(this);
+
+            var dropdown = $("<select class='form-control hidden-md-up nav-select'>").prependTo(tabs);
+            $("ul > li > a", tabs).each(function() {
+                var el = $(this);
+                var attr = {
+                    value   : el.attr('href'),
+                    text    : el.text()
+                };
+                if(window.location.pathname.indexOf(el.attr('href')) === 0){
+                    attr.selected = true;
+                }
+                $("<option>", attr).appendTo(dropdown);
+            });
+
+            $(dropdown).change(function() {
+                window.location = $(this).find("option:selected").val();
+            });
+
+        });
+
+    }
+
 	$('.messages.ajax-modal a').on('click', function(){
         $('#popup-manager').addClass('nyroModalMessage');
 	});
+
+    if($('div.widget.fixed_actions_menu').length){
+        $('#breadcrumbs').prepend($('div.widget.fixed_actions_menu'));
+        $('div.widget.fixed_actions_menu').on('click', function (){
+            if($(this).hasClass('clicked')){ return; }
+            var __menu = $(this).addClass('clicked');
+            var hide_func = function (){
+                $(document).one('click', function(event) {
+                    if ($(event.target).closest(__menu).length) { hide_func(); return; }
+                    $(__menu).removeClass('clicked');
+                });
+            };
+            hide_func();
+        });
+    };
 
 });
 

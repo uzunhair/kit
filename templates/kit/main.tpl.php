@@ -112,7 +112,7 @@
             ?>
 
             <section class="<?php echo $section_width; ?> section-content">
-                <?php if ($config->show_breadcrumbs && $this->isBreadcrumbs()){ ?>
+                <?php if ($config->show_breadcrumbs && $core->uri && $this->isBreadcrumbs()){ ?>
                     <div id="breadcrumbs">
                         <?php $this->breadcrumbs(array('strip_last'=>false)); ?>
                     </div>
@@ -122,7 +122,7 @@
                 $messages = cmsUser::getSessionMessages();
                 if ($messages){
                     ?>
-                    <div class="alert alert-info alert-dismissible fade in" role="alert">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

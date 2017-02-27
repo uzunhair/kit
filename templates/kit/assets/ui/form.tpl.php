@@ -83,22 +83,19 @@
                             $error = false;
                         }
 
-                        $default = $field->getDefaultValue();
+                        $value = $field->getDefaultValue();
                         $rel = isset($field->rel) ? $field->rel : null;
 
                         if (strpos($name, ':') !== false){
                             $name_parts = explode(':', $name);
-                            $name       = $name_parts[0].'['.$name_parts[1].']';
-                            if (isset($data[$name_parts[0]]) && @array_key_exists($name_parts[1], $data[$name_parts[0]])){
-                                $value = $data[$name_parts[0]][$name_parts[1]];
-                            } else {
-                                $value = $default;
+                            $_value = array_value_recursive($name_parts, $data);
+                            if ($_value !== null){
+                                $value = $_value;
                             }
+                            $name = array_shift($name_parts) . '[' . implode('][', $name_parts) . ']';
                         } else {
-                            if (is_array($data) && @array_key_exists($name, $data)){
+                            if (is_array($data) && array_key_exists($name, $data)){
                                 $value = $data[$name];
-                            } else {
-                                $value = $default;
                             }
                         }
 
@@ -106,8 +103,10 @@
                             'field form-group',
                             'ft_'.strtolower(substr(get_class($field), 5))
                         );
-                        
-                        if ($error){ 
+
+                        if($field->getOption('is_required')){ $classes[] = 'reguired_field'; }
+
+                        if ($error){
                             $classes[] = 'field_error has-danger';
                         }
 
@@ -184,9 +183,9 @@
 
     <?php echo $append_html; ?>
 
-    <div class="buttons margin-t5">
-        <?php echo html_submit($submit['title'], 'submit', array('class'=> $this->options['btn_class'])); ?>
-        <?php if ($cancel['show']) { echo html_button($cancel['title'], 'cancel', "location.href='{$cancel['href']}'"); } ?>
+    <div class="buttons">
+        <?php echo html_submit($submit['title'], 'submit', $submit); ?>
+        <?php if ($cancel['show']) { echo html_button($cancel['title'], 'cancel', "location.href='{$cancel['href']}'", array('class'=>'button-cancel')); } ?>
     </div>
 
 </form>

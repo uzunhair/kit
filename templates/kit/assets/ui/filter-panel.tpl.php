@@ -11,13 +11,19 @@
         </div>
         <form action="<?php echo $form_url; ?>" method="get">
             <?php echo html_input('hidden', 'page', 1); ?>
+            <?php if(!empty($ext_hidden_params)){ ?>
+                <?php foreach($ext_hidden_params as $fname => $fvalue){ ?>
+                    <?php echo html_input('hidden', $fname, $fvalue); ?>
+                    <?php if($filters){ $filters[$fname] = $fvalue; } ?>
+                <?php } ?>
+            <?php } ?>
             <div class="fields row">
                 <?php $fields_count = 0; ?>
                 <?php foreach($fields as $name => $field){ ?>
                     <?php if (!$field['is_in_filter']){ continue; } ?>
                     <?php if (!empty($field['filter_view']) && !$user->isInGroups($field['filter_view'])) { continue; } ?>
                     <?php $value = isset($filters[$name]) ? $filters[$name] : null; ?>
-                    <?php $output = $field['handler']->getFilterInput($value); ?>
+                    <?php $output = $field['handler']->setItem(array('ctype_name' => $css_prefix, 'id' => null))->getFilterInput($value); ?>
                     <?php if (!$output){ continue; } ?>
                     <?php $fields_count++; ?>
                     <div class="field form-group col-12 col-md-6 col-lg-4 ft_<?php echo $field['type']; ?> f_<?php echo $field['name']; ?>">

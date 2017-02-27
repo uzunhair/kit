@@ -17,13 +17,13 @@
             if ($is_friend_profile){
                 $tool_buttons['friend_delete'] = array(
                     'title' => LANG_USERS_FRIENDS_DELETE,
-                    'class' => 'user_delete',
+                    'class' => 'user_delete ajax-modal',
                     'href' => $this->href_to('friend_delete', $profile['id'])
                 );
             } else if(!$is_friend_req) {
                 $tool_buttons['friend_add'] = array(
                     'title' => LANG_USERS_FRIENDS_ADD,
-                    'class' => 'user_add',
+                    'class' => 'user_add ajax-modal',
                     'href' => $this->href_to('friend_add', $profile['id'])
                 );
             }
@@ -193,11 +193,15 @@
                 <?php } ?>
 
                 <?php if ($is_friends_on && $friends) { ?>
-                    <h4 class="block">
-                        <h4>
-                            <a href="<?php echo $this->href_to($profile['id'], 'friends'); ?>"><?php echo LANG_USERS_FRIENDS; ?></a>
+                    <div class="block">
+                        <div class="h4">
+                            <?php if($show_all_flink){ ?>
+                                <a href="<?php echo $this->href_to($profile['id'], 'friends'); ?>"><?php echo LANG_USERS_FRIENDS; ?></a>
+                            <?php } else { ?>
+                                <?php echo LANG_USERS_FRIENDS; ?>
+                            <?php } ?>
                             (<?php echo $profile['friends_count']; ?>)
-                        </h4>
+                        </div>
                         <div class="friends-list">
                             <?php foreach($friends as $friend){ ?>
                                 <a href="<?php echo $this->href_to($friend['id']); ?>" data-toggle="tooltip" title="<?php html($friend['nickname']); ?>" class="d-inline-block">

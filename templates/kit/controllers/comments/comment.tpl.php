@@ -35,10 +35,14 @@
 <div id="comment_<?php echo $entry['id']; ?>" class="mt-next-3 comment<?php if($is_selected){ ?> selected-comment<?php } ?><?php if($target_user_id == $entry['user_id']){ ?> is_topic_starter<?php } ?>" <?php if ($is_levels) { ?>style="margin-left: <?php echo $level; ?>px" data-level="<?php echo $entry['level']; ?>"<?php } ?>>
     <div class="media">
         <?php if(!$entry['is_deleted']){ ?>
-            <div <?php if (!empty($entry['user']['is_online'])){ ?>class="d-flex mr-3 avatar comment_user_online" title="<?php echo LANG_ONLINE; ?>"<?php } else { ?> class="d-flex mr-3 avatar"<?php } ?>>
-                <a href="<?php echo href_to('users', $entry['user']['id']); ?>">
+            <div class="d-flex mr-3">
+                <?php if ($entry['user_id']) { ?>
+                    <a href="<?php echo href_to('users', $entry['user']['id']); ?>">
+                        <?php echo html_avatar_image($entry['user']['avatar'], 'micro', $entry['user']['nickname']); ?>
+                    </a>
+                <?php } else { ?>
                     <?php echo html_avatar_image($entry['user']['avatar'], 'micro', $entry['user']['nickname']); ?>
-                </a>
+                <?php } ?>
             </div>
         <?php } ?>
 

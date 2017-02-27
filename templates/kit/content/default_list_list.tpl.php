@@ -7,6 +7,7 @@
             'props_fields' => $props_fields,
             'props'        => $props,
             'filters'      => $filters,
+            'ext_hidden_params' => $ext_hidden_params,
             'is_expanded'  => $ctype['options']['list_expand_filter']
         ));
     }
@@ -22,6 +23,7 @@
 
             <?php
                 $item['ctype'] = $ctype;
+                $item['ctype_name'] = $ctype['name'];
                 $is_private    = $item['is_private'] && $hide_except_title && !$item['user']['is_friend'];
                 $stop = 0;
                 $preset = $fields['photo']['options']['size_teaser'];

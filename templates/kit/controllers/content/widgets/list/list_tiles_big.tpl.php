@@ -14,7 +14,7 @@
                     $url = '';
                 }
             ?>
-            <div class="col-12 col-lg-4 mb-3">
+            <div class="col-12 col-lg-4">
             <div class="card h-100">
                 <?php if ($image) { ?>
                     <div class="image">

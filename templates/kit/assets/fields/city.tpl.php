@@ -5,7 +5,7 @@
 <?php if(!is_array($value)){ ?>
 
     <?php
-    $this->addJSFromContext('templates/default/js/jquery-chosen.js');
+    $this->addJSFromContext('templates/kit/js/jquery-chosen.js');
     $this->addCSSFromContext('templates/kit/css/jquery-chosen.css');
     ?>
 
@@ -17,7 +17,7 @@
             icms.geo.addToGroup('location_group_<?php echo $field->data['location_group']; ?>', '<?php echo $field->data['location_type']; ?>');
         <?php } ?>
         $(function(){
-            $('#<?php echo $field->data['dom_attr']['id']; ?>').chosen({no_results_text: '<?php echo LANG_LIST_EMPTY; ?>', placeholder_text_single: '<?php echo LANG_SELECT; ?>', disable_search_threshold: 8, width: '100%', search_placeholder: '<?php echo LANG_BEGIN_TYPING; ?>'});
+            $('#<?php echo $field->data['dom_attr']['id']; ?>').chosen({no_results_text: '<?php echo LANG_LIST_EMPTY; ?>', placeholder_text_single: '<?php echo LANG_SELECT; ?>', disable_search_threshold: 8, allow_single_deselect: true, width: '100%', search_placeholder: '<?php echo LANG_BEGIN_TYPING; ?>'});
         });
     </script>
 
