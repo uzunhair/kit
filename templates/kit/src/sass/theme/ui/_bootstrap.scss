@@ -1,0 +1,11 @@
+.card {
+  .list-group-item {
+    margin-top:-$card-border-width;
+    border-width: $card-border-width;
+  }
+}
+.btn{
+  &:hover {
+    cursor:pointer;
+  }
+}

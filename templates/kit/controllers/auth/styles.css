@@ -1,0 +1,13 @@
+.peer_online {
+  position: relative; }
+  .peer_online:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 50%;
+    bottom: 0;
+    right: 10px;
+    position: absolute; }
+
+/*# sourceMappingURL=styles.css.map */

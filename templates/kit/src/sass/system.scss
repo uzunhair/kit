@@ -1,0 +1,12 @@
+@import 'config/variables';
+// compile bootstrap
+@import 'vendors/bootstrap/bootstrap';
+// compile fontawesome
+@import 'vendors/fontawesome/font-awesome';
+
+.field {
+  @extend .clearfix;
+}
+.textarea {
+  @extend .form-control;
+}

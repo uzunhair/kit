@@ -1,8 +1,15 @@
+.widget_profiles_list .flex-wrap {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem; }
+
+#widget_image_avatar .preview {
+  width: 10rem; }
+
 /* ========================================================================== */
 #user_status_widget.loading {
-    background-position: center center;
-}
-#user_status_widget.loading .input{
-    visibility: hidden;
-}
+  background-position: center center; }
 
+#user_status_widget.loading .input {
+  visibility: hidden; }
+
+/*# sourceMappingURL=styles.css.map */

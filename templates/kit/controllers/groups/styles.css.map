@@ -1,0 +1,1 @@
+{"version":3,"sources":["groups.scss"],"names":[],"mappings":"AAEA;EACI,cAAa,EAChB","file":"styles.css","sourcesContent":["@import 'base';\n\n#group_profile_tabs .tabs-menu select {\n    display: none;\n}"]}

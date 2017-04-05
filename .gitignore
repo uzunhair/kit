@@ -109,3 +109,5 @@ system/controllers/content/widgets/list/
 system/languages/ru/controllers/content/widgets/
 sftp-config.json
 sendbox/
+node_modules/
+bower_components/

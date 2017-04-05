@@ -1,0 +1,34 @@
+#comments_widget #comments_add_form,
+#comments_list .scroll-down,
+#comments_add_form .loading {
+  display: none; }
+
+.comment #comments_add_form {
+  margin-top: 1rem; }
+
+#comments_add_form .loading {
+  font-family: FontAwesome;
+  font-size: inherit; }
+
+#comments_add_form .loading:before {
+  content: "\f110";
+  display: inline-block;
+  animation: fa-spin 2s infinite linear; }
+
+#tab-icms + select,
+#tab-vk + select {
+  display: none; }
+
+.comment .media-body, .comment .deleted {
+  border: 1px solid #eceeef;
+  padding: 0.5rem 1rem; }
+
+.comment .deleted {
+  margin-left: 1rem; }
+
+.comment .info {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eceeef; }
+
+/*# sourceMappingURL=styles.css.map */
