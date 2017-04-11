@@ -11,6 +11,7 @@
                 <a href="<?php echo $this->href_to($profile['id']); ?>"><?php html($profile['nickname']); ?></a>
             </h1>
         </div>
+        <?php if (!$profile['is_deleted']){ ?>
         <div class="media-right align-self-center">
             <div id="user_profile_rates" class="rates"
                  data-url="<?php echo $this->href_to('karma_vote', $profile['id']); ?>"
@@ -21,25 +22,28 @@
                         <a href="#vote-up" onclick="return icms.users.karmaUp()" class="thumb thumb_up" title="<?php echo LANG_KARMA_UP; ?>"></a>
                     <?php } ?>
                     <span class="value <?php echo html_signed_class($profile['karma']); ?>" title="<?php echo LANG_KARMA; ?>">
-                <?php echo html_signed_num($profile['karma']); ?>
-            </span>
+                        <?php echo html_signed_num($profile['karma']); ?>
+                    </span>
                     <?php if ($profile['is_can_vote_karma']){ ?>
                         <a href="#vote-down" onclick="return icms.users.karmaDown()" class="thumb thumb_down" title="<?php echo LANG_KARMA_DOWN; ?>"></a>
                     <?php } ?>
                 </div>
-                <?php if ($this->controller->options['is_karma_comments']) { ?>
-                    <script><?php echo $this->getLangJS('LANG_USERS_KARMA_COMMENT'); ?></script>
-                <?php } ?>
             </div>
+            <?php if ($this->controller->options['is_karma_comments']) { ?>
+                <script><?php echo $this->getLangJS('LANG_USERS_KARMA_COMMENT'); ?></script>
+            <?php } ?>
         </div>
+        <?php } ?>
     </div>
 
 
     <div class="name<?php if (!empty($profile['status'])){ ?> name_with_status<?php } ?>">
 
-
         <?php if ($profile['is_locked']){ ?>
-            <div class="is_locked bg-warning mb-3 p-3 text-white"><i class="fa fa-exclamation-triangle"></i> <?php echo LANG_USERS_LOCKED_NOTICE_PUBLIC; ?></div>
+            <span class="is_locked bg-warning mb-3 p-3 text-white"><i class="fa fa-exclamation-triangle"></i> <?php echo LANG_USERS_LOCKED_NOTICE_PUBLIC; ?></span>
+        <?php } ?>
+        <?php if ($profile['is_deleted']){ ?>
+            <span class="is_locked bg-warning mb-3 p-3 text-white"><i class="fa fa-exclamation-triangle"></i> <?php echo LANG_USERS_IS_DELETED; ?></span>
         <?php } ?>
 
         <?php if ($this->controller->options['is_status']) { ?>
@@ -102,10 +106,6 @@
 			</div>
 		</div>
 
-	<?php } ?>
-
-	<?php if (count($tabs)==1){ ?>
-		<br>
 	<?php } ?>
 
 <?php } ?>

@@ -12,8 +12,6 @@ $font-size-root: 14px !default;
 
 $one-pixel-to-rem:  0.07143rem !default;
 
-$border-width:               3px !default;
-
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
 
 $font-size-h1:           2.1429rem !default;
@@ -40,8 +38,6 @@ $border-radius:          0rem !default;
 $border-radius-lg:       0rem !default;
 $border-radius-sm:       0rem !default;
 
-
-
 $btn-padding-y:                  .4rem !default;
 
 // Breadcrumbs
@@ -55,7 +51,7 @@ $input-padding-x:                .75rem !default;
 $input-padding-y:                $btn-padding-y !default;
 
 
-$input-btn-border-width:         3px !default; // For form controls and buttons
+$input-btn-border-width:         1px !default; // For form controls and buttons
 
 // Pagination
 

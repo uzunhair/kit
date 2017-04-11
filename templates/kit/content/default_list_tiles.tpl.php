@@ -25,32 +25,33 @@
                 $item['ctype'] = $ctype;
                 $is_private    = $item['is_private'] && $hide_except_title && !$item['user']['is_friend'];
                 $stop = 0;
-                $preset = $fields['photo']['options']['size_teaser'];
             ?>
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="tile card h-100 <?php echo $ctype['name']; ?>_list_item<?php if (!empty($item['is_vip'])){ ?> is_vip<?php } ?>">
+                <div class="tile card h-100 <?php echo $ctype['name']; ?>_list_item<?php if (!empty($item['is_vip'])) { ?> is_vip<?php } ?>">
 
-                <?php if (isset($fields['photo']) && $fields['photo']['is_in_list'] && !empty($item['photo'])){ ?>
-                    <div class="photo pos-r">
-                        <?php if ($is_private) { ?>
-                            <?php echo html_image(default_images('private', $preset), $preset, $item['title']); ?>
-                        <?php } else { ?>
-                            <a href="<?php echo href_to($ctype['name'], $item['slug'].'.html'); ?>">
-                                <?php echo html_image($item['photo'], $preset, $item['title']); ?>
-                            </a>
-                        <?php } ?>
-                        <?php unset($item['photo']); ?>
+                    <?php if (isset($fields['photo']) && $fields['photo']['is_in_list'] && !empty($item['photo'])) { ?>
+                        <?php $preset = $fields['photo']['options']['size_teaser']; ?>
+                        <div class="photo pos-r">
+                            <?php if ($is_private) { ?>
+                                <?php echo html_image(default_images('private', $preset), $preset, $item['title']); ?>
+                            <?php } else { ?>
+                                <a href="<?php echo href_to($ctype['name'], $item['slug'] . '.html'); ?>">
+                                    <?php echo html_image($item['photo'], $preset, $item['title']); ?>
+                                </a>
+                            <?php } ?>
+                            <?php unset($item['photo']); ?>
 
-                        <?php if ($fields['date_pub']['is_in_list']){ ?>
-                            <div class="note card-img-overlay d-flex align-items-end" title="<?php echo $fields['date_pub']['title']; ?>">
+                            <?php if ($fields['date_pub']['is_in_list']) { ?>
+                                <div class="note card-img-overlay d-flex align-items-end"
+                                     title="<?php echo $fields['date_pub']['title']; ?>">
                                 <span class="bg-faded py-1 px-2  d-inline-block">
                                     <i class="fa fa-calendar"></i>
-                                    <?php echo $fields['date_pub']['handler']->parse( $item['date_pub'] ); ?>
+                                    <?php echo $fields['date_pub']['handler']->parse($item['date_pub']); ?>
                                 </span>
-                            </div>
-                        <?php } ?>
-                    </div>
-                <?php } ?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
 
                 <div class="fields card-block">
 
@@ -160,7 +161,7 @@
     </div>
 
     <?php if ($perpage < $total) { ?>
-        <?php echo html_pagebar($page, $perpage, $total, $page_url, $filters); ?>
+        <?php echo html_pagebar($page, $perpage, $total, $page_url, array_merge($filters, $ext_hidden_params)); ?>
     <?php } ?>
 
 <?php } else { echo LANG_LIST_EMPTY; } ?>

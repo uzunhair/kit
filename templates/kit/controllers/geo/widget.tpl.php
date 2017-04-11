@@ -1,4 +1,3 @@
-<?php // Reworked the bootstrap ?>
 <?php
 $this->addJSFromContext('templates/kit/js/jquery-chosen.js');
 $this->addCSSFromContext('templates/kit/css/jquery-chosen.css');
@@ -36,5 +35,8 @@ $this->addCSSFromContext('templates/kit/css/jquery-chosen.css');
         <?php if (!$city_id){?>
             $('#geo_window .list > select').first().triggerHandler('change');
         <?php } ?>
+    });
+    icms.modal.setCallback('open', function (){
+        setTimeout(function(){ $('.nyroModalCont').css('overflow', 'visible'); }, 300);
     });
 </script>

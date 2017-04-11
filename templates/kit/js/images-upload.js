@@ -82,7 +82,7 @@ icms.images = (function ($) {
 
         $(preview_block).data('paths', image_data);
         $('img', preview_block).attr('src', preview_img_src);
-        $('a', preview_block).click(function() { icms.images.removeOne(field_name, idx); });
+        $('a', preview_block).data('id', idx).click(function() { icms.images.removeOne(field_name, this); });
 
         $('.previews_list', widget).append(preview_block);
 
@@ -117,7 +117,9 @@ icms.images = (function ($) {
             action: upload_url,
             multiple: false,
             debug: false,
-
+            showMessage: function(message){
+                icms.modal.alert(message);
+            },
             onSubmit: function(id, fileName){
                 var ftitle = $('#title').val();
                 if(ftitle){
@@ -188,7 +190,7 @@ icms.images = (function ($) {
             update: function(event, ui) {
                 $('.data', widget).html('');
                 $('.previews_list .preview', widget).each(function(index){
-                    $(this).attr('rel', index);
+                    $(this).attr('rel', index).find('a').data('id', index);
                     var paths = $(this).data('paths');
                     for(var path in paths){
                         $('.data', widget).append('<input type="hidden" name="'+_input_name+'['+index+']['+path+']" value="'+paths[path]+'" rel="'+index+'" />');
@@ -214,11 +216,15 @@ icms.images = (function ($) {
             icms.images.removeCallback(field_name, result);
         }
 
-    }
+        return false;
+
+    };
 
     //====================================================================//
 
-    this.removeOne = function(field_name, idx){
+    this.removeOne = function(field_name, link){
+
+        var idx = $(link).data('id');
 
         var widget = $('#widget_image_'+field_name);
 
@@ -234,7 +240,9 @@ icms.images = (function ($) {
             icms.images.removeCallback(field_name, idx);
         }
 
-    }
+        return false;
+
+    };
 
     //====================================================================//
 

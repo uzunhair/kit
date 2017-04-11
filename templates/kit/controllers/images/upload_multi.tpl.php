@@ -28,7 +28,7 @@
                                 <img src="<?php echo cmsConfig::get('upload_host') . '/' . reset($paths); ?>" class="card-img-top img-fluid mx-auto" />
                             </div>
                         <?php } ?>
-                        <a href="javascript:" onclick="icms.images.removeOne('<?php echo $dom_id; ?>', <?php echo $idx; ?>)" class="btn btn-link btn-block"><?php echo LANG_DELETE; ?></a>
+                        <a href="#" data-id="<?php echo $idx; ?>" onclick="return icms.images.removeOne('<?php echo $dom_id; ?>', this);" class="btn btn-link btn-block"><?php echo LANG_DELETE; ?></a>
                     </div>
                 </div>
             <?php } ?>

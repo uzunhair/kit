@@ -19,7 +19,7 @@
     border-top: 0;
     background-color: #fff;
     background-clip: padding-box;
-    border: 3px solid rgba(0, 0, 0, 0.15); }
+    border: 1px solid rgba(0, 0, 0, 0.15); }
   .chosen-container.chosen-with-drop .chosen-drop {
     left: 0; }
   .chosen-container a {
@@ -51,7 +51,7 @@
   display: flex;
   overflow: hidden;
   padding: 0 0 0 8px;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
   color: #292b2c;
   background-color: #fff;
   border-color: #ccc;
@@ -218,7 +218,7 @@
   background-color: #fff;
   background-image: none;
   background-clip: padding-box;
-  border: 3px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
   .chosen-container-multi .chosen-choices:focus {
     color: #464a4c;
@@ -257,7 +257,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 3px solid #ccc;
+    border: 1px solid #ccc;
     padding: 0.25rem 0.5rem;
     font-size: 0.8571rem;
     border-radius: 0rem;
@@ -302,7 +302,7 @@
 /* @end */
 /* @group Active  */
 .chosen-container-active .chosen-single {
-  border: 3px solid rgba(0, 0, 0, 0.15); }
+  border: 1px solid rgba(0, 0, 0, 0.15); }
 
 .chosen-container-active.chosen-with-drop .chosen-single {
   background-image: none; }

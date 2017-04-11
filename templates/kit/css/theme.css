@@ -212,11 +212,6 @@ nav select {
   font-weight: 500;
   padding: 1.07145rem; }
 
-select.form-control:not([size]):not([multiple]) {
-  height: calc(2.05rem - -2px);
-  padding-bottom: 0.18571rem;
-  padding-top: 0.18571rem; }
-
 /* InstatnCMS2 Standart Style Kod =====================================*/
 .field .title_left,
 .field .title_top {

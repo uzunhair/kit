@@ -22,6 +22,19 @@ class formKitTemplateOptions extends cmsForm {
 
             array(
                 'type' => 'fieldset',
+                'title' => LANG_ADMIN_CONTROLLER,
+                'childs' => array(
+
+                    new fieldCheckbox('disable_help_anim', array(
+                        'title' => LANG_THEME_KIT_DISABLE_HELP_ANIM,
+                        'default' => 0
+                    ))
+
+                )
+            ),
+
+            array(
+                'type' => 'fieldset',
                 'title' => LANG_THEME_KIT_COPYRIGHT,
                 'childs' => array(
 

@@ -9,9 +9,9 @@
   clear: both; }
 
 .content_datasets_description {
-  border-left: 3px solid #ddd;
-  border-right: 3px solid #ddd;
-  border-bottom: 3px solid #ddd; }
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; }
   .content_datasets_description p:last-child {
     margin-bottom: 0; }
 

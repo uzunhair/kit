@@ -73,7 +73,7 @@ icms.photos = (function ($) {
                 }
             });
         } else {
-            $('#photo_container').addClass('full_in_modal').on('click', function (){
+            $('#photo_container').addClass('full_in_modal').find('.fullscreen_click').show().on('click', function (){
                 if(icms.photos.big_img){
                     icms.modal.openAjax(icms.photos.big_img);
                 }
@@ -118,7 +118,18 @@ icms.photos = (function ($) {
         $(selector).on('click', 'a.delete', function(){
             return icms.photos.deletePhoto($(this).data('id'), this);
         });
-        
+
+        $('.photo_filter .box_menu').on('click', function (){
+            var next = $(this).next().css({left: (+$(this).position().left - 20)});
+            var hide_func = function (){
+                $(document).one('click', function(event) {
+                    if ($(event.target).closest(next).length) { hide_func(); return; }
+                    $(next).hide();
+                });
+            };
+            $(next).fadeIn('fast', hide_func);
+        });
+
         this.is_init_album[selector] = true;
 
     };
