@@ -1,17 +1,17 @@
-.nyroModalBg {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000;
-  opacity: 0.7;
-  z-index: 100;
-}
-.nmReposition {
-  position: absolute;
-}
+//.nyroModalBg {
+//  position: fixed;
+//  overflow: hidden;
+//  top: 0;
+//  left: 0;
+//  height: 100%;
+//  width: 100%;
+//  background: #000;
+//  opacity: 0.7;
+//  z-index: 100;
+//}
+//.nmReposition {
+//  position: absolute;
+//}
 .nyroModalCloseButton {
   top: -38px;
   right: -38px;
@@ -20,24 +20,30 @@
   text-indent: -9999em;
   background: url("../images/modal/close.png");
   z-index: 101;
-}
-.nyroModalTitle {
-  top: -32px;
-  left: 0;
-  margin: 0;
-  font-size: 1.1em;
-  z-index: 100;
-  padding:8px 14px;
-  height: 32px;
-}
-.nyroModalCont {
   position: absolute;
-  height: auto !important;
-  margin: 25px;
-  padding:0;
-  background: #fff;
-  z-index: 101;
 }
+@include media-breakpoint-up(sm) {
+  .modal-dialog {
+    margin: 50px auto;
+  }
+}
+//.nyroModalTitle {
+//  top: -32px;
+//  left: 0;
+//  margin: 0;
+//  font-size: 1.1em;
+//  z-index: 100;
+//  padding:8px 14px;
+//  height: 32px;
+//}
+//.nyroModalCont {
+//  position: absolute;
+//  height: auto !important;
+//  margin: 25px;
+//  padding:0;
+//  background: #fff;
+//  z-index: 101;
+//}
 .nyroModalCont .notice{
   padding:20px;
   color:#BDC3C7;
@@ -62,30 +68,58 @@
   overflow: hidden;
 }
 .nyroModalImage img {
-  vertical-align: top;
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin: 0 auto;
 }
 .nyroModalHidden {
   left: -9999em;
   top: -9999em;
 }
 .nyroModalLoad {
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 100px;
   background: #fff url(../images/modal/ajaxLoader.gif) no-repeat center;
   padding: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
+
+@import "../../vendors/fontawesome/variables";
+
 .nyroModalPrev, .nyroModalNext {
   outline: none;
   position: absolute;
   top: 0;
-  height: 60%;
+  height: 100%;
   width: 150px;
   min-height: 50px;
   max-height: 300px;
   cursor: pointer;
   text-indent: -9999em;
-  background: transparent url('data:image/gif;base64,AAAA') left 20% no-repeat;
+  display: flex;
+  align-items: center;
+  padding: $modal-inner-padding;
+  &:after {
+    display: inline-block;
+    font-family: FontAwesome; // shortening font declaration
+    font-size: 2rem; // can't have font-size inherit on line above, so need to override
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0;
+    color: $gray-lighter;
+    transition: 0.2s;
+  }
+  &:hover {
+    text-decoration: none;
+    &:after {
+      color: $gray-light;
+    }
+  }
 }
 .nyroModalImage .nyroModalPrev, .nyroModalImage .nyroModalNext {
   height: 100%;
@@ -94,21 +128,15 @@
 }
 .nyroModalPrev {
   left: 0;
-}
-.nyroModalPrev:hover {
-  background-image: url(../images/modal/prev.gif);
-}
-.nyroModalNext {
-  right: 0;
-  background-position: right 20%;
-}
-.nyroModalNext:hover {
-  background-position: right 20%;
-  background-image: url(../images/modal/next.gif);
+  &:after {
+    content: $fa-var-chevron-left;
+  }
 }
 
-#geo_window {
-  height: 350px;
-  padding: 15px;
-  width: 300px;
+.nyroModalNext {
+  right: 0;
+  justify-content: flex-end;
+  &:after{
+    content: $fa-var-chevron-right;
+  }
 }

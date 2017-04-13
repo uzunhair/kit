@@ -65,7 +65,12 @@ jQuery(function ($, undefined) {
         swf: {allowFullScreen: 'true', allowscriptaccess: 'always', wmode: 'transparent'},
         store: {},
         errorMsg: 'An error occured',
-        elts: {all: undefined, bg: undefined, load: undefined, cont: undefined, hidden: undefined},
+
+        bsModalOpen: "modal-open",
+        bsModalSizeSm: "modal-sm",
+        bsModalSizeLg: "modal-lg",
+
+        elts: {all: undefined, bg: undefined, bg_boot:undefined, boot_body:undefined, load: undefined, cont: undefined, hidden: undefined},
         sizes: {
             initW: undefined,
             initH: undefined,
@@ -213,12 +218,14 @@ jQuery(function ($, undefined) {
                         self._callAnim('hideBg', function () {
                             self._callFilters('afterClose');
                             $('#popup-manager').removeClass('popup-show');
+                            $('body').removeClass('modal-open');
                             self.elts.cont.remove();
                             self.elts.hidden.remove();
                             self.elts.load.remove();
                             self.elts.bg.remove();
                             self.elts.all.remove();
-                            self.elts.cont = self.elts.hidden = self.elts.load = self.elts.bg = self.elts.all = undefined;
+                            self.elts.bg_boot.remove('#boot-modal');
+                            self.elts.cont = self.elts.hidden = self.elts.load = self.elts.bg = self.elts.bg_boot = self.elts.all = undefined;
                         });
                     });
                 });
@@ -233,8 +240,9 @@ jQuery(function ($, undefined) {
         _initElts: function () {
             if (!this.stack && this.getInternal().stack.length > 1) this.elts = this.getInternal().stack[this.getInternal().stack.length - 2]['nmObj'].elts;
             if (!this.elts.all || this.elts.all.closest('body').length == 0) this.elts.all = this.elts.bg = this.elts.cont = this.elts.hidden = this.elts.load = undefined;
-            if (!this.elts.all) this.elts.all = $('<div />').appendTo(this.getInternal()._container);
-            if (!this.elts.bg) this.elts.bg = $('<div />').hide().appendTo(this.elts.all);
+            if (!this.elts.all) this.elts.bg_boot =$('<div id="boot-modal" class="modal fade show d-block"><div class="modal-dialog"><div class="modal-content" id="boot-content"></div></div></div>').prependTo( "#popup-manager" );
+            if (!this.elts.all) this.elts.all = $('<div />').appendTo("#boot-content");
+            if (!this.elts.bg) this.elts.bg = $('<div />').hide().appendTo('#popup-manager');
             if (!this.elts.cont) this.elts.cont = $('<div />').hide().appendTo(this.elts.all);
             if (!this.elts.hidden) this.elts.hidden = $('<div />').hide().appendTo(this.elts.all);
             this.elts.hidden.empty();
@@ -246,12 +254,7 @@ jQuery(function ($, undefined) {
         },
         _setCont: function (html, selector) {
             this.elts.hidden.append(this._filterScripts(html)).prepend(this.header).append(this.footer).wrapInner($('<div />', {'class': 'nyroModal' + $.ucfirst(this.loadFilter)}));
-            this.sizes.initW = this.sizes.w = this.elts.hidden.width();
-            this.sizes.initH = this.sizes.h = this.elts.hidden.height();
             var outer = this.getInternal()._getOuter(this.elts.cont);
-            this.sizes.hMargin = outer.h.total;
-            this.sizes.wMargin = outer.w.total;
-            this.size();
             this.loading = false;
             this._callFilters('filledContent');
             this._contentLoading();
@@ -371,9 +374,7 @@ jQuery(function ($, undefined) {
                 } else if (this._nbContentLoading == 1) {
                     var outer = this.getInternal()._getOuter(this.elts.load);
                     this.elts.load.css({
-                        position: 'fixed',
-                        top: (this.getInternal().fullSize.viewH - this.elts.load.height() - outer.h.margin) / 2,
-                        left: (this.getInternal().fullSize.viewW - this.elts.load.width() - outer.w.margin) / 2
+                        position: 'fixed'
                     });
                     if (this._transition) {
                         this._unreposition();
@@ -390,30 +391,26 @@ jQuery(function ($, undefined) {
         },
         _writeContent: function () {
             this.elts.cont.empty().append(this.elts.hidden.contents()).append(this._scripts).append(this.showCloseButton ? this.closeButton : '').css({
-                position: 'fixed',
-                width: this.sizes.w,
-                height: this.sizes.h,
-                top: (this.getInternal().fullSize.viewH - this.sizes.h - this.sizes.hMargin) / 2,
-                left: (this.getInternal().fullSize.viewW - this.sizes.w - this.sizes.wMargin) / 2
+
             });
         },
         _reposition: function () {
             var cont_width = this.sizes.w;
             var elts = this.elts.cont.find('.nmReposition');
             if (elts.length) {
-                var space = this.getInternal()._getSpaceReposition();
-                elts.each(function () {
-                    var me = $(this), offset = me.offset();
-                    me.css({
-                        'max-width': cont_width,
-                        position: 'fixed',
-                        top: offset.top - space.top,
-                        left: offset.left - space.left
-                    });
-                });
-                this.elts.cont.after(elts);
+                // var space = this.getInternal()._getSpaceReposition();
+                // elts.each(function () {
+                //     var me = $(this), offset = me.offset();
+                //     me.css({
+                //         'max-width': cont_width,
+                //         position: 'fixed',
+                //         top: offset.top - space.top,
+                //         left: offset.left - space.left
+                //     });
+                // });
+                this.elts.cont.before(elts);
             }
-            this.elts.cont.css('overflow', 'auto');
+            // this.elts.cont.css('overflow', 'auto');  добавляем свойство
             this._callFilters('afterReposition');
         },
         _unreposition: function () {
@@ -600,7 +597,7 @@ jQuery(function ($, undefined) {
     }, _animations = {
         basic: {
             showBg: function (nm, clb) {
-                nm.elts.bg.css({opacity: 0.7}).show();
+                nm.elts.bg.css({}).show();
                 clb();
             }, hideBg: function (nm, clb) {
                 nm.elts.bg.hide();
@@ -644,8 +641,8 @@ jQuery(function ($, undefined) {
                 if (nm.modal) nm.closeOnEscape = nm.closeOnClick = nm.showCloseButton = false;
                 if (nm.closeOnEscape) nm.useKeyHandler = true;
             }, initElts: function (nm) {
-                nm.elts.bg.addClass('nyroModalBg');
-                nm.elts.cont.addClass('nyroModalCont');
+                nm.elts.bg.addClass('nyroModalBg modal-backdrop fade show');
+                nm.elts.cont.addClass('nyroModalCont modal-body');
                 nm.elts.hidden.addClass('nyroModalCont nyroModalHidden');
                 nm.elts.load.addClass('nyroModalCont nyroModalLoad');
             }, error: function (nm) {
@@ -661,9 +658,11 @@ jQuery(function ($, undefined) {
                     nm.close();
                 });
             }, afterShowCont: function (nm) {
-                if (nm.closeOnClick) nm.elts.bg.off('click.nyroModal').on('click.nyroModal', function (e) {
-                    e.preventDefault();
-                    nm.close();
+                if (nm.closeOnClick) nm.elts.bg_boot.off('click.nyroModal').on('click.nyroModal', function (e) {
+                    if (e.target.id === "boot-modal"){
+                        e.preventDefault();
+                        nm.close();
+                    }
                 });
             }, keyHandle: function (nm) {
                 if (nm.keyEvent.keyCode == 27 && nm.closeOnEscape) {
@@ -740,12 +739,8 @@ jQuery(function ($, undefined) {
             }, showTrans: function (nm, clb) {
                 nm.elts.load.css({
                     position: nm.elts.cont.css('position'),
-                    top: nm.elts.cont.css('top'),
-                    left: nm.elts.cont.css('left'),
                     width: nm.elts.cont.css('width'),
                     height: nm.elts.cont.css('height'),
-                    marginTop: nm.elts.cont.css('marginTop'),
-                    marginLeft: nm.elts.cont.css('marginLeft')
                 }).fadeIn(function () {
                     nm.elts.cont.hide();
                     clb();
@@ -753,12 +748,8 @@ jQuery(function ($, undefined) {
             }, hideTrans: function (nm, clb) {
                 nm.elts.cont.css('visibility', 'hidden').show();
                 nm.elts.load.css('position', nm.elts.cont.css('position')).animate({
-                    top: nm.elts.cont.css('top'),
-                    left: nm.elts.cont.css('left'),
                     width: nm.elts.cont.css('width'),
                     height: nm.elts.cont.css('height'),
-                    marginTop: nm.elts.cont.css('marginTop'),
-                    marginLeft: nm.elts.cont.css('marginLeft')
                 }, function () {
                     nm.elts.cont.css('visibility', '');
                     nm.elts.load.fadeOut(clb);
@@ -783,7 +774,9 @@ jQuery(function ($, undefined) {
                 return nm.opener.is('[title]');
             }, beforeShowCont: function (nm) {
                 var offset = nm.elts.cont.offset();
-                nm.store.title = $('<h1 />', {text: nm.opener.attr('title')}).addClass('nyroModalTitle nmReposition');
+                nm.store.title = $("<div class='modal-header nyroModalTitle nmReposition'></div>")
+                    .append('<h5 class="modal-title">'+ nm.opener.attr('title') +'</h5>')
+                //nm.store.title = $('<h1 />', {text: nm.opener.attr('title')}).addClass('nyroModalTitle nmReposition modal-title');
                 nm.elts.cont.prepend(nm.store.title);
             }, close: function (nm) {
                 if (nm.store.title) {
@@ -795,7 +788,6 @@ jQuery(function ($, undefined) {
         }
     });
 });
-;
 jQuery(function ($, undefined) {
     $.nmFilters({
         gallery: {
@@ -821,6 +813,8 @@ jQuery(function ($, undefined) {
                 }
             }, initElts: function (nm) {
                 var rel = nm.opener.attr('rel'), indexSpace = rel.indexOf(' ');
+                $('.modal-dialog').addClass(nm.bsModalSizeLg);
+                $('body').addClass(nm.bsModalOpen);
                 nm.store.gallery = indexSpace > 0 ? rel.substr(0, indexSpace) : rel;
                 nm.store.galleryLinks = $('[href][rel="' + nm.store.gallery + '"], [href][rel^="' + nm.store.gallery + ' "]');
                 nm.store.galleryIndex = nm.store.galleryLinks.index(nm.opener);

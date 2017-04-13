@@ -35,6 +35,7 @@ $this->addCSSFromContext('templates/kit/css/jquery-chosen.css');
         <?php if (!$city_id){?>
             $('#geo_window .list > select').first().triggerHandler('change');
         <?php } ?>
+        $('.modal-dialog').addClass('modal-sm');
     });
     icms.modal.setCallback('open', function (){
         setTimeout(function(){ $('.nyroModalCont').css('overflow', 'visible'); }, 300);

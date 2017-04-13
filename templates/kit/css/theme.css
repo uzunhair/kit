@@ -410,20 +410,6 @@ nav select {
   overflow: hidden;
   max-height: 4.5rem; }
 
-.nyroModalBg {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000;
-  opacity: 0.7;
-  z-index: 100; }
-
-.nmReposition {
-  position: absolute; }
-
 .nyroModalCloseButton {
   top: -38px;
   right: -38px;
@@ -431,24 +417,12 @@ nav select {
   height: 38px;
   text-indent: -9999em;
   background: url("../images/modal/close.png");
-  z-index: 101; }
+  z-index: 101;
+  position: absolute; }
 
-.nyroModalTitle {
-  top: -32px;
-  left: 0;
-  margin: 0;
-  font-size: 1.1em;
-  z-index: 100;
-  padding: 8px 14px;
-  height: 32px; }
-
-.nyroModalCont {
-  position: absolute;
-  height: auto !important;
-  margin: 25px;
-  padding: 0;
-  background: #fff;
-  z-index: 101; }
+@media (min-width: 576px) {
+  .modal-dialog {
+    margin: 50px auto; } }
 
 .nyroModalCont .notice {
   padding: 20px;
@@ -474,30 +448,54 @@ nav select {
   overflow: hidden; }
 
 .nyroModalImage img {
-  vertical-align: top; }
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin: 0 auto; }
 
 .nyroModalHidden {
   left: -9999em;
   top: -9999em; }
 
 .nyroModalLoad {
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 100px;
   background: #fff url(../images/modal/ajaxLoader.gif) no-repeat center;
-  padding: 0; }
+  padding: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%); }
 
 .nyroModalPrev, .nyroModalNext {
   outline: none;
   position: absolute;
   top: 0;
-  height: 60%;
+  height: 100%;
   width: 150px;
   min-height: 50px;
   max-height: 300px;
   cursor: pointer;
   text-indent: -9999em;
-  background: transparent url("data:image/gif;base64,AAAA") left 20% no-repeat; }
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 15px; }
+  .nyroModalPrev:after, .nyroModalNext:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 2rem;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0;
+    color: #eceeef;
+    transition: 0.2s; }
+  .nyroModalPrev:hover, .nyroModalNext:hover {
+    text-decoration: none; }
+    .nyroModalPrev:hover:after, .nyroModalNext:hover:after {
+      color: #636c72; }
 
 .nyroModalImage .nyroModalPrev, .nyroModalImage .nyroModalNext {
   height: 100%;
@@ -506,22 +504,15 @@ nav select {
 
 .nyroModalPrev {
   left: 0; }
-
-.nyroModalPrev:hover {
-  background-image: url(../images/modal/prev.gif); }
+  .nyroModalPrev:after {
+    content: "\f053"; }
 
 .nyroModalNext {
   right: 0;
-  background-position: right 20%; }
-
-.nyroModalNext:hover {
-  background-position: right 20%;
-  background-image: url(../images/modal/next.gif); }
-
-#geo_window {
-  height: 350px;
-  padding: 15px;
-  width: 300px; }
+  -ms-flex-pack: end;
+  justify-content: flex-end; }
+  .nyroModalNext:after {
+    content: "\f054"; }
 
 /* Слайдер контента ==========================================================================  */
 .widget_content_slider {
