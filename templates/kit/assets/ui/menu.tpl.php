@@ -20,7 +20,6 @@
             if ($is_active) { $css_classes[] = 'active'; }
             if ($item['childs_count'] > 0) { $css_classes[] = 'dropdown'; }
             if ($item['level'] ==1 ) { $css_classes[] = 'nav-item';}
-            if (!empty($item['options']['class'])) { $css_classes[] = $item['options']['class']; }
 
             $onclick = isset($item['options']['onclick']) ? $item['options']['onclick'] : false;
             $onclick = isset($item['options']['confirm']) ? "return confirm('{$item['options']['confirm']}')" : $onclick;
@@ -38,6 +37,17 @@
             if ($item['level'] > 1) {$css_classes_link[] = 'dropdown-item';}
             if ($is_active) { $css_classes_link[] = 'active'; }
 
+            if (!empty($item['options']['class'])) {
+                if(stristr($item['options']['class'], '/') == true) {
+                    $item_class = explode('/', $item['options']['class']);
+                    $item_icon = $item_class[0];
+                    unset($item_class[0]);
+                    $css_classes[] = implode(' ', $item_class);
+                } else {
+                    $css_classes[] = $item['options']['class'];
+                }
+            }
+
         ?>
 
         <li <?php if ($css_classes) { ?>class="<?php echo implode(' ', $css_classes); ?>"<?php } ?>>
@@ -49,6 +59,9 @@
                    href="<?php echo !empty($item['url']) ? htmlspecialchars($item['url']) : 'javascript:void(0)'; ?>"
                    <?php if ($onclick) { ?>onclick="<?php echo $onclick; ?>"<?php } ?>
                    <?php if ($target) { ?>target="<?php echo $target; ?>"<?php } ?>>
+                    <?php if (!empty($item_icon)) { ?>
+                        <i class="fa pr-1 <?php echo $item_icon; ?>"></i>
+                    <?php } unset($item_icon) ?>
                     <span class="wrap">
                         <?php if (!empty($item['title'])) { html($item['title']); } ?>
                         <?php if (isset($item['counter']) && $item['counter']){ ?>
