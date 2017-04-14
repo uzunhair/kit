@@ -1,10 +1,8 @@
 "use strict";
 
 var gulp = require('gulp'),
-    // postcss = require('gulp-postcss'),
     cssnano = require('gulp-cssnano'),
     pxtorem = require('gulp-pxtorem'),
-    precss = require('precss'),
     autoprefixer = require('gulp-autoprefixer'),
     mqpacker = require('css-mqpacker'),
     sass = require('gulp-sass'),
@@ -15,62 +13,70 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename'),
     changed = require('gulp-changed'), // запускают таски только для изменившихся файлов
-    duration    = require('gulp-duration'),
+    duration = require('gulp-duration'),
     browserSync = require('browser-sync').create();
+
+// Setting
+
+
+var site = 'kit',
+    site_port = '3020',
+    template = 'kit';
+
+var user = '',
+    password = '',
+    host = '',
+    ftp_port = 21,
+    localFilesGlob = [
+        'templates/' + template + '/**/*.*'
+    ], remoteFolder = '/';
 
 var path = {
     build: { //Тут мы укажем куда складывать готовые после сборки файлы
-        html: 'dist/',
-        js: 'dist/js/',
-        style: 'templates/kit/css/',
-        styleContr:'templates/kit/controllers/',
-        img: 'templates/kit/img/',
-        fonts: 'templates/kit/fonts/'
+        html: 'app/',
+        js: 'templates/' + template + '/js/',
+        style: 'templates/' + template + '/css/',
+        styleContr: 'templates/' + template + '/controllers/',
+        img: 'templates/' + template + '/images/',
+        fonts: 'templates/' + template + '/fonts/'
     },
     src: { //Пути откуда брать исходники
-        html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-        js: 'src/js/**/*.js',//В стилях и скриптах нам понадобятся только main файлы
-        style: 'templates/kit/src/sass/*.scss',
-        styleDefault: 'templates/kit/src/sass/default/*.css',
-        styleContr: 'templates/kit/src/sass/theme/controllers/*.scss',
-        img: 'templates/kit/src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
-        fonts: 'templates/kit/src/fonts/**/*.*'
+        html: 'app/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
+        js: 'templates/' + template + '/src/js/*.js',
+        style: 'templates/' + template + '/src/sass/*.scss',
+        styleDefault: 'templates/' + template + '/src/sass/default/*.css',
+        styleContr: 'templates/' + template + '/src/sass/theme/controllers/*.scss',
+        img: 'templates/' + template + '/images/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
+        fonts: 'templates/' + template + '/src/fonts/**/*.*'
     },
     watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
-        html: 'src/**/*.html',
-        js: 'src/js/**/*.js',
-        style: 'templates/kit/src/sass/**/*.scss',
-        img: 'templates/kit/src/img/**/*.*',
-        fonts: 'templates/kit/src/fonts/**/*.*'
+        html: 'app/**/*.html',
+        js: 'templates/' + template + '/src/js/**/*.js',
+        style: 'templates/' + template + '/src/sass/**/*.scss',
+        img: 'templates/' + template + '/images/**/*.*',
+        fonts: 'templates/' + template + '/src/fonts/**/*.*'
     },
     browser: {
         html: 'dist/**/*.html',
-        php: 'templates/kit/**/*.php',
-        js: 'templates/kit/js/**/*.js',
-        style: 'templates/kit/css/**/*.css',
-        styleContr: 'templates/kit/controllers/**/*.css',
-        img: 'templates/kit/img/**/*.*',
-        fonts: 'templates/kit/fonts/**/*.*'
+        php: 'templates/' + template + '/**/*.php',
+        js: 'templates/' + template + '/js/**/*.js',
+        style: 'templates/' + template + '/css/**/*.css',
+        styleContr: 'templates/' + template + '/controllers/**/*.css',
+        fonts: 'templates/' + template + '/fonts/**/*.*'
     },
     clean: {
-        style: 'templates/kit/css/**/*.*',
-        styleContr: 'templates/kit/controllers/**/*.+(css|map)',
-        fonts: 'templates/kit/fonts/**/*.*',
+        style: 'templates/' + template + '/css/**/*.*',
+        styleContr: 'templates/' + template + '/controllers/**/*.+(css|map)',
+        fonts: 'templates/' + template + '/fonts/**/*.*'
     }
 };
 
-gulp.task('browser-sync', ['style.min:build'], function() {
+gulp.task('browser-sync', ['style.min:build'], function () {
     browserSync.init({
-        proxy: 'kit',
-        port: '3010',
+        proxy: site,
+        port: site_port,
         logConnections: true,
     });
-
-    // browserSync.init({
-    //     server: {
-    //         baseDir: "./dist/"
-    //     }
-    // });
 
     gulp.watch(path.browser.js).on("change", browserSync.reload);
     gulp.watch(path.browser.html).on('change', browserSync.reload);
@@ -140,7 +146,7 @@ gulp.task('styleContr:build', function () {
         }))
         .pipe(pxtorem())
         .pipe(rename(function (path) {
-            path.dirname += "/"+path.basename+"";
+            path.dirname += "/" + path.basename + "";
             path.basename = "styles";
         }))
         .pipe(sourcemaps.write(''))
@@ -203,23 +209,11 @@ gulp.task('watch', function () {
 var ftp = require('vinyl-ftp'),
     gutil = require('gulp-util');
 
-var user = '',
-    password = '',
-    host = '',
-    port = 21,
-    localFilesGlob = [
-        'dist/**/*.html',
-        'dist/js/**/*.js',
-        'dist/css/**/*.css',
-        'dist/img/**/*.*',
-        'dist/fonts/**/*.*'
-    ], remoteFolder = '/';
-
 // helper function to build an FTP connection based on our configuration
 function getFtpConnection() {
     return ftp.create({
         host: host,
-        port: port,
+        port: ftp_port,
         user: user,
         password: password,
         parallel: 5,
@@ -265,24 +259,24 @@ gulp.task('ftp', ['build', 'ftp-deploy', 'ftp-deploy-watch', 'watch']);
 
 var wd_add = "wd.base",
     controller = true;
-    if  (controller) {
-        var wd_path = "/controllers/kitdeveloper";
-    }
-    else {
-        var wd_path = "";
-    }
+if (controller) {
+    var wd_path = "/controllers/kitdeveloper";
+}
+else {
+    var wd_path = "";
+}
 
 gulp.task('wdAdd', function () {
-    gulp.src("appkit/"+wd_add+"/pascages/system/languages/ru/controllers/kitdeveloper/widgets/wd.name.php")
-        .pipe(rename({basename: ''+ wd_add +''}))
-        .pipe(debug({title:''+wd_add+':'}))
-        .pipe(gulp.dest("./dg/system/languages/ru"+wd_path+"/widgets/"))
-    gulp.src("appkit/"+wd_add+"/pascages/system/controllers/kitdeveloper/widgets/wd.base/*.*")
-        .pipe(debug({title:''+wd_add+':'}))
-        .pipe(gulp.dest("./dg/system"+wd_path+"/widgets/"+wd_add+"/"))
-    gulp.src("appkit/"+wd_add+"/pascages/templates/kit/controllers/kitdeveloper/widgets/wd.base/*.*")
-        .pipe(debug({title:''+wd_add+':'}))
-        .pipe(gulp.dest("./dg/templates/kit/"+wd_path+"/widgets/"+wd_add+"/"))
+    gulp.src("appkit/" + wd_add + "/pascages/system/languages/ru/controllers/kitdeveloper/widgets/wd.name.php")
+        .pipe(rename({basename: '' + wd_add + ''}))
+        .pipe(debug({title: '' + wd_add + ':'}))
+        .pipe(gulp.dest("./dg/system/languages/ru" + wd_path + "/widgets/"))
+    gulp.src("appkit/" + wd_add + "/pascages/system/controllers/kitdeveloper/widgets/wd.base/*.*")
+        .pipe(debug({title: '' + wd_add + ':'}))
+        .pipe(gulp.dest("./dg/system" + wd_path + "/widgets/" + wd_add + "/"))
+    gulp.src("appkit/" + wd_add + "/pascages/templates/kit/controllers/kitdeveloper/widgets/wd.base/*.*")
+        .pipe(debug({title: '' + wd_add + ':'}))
+        .pipe(gulp.dest("./dg/templates/kit/" + wd_path + "/widgets/" + wd_add + "/"))
 });
 
 var wd_name = [
@@ -317,7 +311,7 @@ gulp.task('wdInstall', function () {
     }
 });
 
-gulp.task('wdInstalZip', function() {
+gulp.task('wdInstalZip', function () {
 
     var zip = require('gulp-zip');
 
@@ -342,3 +336,18 @@ gulp.task('clean', function () {
 });
 
 gulp.task('default', ['browser-sync', 'build', 'wdInit', 'watch']);
+
+// task для замены текста, необходимо доработать.
+gulp.task('templates', function(){
+
+var replace = require('gulp-replace'),
+    scan = require('gulp-scan');
+
+    gulp.src(['system/**/*.*'])
+        .pipe(scan({ term: 'THEME_KIT', fn: function (match, file) {
+            // do something with {String} `match`
+            // `file` is a clone of the vinyl file.
+        }}))
+        .pipe(replace('THEME_KIT', 'THEME_MY_NAME'))
+        .pipe(gulp.dest('build/'));
+});
