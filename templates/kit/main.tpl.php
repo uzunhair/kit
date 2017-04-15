@@ -19,7 +19,7 @@
     <?php } ?>
     <?php $this->addMainJS("templates/{$this->name}/addons/tether/tether.min.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/addons/bootstrap/bootstrap.min.js"); ?>
-    <?php $this->addMainJS("templates/{$this->name}/addons/setting.js"); ?>
+    <?php $this->addMainJS("templates/{$this->name}/js/kit.js"); ?>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>

@@ -1,5 +1,5 @@
 <?php if (!$notices) { ?>
-    <div class="notice"><?php echo LANG_PM_NO_NOTICES; ?></div>
+    <div class="text-muted"><?php echo LANG_PM_NO_NOTICES; ?></div>
     <?php return; ?>
 <?php } ?>
 

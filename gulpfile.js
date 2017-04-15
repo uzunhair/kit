@@ -9,6 +9,8 @@ var gulp = require('gulp'),
     sassUnicode = require('gulp-sass-unicode'),  // Не допускает ошибок при наличии обратного слеша "\fff"
     sourcemaps = require('gulp-sourcemaps'),
     rigger = require('gulp-rigger'), // Собирает html файлы
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
     del = require('del'), // Удаление файлов
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename'),
@@ -93,8 +95,9 @@ gulp.task('html:build', function () {
 gulp.task('js:build', function () {
     gulp.src(path.src.js) //Найдем наш main файл
         .pipe(changed(path.build.js))
-        // .pipe(plumber())
-        // .pipe(rigger())
+        .pipe(plumber())
+        .pipe(concat('kit.js'))
+        .pipe(uglify())
         // .pipe(sourcemaps.init()) //Инициализируем sourcemap
         // .pipe(sourcemaps.write('')) //Пропишем карты
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build

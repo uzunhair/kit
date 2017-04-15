@@ -1,7 +1,7 @@
 <?php // Шаблон окна личных сообщений // ?>
 
 <?php if (!$is_allowed) { ?>
-    <div class="notice"><?php echo LANG_PM_NO_ACCESS; ?></div>
+    <div class="text-muted"><?php echo LANG_PM_NO_ACCESS; ?></div>
     <?php return; ?>
 <?php } ?>
 
@@ -21,39 +21,45 @@
      >
 
     <?php if (!$contacts) { ?>
-        <div class="notice"><?php echo LANG_PM_NO_MESSAGES; ?></div>
+        <div class="text-muted"><?php echo LANG_PM_NO_MESSAGES; ?></div>
     <?php } ?>
 
     <?php if ($contacts) { ?>
 
-        <div class="layout">
+        <div class="layout row no-gutters">
 
-            <div class="right-panel">
-                <div id="user_search_panel">
-                    <?php echo html_input('text', '', '', array('placeholder' => LANG_PM_USER_SEARCH)); ?>
-                </div>
-                <div class="contacts">
-                    <?php $first_id = false; ?>
-                    <?php foreach($contacts as $contact){ ?>
-                        <?php $first_id = $first_id ? $first_id : $contact['id']; ?>
-                        <?php $nickname = mb_strlen($contact['nickname']) > 15 ? mb_substr($contact['nickname'], 0, 15).'...' : $contact['nickname']; ?>
-                        <div id="contact-<?php echo $contact['id']; ?>" class="contact" rel="<?php echo $contact['id']; ?>">
-                            <a href="#<?php echo $contact['id']; ?>" onclick="return icms.messages.selectContact(<?php echo $contact['id']; ?>);" title="<?php echo $contact['nickname']; ?>">
-                                <span <?php if ($contact['is_online']) { ?>class="peer_online"<?php } ?>><?php echo html_avatar_image($contact['avatar'], 'micro'); ?></span>
-                                <span class="contact_nickname"><?php echo $nickname; ?></span>
-                                <?php if (!$contact['is_online']) { ?>
-                                    <strong title="<?php echo LANG_USERS_PROFILE_LOGDATE; ?>"><?php echo string_date_age_max($contact['date_log'], true); ?></strong>
-                                <?php } ?>
-                                <?php if ($contact['new_messages']) { ?>
-                                    <span class="counter"><?php echo $contact['new_messages']; ?></span>
-                                <?php } ?>
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
+            <div class="right-panel col-3 bg-faded">
+
+                    <div id="user_search_panel">
+                        <?php echo html_input('text', '', '', array('placeholder' => LANG_PM_USER_SEARCH)); ?>
+                    </div>
+                    <div class="contacts">
+                        <?php $first_id = false; ?>
+                        <?php foreach($contacts as $contact){ ?>
+                            <?php $first_id = $first_id ? $first_id : $contact['id']; ?>
+                            <?php $nickname = mb_strlen($contact['nickname']) > 15 ? mb_substr($contact['nickname'], 0, 15).'...' : $contact['nickname']; ?>
+                            <div id="contact-<?php echo $contact['id']; ?>" class="contact" rel="<?php echo $contact['id']; ?>">
+                                <a href="#<?php echo $contact['id']; ?>" onclick="return icms.messages.selectContact(<?php echo $contact['id']; ?>);" title="<?php echo $contact['nickname']; ?>" class="media">
+                                    <span class="peer_off_online d-flex mr-2 <?php if ($contact['is_online']) { ?>peer_online<?php } ?>"><?php echo html_avatar_image($contact['avatar'], 'micro'); ?></span>
+                                    <span class="media-body">
+                                        <span class="contact_nickname"><?php echo $nickname; ?></span>
+                                        <span class="d-flex justify-content-between">
+                                            <?php if (!$contact['is_online']) { ?>
+                                                <strong class="contact-date-log" title="<?php echo LANG_USERS_PROFILE_LOGDATE; ?>"><?php echo string_date_age_max($contact['date_log'], true); ?></strong>
+                                            <?php } ?>
+                                            <?php if ($contact['new_messages']) { ?>
+                                                <span class="counter"><i class="fa fa-commenting-o"></i> <?php echo $contact['new_messages']; ?></span>
+                                            <?php } ?>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </div>
+
             </div>
 
-            <div class="left-panel loading-panel">
+            <div class="left-panel loading-panel col-9 py-3 pl-3">
 
             </div>
 
@@ -80,6 +86,8 @@
             icms.modal.setCallback('close', function (){
                 $('#popup-manager').removeClass('nyroModalMessage');
             });
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-body').addClass('p-0');
         </script>
 
     <?php } ?>

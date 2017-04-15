@@ -182,13 +182,13 @@ icms.messages = (function ($) {
 
             if($('.overview > a > span', pm_window).first().hasClass('peer_online')){
                 $('a > span', contact).first().addClass('peer_online');
-                $('a > strong', contact).remove();
+                $('a  .contact-date-log', contact).remove();
             } else {
                 $('a > span', contact).first().removeClass('peer_online');
-                if(!$('a > strong', contact).length){
-                    $('a', contact).append('<strong>'+$('.overview .user_date_log > span', pm_window).text()+'</strong>');
+                if(!$('a  .contact-date-log', contact).length){
+                    $('a .justify-content-between', contact).append('<strong class="contact-date-log line_189">'+$('.overview .user_date_log > span', pm_window).text()+'</strong>');
                 } else {
-                    $('a > strong', contact).html($('.overview .user_date_log > span', pm_window).text());
+                    $('a .contact-date-log', contact).html($('.overview .user_date_log > span', pm_window).text());
                 }
             }
 
@@ -327,15 +327,15 @@ icms.messages = (function ($) {
 
             if(result.is_online == 1){
                 $('a > span', contact).first().addClass('peer_online');
-                $('a > strong', contact).remove();
+                $('a .contact-date-log', contact).remove();
                 $('.overview > a > span', pm_window).first().addClass('peer_online');
                 $('.overview .user_date_log', pm_window).hide();
             } else {
                 $('a > span', contact).first().removeClass('peer_online');
-                if(!$('a > strong', contact).length){
-                    $('a', contact).append('<strong>'+result.date_log+'</strong>');
+                if(!$('a .contact-date-log', contact).length){
+                    $('a .justify-content-between', contact).append('<strong class="contact-date-log line_336">'+result.date_log+'</strong>');
                 } else {
-                    $('a > strong', contact).html(result.date_log);
+                    $('a .contact-date-log', contact).html(result.date_log);
                 }
                 $('.overview > a > span', pm_window).first().removeClass('peer_online');
                 $('.overview .user_date_log', pm_window).show().find('span').html(result.date_log);

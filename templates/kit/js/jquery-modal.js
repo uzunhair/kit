@@ -137,12 +137,12 @@ jQuery(function ($, undefined) {
         resize: function (recalc) {
             if (recalc) {
                 this.elts.hidden.append(this.elts.cont.children().first().clone());
-                this.sizes.initW = this.sizes.w = this.elts.hidden.width();
-                this.sizes.initH = this.sizes.h = this.elts.hidden.height();
+                // this.sizes.initW = this.sizes.w = this.elts.hidden.width();
+                // this.sizes.initH = this.sizes.h = this.elts.hidden.height();
                 this.elts.hidden.empty();
             } else {
-                this.sizes.w = this.sizes.initW;
-                this.sizes.h = this.sizes.initH;
+                // this.sizes.w = this.sizes.initW;
+                // this.sizes.h = this.sizes.initH;
             }
             this._unreposition();
             this.size();

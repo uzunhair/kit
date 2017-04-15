@@ -9,5 +9,6 @@ $(document).ready(function () {
     $('a.ajax-modal').on('click', function(){
         $('body').addClass('modal-open');
     });
+    $(".dot-1-1").dotdotdot();
 });
 

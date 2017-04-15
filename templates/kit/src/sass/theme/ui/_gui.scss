@@ -331,3 +331,13 @@ nav select { display: none; }
   overflow: hidden;
   max-height: 4.5rem;
 }
+
+//  jQuery dotdotdot 1.8.3
+//  dot-firstNum-secondNum
+//  dot - the base class name
+//  firstNum - the font size in rem
+//  secondNum - the number of rows
+.dot-1-1 {
+  overflow: hidden;
+  height: 21px;
+}

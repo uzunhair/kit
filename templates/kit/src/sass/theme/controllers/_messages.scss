@@ -1,0 +1,66 @@
+.contacts {
+  border-right: 1px solid $gray-lighter;
+  border-bottom: 1px solid $gray-lighter;
+}
+.contact {
+  border-top: 1px solid $gray-lighter;
+  border-right: 2px solid transparent;
+  a {
+    color: $gray-dark;
+    position: relative;
+    padding:10px;
+    background-color: $white;
+    &:hover {
+      background-color: $gray-lightest;
+      border-right-color: $blue;
+      text-decoration: none;
+    }
+  }
+  .media-body {
+    overflow: hidden;
+  }
+  .contact_nickname {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1.2;
+    padding-right: 5px;
+  }
+  .contact-date-log {
+    font-size: 11px;
+    font-weight: normal;
+  }
+  .counter {
+    font-size: 11px;
+    .fa {
+      font-size: 10px;
+    }
+  }
+}
+.peer_off_online {
+  &:after {
+    display: inline-block;
+    font-family: FontAwesome; // shortening font declaration
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0;
+    transition: 0.2s;
+    content: $fa-var-circle;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    font-size: 10px;
+    color: $gray-light;
+    line-height: 1.2;
+  }
+  &.peer_online {
+    &:after {
+      color: $brand-danger;
+    }
+  }
+}
+#user_search_panel {
+  padding:1rem 10px;
+}

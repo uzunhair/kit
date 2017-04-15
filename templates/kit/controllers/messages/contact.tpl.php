@@ -68,7 +68,7 @@
                 <div class="editor">
                     <?php echo html_editor('content'); ?>
                 </div>
-                <div class="buttons">
+                <div class="buttons py-3">
                     <span id="error_wrap"></span>
                     <span class="ctrenter_hint">ctrl+enter</span>
                     <?php echo html_button(LANG_SEND, 'send', 'icms.messages.send()'); ?>

@@ -410,6 +410,10 @@ nav select {
   overflow: hidden;
   max-height: 4.5rem; }
 
+.dot-1-1 {
+  overflow: hidden;
+  height: 21px; }
+
 .nyroModalCloseButton {
   top: -38px;
   right: -38px;
@@ -423,10 +427,6 @@ nav select {
 @media (min-width: 576px) {
   .modal-dialog {
     margin: 50px auto; } }
-
-.nyroModalCont .notice {
-  padding: 20px;
-  color: #BDC3C7; }
 
 .nyroModalError {
   border: 4px solid red;
@@ -640,6 +640,61 @@ nav select {
 
 .btn:hover {
   cursor: pointer; }
+
+.contacts {
+  border-right: 1px solid #eceeef;
+  border-bottom: 1px solid #eceeef; }
+
+.contact {
+  border-top: 1px solid #eceeef;
+  border-right: 2px solid transparent; }
+  .contact a {
+    color: #292b2c;
+    position: relative;
+    padding: 10px;
+    background-color: #fff; }
+    .contact a:hover {
+      background-color: #f7f7f9;
+      border-right-color: #0275d8;
+      text-decoration: none; }
+  .contact .media-body {
+    overflow: hidden; }
+  .contact .contact_nickname {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1.2;
+    padding-right: 5px; }
+  .contact .contact-date-log {
+    font-size: 0.6875rem;
+    font-weight: normal; }
+  .contact .counter {
+    font-size: 0.6875rem; }
+    .contact .counter .fa {
+      font-size: 0.625rem; }
+
+.peer_off_online:after {
+  display: inline-block;
+  font-family: FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-indent: 0;
+  transition: 0.2s;
+  content: "\f111";
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  font-size: 0.625rem;
+  color: #636c72;
+  line-height: 1.2; }
+
+.peer_off_online.peer_online:after {
+  color: #d9534f; }
+
+#user_search_panel {
+  padding: 1rem 10px; }
 
 .widget_activity_list .media,
 .activity-list .media,
