@@ -28,7 +28,7 @@
 
         <div class="layout row no-gutters">
 
-            <div class="right-panel col-3 bg-faded">
+            <div class="right-panel col-12 col-lg-3 bg-faded">
 
                     <div id="user_search_panel">
                         <?php echo html_input('text', '', '', array('placeholder' => LANG_PM_USER_SEARCH)); ?>
@@ -59,7 +59,7 @@
 
             </div>
 
-            <div class="left-panel loading-panel col-9 py-3 pl-3">
+            <div class="left-panel loading-panel col-12 col-lg-9 p-3">
 
             </div>
 
@@ -79,10 +79,12 @@
                 icms.modal.resize();
             };
             $(window).on('resize', resize_func);
+
             $('#pm_window').on('click', '.toogle-actions', function(){
-                $('.actions').toggleClass('actions-active');
-                $(this).toggleClass('toogle-actions-active');
+                $('.actions > .btn-group').toggleClass('active');
+                $(this).toggleClass('active');
             });
+
             icms.modal.setCallback('close', function (){
                 $('#popup-manager').removeClass('nyroModalMessage');
             });

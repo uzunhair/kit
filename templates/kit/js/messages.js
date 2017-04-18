@@ -51,19 +51,21 @@ icms.messages = (function ($) {
             }
             if (is_selected.length > 0){ return false; }
             if(default_hint === null){
-                default_hint = $('#delete_msgs').val();
+                default_hint = $('#delete_msgs > .delete_msgs_count').text();
             }
             $(this).toggleClass('selected');
             var msg_selected = $(this).parents('#pm_chat').find('.is_can_select.selected');
             var selected_length = $(msg_selected).length;
             icms.messages.msg_ids = [];
             if(selected_length > 0){
-                $('#delete_msgs').val(default_hint+' ('+selected_length+')').show();
+                $('#delete_msgs').show();
+                $('#delete_msgs > .delete_msgs_count').text(default_hint + selected_length);
                 $(msg_selected).each(function (){
                     icms.messages.msg_ids.push($(this).data('id'));
                 });
             } else {
-                $('#delete_msgs').val(default_hint).hide();
+                $('#delete_msgs').hide();
+                $('#delete_msgs > .delete_msgs_count').text(default_hint);
             }
         });
     };
@@ -180,12 +182,12 @@ icms.messages = (function ($) {
                 $('.right-panel').show().animate({left: '0px'}, 200);
             });
 
-            if($('.overview > a > span', pm_window).first().hasClass('peer_online')){
+            if($('.overview > .media > a > span', pm_window).first().hasClass('peer_online')){
                 $('a > span', contact).first().addClass('peer_online');
                 $('a  .contact-date-log', contact).remove();
             } else {
                 $('a > span', contact).first().removeClass('peer_online');
-                if(!$('a  .contact-date-log', contact).length){
+                if(!$('a .contact-date-log', contact).length){
                     $('a .justify-content-between', contact).append('<strong class="contact-date-log line_189">'+$('.overview .user_date_log > span', pm_window).text()+'</strong>');
                 } else {
                     $('a .contact-date-log', contact).html($('.overview .user_date_log > span', pm_window).text());
@@ -328,7 +330,7 @@ icms.messages = (function ($) {
             if(result.is_online == 1){
                 $('a > span', contact).first().addClass('peer_online');
                 $('a .contact-date-log', contact).remove();
-                $('.overview > a > span', pm_window).first().addClass('peer_online');
+                $('.overview > .media > a > span', pm_window).first().addClass('peer_online');
                 $('.overview .user_date_log', pm_window).hide();
             } else {
                 $('a > span', contact).first().removeClass('peer_online');
@@ -337,7 +339,7 @@ icms.messages = (function ($) {
                 } else {
                     $('a .contact-date-log', contact).html(result.date_log);
                 }
-                $('.overview > a > span', pm_window).first().removeClass('peer_online');
+                $('.overview > .media > a > span', pm_window).first().removeClass('peer_online');
                 $('.overview .user_date_log', pm_window).show().find('span').html(result.date_log);
             }
 

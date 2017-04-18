@@ -14,7 +14,7 @@
   font-size: inherit;
 }
 #comments_add_form .loading:before {
-  content: "\f110";
+  content: $fa-var-spinner;
   display: inline-block;
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;

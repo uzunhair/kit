@@ -20,17 +20,17 @@
             }
         ?>
 
-        <h3><?php echo $date; ?></h3>
+        <h3 class="message-last-date"><span><?php echo $date; ?></span></h3>
         <?php $last_date = $msg_date; ?>
 
     <?php } ?>
 
-    <div id="message-<?php echo $message['id']; ?>" class="message <?php if($message['user']['id']==$user->id){ ?>message-my<?php } ?>">
-        <div class="user_avatar"><?php echo html_avatar_image($message['user']['avatar'], 'micro'); ?></div>
-        <div class="content <?php if($message['user']['id']==$user->id){ ?>is_can_select<?php } ?>" data-id="<?php echo $message['id']; ?>">
+    <div id="message-<?php echo $message['id']; ?>" class="message mb-3 media <?php if($message['user']['id']==$user->id){ ?>message-my flex-row-reverse<?php } ?>">
+        <div class="user_avatard-flex <?php if($message['user']['id']==$user->id){ ?>ml-3<?php } else { ?>mr-3 <?php } ?>"><?php echo html_avatar_image($message['user']['avatar'], 'micro'); ?></div>
+        <div class="media-body content <?php if($message['user']['id']==$user->id){ ?>is_can_select<?php } ?>" data-id="<?php echo $message['id']; ?>">
             <div class="title">
                 <span class="author"><?php echo $message['user']['nickname']; ?></span>
-                <span class="date<?php if($message['is_new']){ ?>-new<?php } ?>"><?php echo ($is_today ? html_time($message['date_pub']): html_date_time($message['date_pub'])); ?></span>
+                <span class="date<?php if($message['is_new']){ ?>-new<?php } ?> text-muted font-size-sm"><?php echo ($is_today ? html_time($message['date_pub']): html_date_time($message['date_pub'])); ?></span>
             </div>
             <div class="message_text"><?php echo $message['content']; ?></div>
         </div>

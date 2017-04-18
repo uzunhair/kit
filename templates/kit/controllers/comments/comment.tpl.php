@@ -90,9 +90,9 @@
                 </li>
                 <li class="list-inline-item mr-0 scroll-nav">
                     <?php if ($entry['parent_id']){ ?>
-                        <a href="#up" class="scroll-up m-r5" onclick="return icms.comments.up(<?php echo $entry['parent_id']; ?>, <?php echo $entry['id']; ?>)" data-toggle="tooltip" title="<?php html( LANG_COMMENT_SHOW_PARENT ); ?>"><i class="fa fa-level-up"></i></a>
+                        <a href="#up" class="scroll-up mr-2" onclick="return icms.comments.up(<?php echo $entry['parent_id']; ?>, <?php echo $entry['id']; ?>)" data-toggle="tooltip" title="<?php html( LANG_COMMENT_SHOW_PARENT ); ?>"><i class="fa fa-level-up"></i></a>
                     <?php } ?>
-                    <a href="#down" class="scroll-down m-r5" onclick="return icms.comments.down(this)" data-toggle="tooltip" title="<?php echo html( LANG_COMMENT_SHOW_CHILD ); ?>"><i class="fa fa-level-down"></i></a>
+                    <a href="#down" class="scroll-down mr-2" onclick="return icms.comments.down(this)" data-toggle="tooltip" title="<?php echo html( LANG_COMMENT_SHOW_CHILD ); ?>"><i class="fa fa-level-down"></i></a>
                 </li>
                 <li class="list-inline-item rating <?php echo $no_approved_class; ?> <?php if (($entry['user_id'] == $user->id) && !$entry['is_rated']){ ?> mr-0<?php }?>">
                     <span class="value <?php echo html_signed_class($entry['rating']); ?>">
@@ -103,7 +103,7 @@
                             <a href="#rate-up" class="rate-up h-dec-no" data-toggle="tooltip" title="<?php echo html( LANG_COMMENT_RATE_UP ); ?>" data-id="<?php echo $entry['id']; ?>">
                                 <i class="fa fa-thumbs-o-up"></i>
                             </a>
-                            <a href="#rate-down" class="rate-down h-dec-no m-l5 " data-toggle="tooltip" title="<?php echo html( LANG_COMMENT_RATE_DOWN ); ?>" data-id="<?php echo $entry['id']; ?>">
+                            <a href="#rate-down" class="rate-down h-dec-no ml-2 " data-toggle="tooltip" title="<?php echo html( LANG_COMMENT_RATE_DOWN ); ?>" data-id="<?php echo $entry['id']; ?>">
                                 <i class="fa fa-thumbs-o-down"></i>
                             </a>
                         </span>

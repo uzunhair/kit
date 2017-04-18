@@ -40,122 +40,11 @@ blockquote {
 .pos-r {
   position: relative; }
 
+.pos-a {
+  position: absolute; }
+
 .mt-next-3 + .mt-next-3 {
   margin-top: 1rem; }
-
-.m-l10 {
-  margin-left: 0.7143rem; }
-
-.m-l5 {
-  margin-left: 0.35715rem; }
-
-.m-r5 {
-  margin-right: 0.35715rem; }
-
-.m-b5 {
-  margin-bottom: 0.35715rem; }
-
-.m-b10 {
-  margin-bottom: 0.7143rem; }
-
-.mb-05 {
-  margin-bottom: 0.5rem; }
-
-.margin-b0 {
-  margin-bottom: 0   !important; }
-
-.margin-t0 {
-  margin-top: 0     !important; }
-
-.margin-t5 {
-  margin-top: 5px   !important; }
-
-.margin-t-5 {
-  margin-top: -5px  !important; }
-
-.margin-t10 {
-  margin-top: 10px  !important; }
-
-.margin-t15 {
-  margin-top: 15px  !important; }
-
-.margin-t20 {
-  margin-top: 20px  !important; }
-
-.margin-t-20 {
-  margin-top: -20px !important; }
-
-.margin-t25 {
-  margin-top: 25px  !important; }
-
-.margin-l5 {
-  margin-left: 5px; }
-
-.margin-l-10 {
-  margin-left: -10px; }
-
-.margin-l15 {
-  margin-left: 15px; }
-
-.margin-r5 {
-  margin-right: 5px; }
-
-.margin-r10 {
-  margin-right: 10px; }
-
-.margin-r-10 {
-  margin-right: -10px; }
-
-.margin-r15 {
-  margin-right: 15px; }
-
-.margin-r-15 {
-  margin-right: -15px; }
-
-.margin-r30 {
-  margin-right: 30px; }
-
-.margin-r-30 {
-  margin-right: -30px !important; }
-
-.padding-t5 {
-  padding-top: 5px !important; }
-
-.padding-t10 {
-  padding-top: 10px !important; }
-
-.padding-l0 {
-  padding-left: 0px; }
-
-.padding-l5 {
-  padding-left: 5px; }
-
-.padding-r0 {
-  padding-right: 0px; }
-
-.padding-r5 {
-  padding-right: 5px; }
-
-.padding-0 {
-  padding: 0 !important; }
-
-.padding-all5 {
-  padding: 5px !important; }
-
-.padding-all10 {
-  padding: 10px !important; }
-
-.padding-all15 {
-  padding: 15px !important; }
-
-.padding-b0 {
-  padding-bottom: 0 !important; }
-
-.padding-b5 {
-  padding-bottom: 5px !important; }
-
-.padding-b10 {
-  padding-bottom: 10px !important; }
 
 .h-dec-no:hover {
   text-decoration: none; }
@@ -696,16 +585,157 @@ nav select {
 #user_search_panel {
   padding: 1rem 10px; }
 
+.composer .textarea {
+  height: 100px;
+  max-height: 300px; }
+
+.message-last-date {
+  color: #0275d8;
+  text-align: center;
+  position: relative;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  z-index: 1; }
+  .message-last-date > span {
+    padding: 0 1rem;
+    background-color: #fff; }
+  .message-last-date:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #eceeef;
+    z-index: -1; }
+
+.button_hide {
+  display: none; }
+
+.message .media-body {
+  border: 1px solid #eceeef;
+  padding: 10px;
+  cursor: pointer; }
+  .message .media-body.selected {
+    border-color: #d9534f; }
+
+.message .title {
+  border-bottom: 1px solid #eceeef;
+  padding-bottom: 8px;
+  margin-bottom: 8px; }
+
+.msg_overlay {
+  background: #000;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2; }
+
+.confirm_wrap {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 360px;
+  z-index: 11; }
+
+.ui_message {
+  background-color: #f7f7f9;
+  border-color: #0275d8;
+  border-style: solid;
+  border-width: 1px 1px 1px 10px;
+  margin-bottom: 20px;
+  padding: 15px; }
+
+.modal-dialog {
+  height: calc(100% - 100px);
+  margin: 50px auto; }
+  .modal-dialog > .modal-content {
+    height: 100%; }
+    .modal-dialog > .modal-content > div {
+      height: 100%;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .modal-dialog > .modal-content > div .nyroModalCont {
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden; }
+        .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink {
+          display: -ms-flexbox;
+          display: flex;
+          overflow: hidden;
+          width: 100%; }
+          .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink #pm_window {
+            overflow: hidden;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%; }
+            .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink #pm_window .no-gutters {
+              overflow: hidden;
+              -ms-flex-wrap: nowrap;
+              flex-wrap: nowrap;
+              width: 100%; }
+              .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink #pm_window .no-gutters .right-panel {
+                -ms-flex-direction: column;
+                flex-direction: column;
+                overflow-y: scroll; }
+              .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink #pm_window .no-gutters .left-panel {
+                display: -ms-flexbox;
+                display: flex; }
+                .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink #pm_window .no-gutters .left-panel #pm_contact {
+                  display: -ms-flexbox;
+                  display: flex;
+                  -ms-flex-direction: column;
+                  flex-direction: column;
+                  width: 100%;
+                  -ms-flex-pack: justify;
+                  justify-content: space-between; }
+                  .modal-dialog > .modal-content > div .nyroModalCont .nyroModalLink #pm_window .no-gutters .left-panel #pm_contact #pm_chat {
+                    overflow-y: auto;
+                    padding-right: 10px;
+                    margin-bottom: auto; }
+
+@media (min-width: 768px) {
+  .right-panel {
+    display: -ms-flexbox;
+    display: flex; } }
+
+@media (max-width: 991px) {
+  #pm_contact .btn-group {
+    right: 0;
+    display: none; }
+    #pm_contact .btn-group.active {
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      position: absolute; }
+  .right-panel {
+    display: none; } }
+
+#pm_contact .user-name {
+  color: #292b2c;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 1; }
+
+.modal-dialog {
+  min-height: 500px; }
+
 .widget_activity_list .media,
 .activity-list .media,
 .widget_content_list .media,
-#pm_contact .media,
 .contacts .media {
   margin-top: 1rem; }
   .widget_activity_list .media:first-child,
   .activity-list .media:first-child,
   .widget_content_list .media:first-child,
-  #pm_contact .media:first-child,
   .contacts .media:first-child {
     margin-top: 0; }
 

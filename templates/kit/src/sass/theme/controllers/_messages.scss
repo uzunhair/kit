@@ -64,3 +64,160 @@
 #user_search_panel {
   padding:1rem 10px;
 }
+.composer .textarea {
+  height: 100px;
+  max-height:300px;
+}
+.message-last-date {
+  color: $blue;
+  text-align:center;
+  position: relative;
+  font-size: $font-size-base;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+  > span {
+    padding:0 1rem;
+    background-color: $white;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $gray-lighter;
+    z-index: -1;
+  }
+}
+
+// contact.tpl.php
+.button_hide {
+  display: none;
+}
+// message.tpl.php
+
+.message {
+  .media-body {
+    border: 1px solid $gray-lighter;
+    padding: 10px;
+    cursor: pointer;
+    &.selected {
+      border-color: $red;
+    }
+  }
+  .title {
+    border-bottom: 1px solid $gray-lighter;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+}
+.msg_overlay {
+  background: $modal-backdrop-bg;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.confirm_wrap {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 360px;
+  z-index: 11;
+}
+.ui_message {
+  background-color: $gray-lightest;
+  border-color: $blue;
+  border-style: solid;
+  border-width: 1px 1px 1px 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.modal-dialog {
+  height: calc(100% - 100px);
+  margin: 50px auto;
+  > .modal-content {
+    height: 100%;
+    > div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .nyroModalCont{
+        display: flex;
+        overflow: hidden;
+        .nyroModalLink {
+          display: flex;
+          overflow: hidden;
+          width: 100%;
+          #pm_window {
+            overflow: hidden;
+            display: flex;
+            width: 100%;
+            .no-gutters {
+              overflow: hidden;
+              flex-wrap: nowrap;
+              width: 100%;
+              .right-panel{
+                flex-direction: column;
+                overflow-y: scroll;
+              }
+              .left-panel {
+                display: flex;
+                #pm_contact {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  justify-content: space-between;
+                  #pm_chat {
+                    overflow-y: auto;
+                    padding-right: 10px;
+                    margin-bottom: auto;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  .right-panel{
+    display: flex;
+  }
+}
+@include media-breakpoint-down(md) {
+  #pm_contact .btn-group {
+    right: 0;
+    display: none;
+    &.active {
+      display: inline-flex;
+      position: absolute;
+    }
+  }
+  .right-panel {
+    display: none;
+  }
+}
+#pm_contact {
+  .user-name{
+    color: $gray-dark;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1;
+  }
+}
+.modal-dialog {
+  min-height: 500px;
+}

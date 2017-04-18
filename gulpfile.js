@@ -73,11 +73,14 @@ var path = {
     }
 };
 
-gulp.task('browser-sync', ['style.min:build'], function () {
+gulp.task('browser-sync', ['watch'], function () {
     browserSync.init({
         proxy: site,
         port: site_port,
+        logPrefix: "Kit",
         logConnections: true,
+        notify: false,
+        reloadDebounce: 500
     });
 
     gulp.watch(path.browser.js).on("change", browserSync.reload);
@@ -134,7 +137,7 @@ gulp.task('style.min:build', function () {
         .pipe(sourcemaps.write('../css/maps'))
         .pipe(duration('style.min:build time'))
         .pipe(gulp.dest(path.build.style)) //И в build
-        .pipe(browserSync.stream())
+        .pipe(browserSync.stream({match: "**/*.min.css"}))
 });
 
 gulp.task('styleContr:build', function () {
@@ -168,16 +171,27 @@ gulp.task('img:build', function () {
         imageminGifsicle = require('imagemin-gifsicle'),
         imageminJpegtran = require('imagemin-jpegtran'),
         imageminOptipng = require('imagemin-optipng'),
+        imageminJR = require('imagemin-jpeg-recompress'),
         imageminSvgo = require('imagemin-svgo');
 
     gulp.src(path.src.img) //Выберем наши картинки
         .pipe(changed(path.build.img))
         .pipe(plumber())
         .pipe(imagemin([
-            imageminGifsicle({interlaced: true}),
-            imageminJpegtran({progressive: true}),
-            imageminOptipng({optimizationLevel: 5}),
-            imageminSvgo({plugins: [{removeViewBox: true}]})
+            imageminJR({
+                method: 'ms-ssim'
+            }),
+            imageminSvgo({
+                plugins: [
+                    {removeViewBox: false}
+                ]
+            }),
+            imageminOptipng({
+                optimizationLevel: 5
+            }),
+            imageminGifsicle({
+                interlaced: true
+            })
         ]))
         .pipe(gulp.dest(path.build.img)) //И бросим в build
 });
@@ -266,7 +280,7 @@ if (controller) {
     var wd_path = "/controllers/kitdeveloper";
 }
 else {
-    var wd_path = "";
+    var wd_path ;
 }
 
 gulp.task('wdAdd', function () {
@@ -338,7 +352,7 @@ gulp.task('clean', function () {
     ]);
 });
 
-gulp.task('default', ['browser-sync', 'build', 'wdInit', 'watch']);
+gulp.task('default', ['browser-sync', 'build', 'watch']);
 
 // task для замены текста, необходимо доработать.
 gulp.task('templates', function(){

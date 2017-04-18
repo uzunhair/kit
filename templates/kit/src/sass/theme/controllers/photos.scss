@@ -78,7 +78,7 @@
     display: block;
     &:after {
       position: absolute;
-      content: "\f00e";
+      content: $fa-var-search-plus;
       font-family: FontAwesome;
       color: $gray-lighter;
       left: 0;
