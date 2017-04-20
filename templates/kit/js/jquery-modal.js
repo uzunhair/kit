@@ -239,9 +239,10 @@ jQuery(function ($, undefined) {
         },
         _initElts: function () {
             if (!this.stack && this.getInternal().stack.length > 1) this.elts = this.getInternal().stack[this.getInternal().stack.length - 2]['nmObj'].elts;
+            $('body').addClass('modal-open');
             if (!this.elts.all || this.elts.all.closest('body').length == 0) this.elts.all = this.elts.bg = this.elts.cont = this.elts.hidden = this.elts.load = undefined;
-            if (!this.elts.all) this.elts.bg_boot =$('<div id="boot-modal" class="modal fade show d-block"><div class="modal-dialog"><div class="modal-content" id="boot-content"></div></div></div>').prependTo( "#popup-manager" );
-            if (!this.elts.all) this.elts.all = $('<div />').appendTo("#boot-content");
+            if (!this.elts.all) this.elts.bg_boot =$('<div id="boot-modal" class="modal fade show d-block"><div class="modal-dialog"></div></div>').prependTo("#popup-manager");
+            if (!this.elts.all) this.elts.all = $('<div class="modal-content" id="boot-content"></div>').appendTo(".modal-dialog");
             if (!this.elts.bg) this.elts.bg = $('<div />').hide().appendTo('#popup-manager');
             if (!this.elts.cont) this.elts.cont = $('<div />').hide().appendTo(this.elts.all);
             if (!this.elts.hidden) this.elts.hidden = $('<div />').hide().appendTo(this.elts.all);

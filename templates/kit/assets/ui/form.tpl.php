@@ -64,10 +64,12 @@
             <?php if (isset($fieldset['is_hidden'])){ ?>style="display:none"<?php } ?>>
 
                 <?php if (!empty($fieldset['title']) && !$form->is_tabbed){ ?>
-                    <legend><?php echo $fieldset['title']; ?></legend>
-                    <hr class="mt-0">
+                    <legend <?php if (!empty($fieldset['is_collapsed'])){ ?>class="cursor-pointer dropdown-toggle" data-toggle="collapse" aria-expanded="false" data-target="#collapseId<?php echo $fieldset_id; ?>" aria-controls="collapseId<?php echo $fieldset_id; ?>"<?php } ?>>
+                        <?php echo $fieldset['title']; ?>
+                    </legend>
+                    <hr class="mt-0 mb-2">
                 <?php } ?>
-
+                <?php if (!empty($fieldset['is_collapsed'])){ ?><div class="collapse" id="collapseId<?php echo $fieldset_id; ?>"><?php } ?>
                 <?php if (is_array($fieldset['childs'])){ ?>
                 <?php foreach($fieldset['childs'] as $field) { ?>
 
@@ -155,6 +157,7 @@
 
                 <?php } ?>
                 <?php } ?>
+                <?php if (!empty($fieldset['is_collapsed'])){ ?></div><?php } ?>
 
             </fieldset>
         </div>
@@ -170,14 +173,16 @@
             <?php if ($form->is_tabbed){ ?>
                 initTabs('#<?php echo $form_id; ?>');
             <?php } ?>
-                $('.is_collapsed legend').on('click', function (){
+                $('.is_collapsed > legend').on('click', function (){
                     var _fieldset = $(this).closest('.is_collapsed');
                     $(_fieldset).toggleClass('is_collapse do_expand');
                     $.cookie('icms[fieldset_state]['+$(_fieldset).attr('id')+']', $(_fieldset).hasClass('do_expand'));
                 });
                 $('.is_collapsed').each(function (){
                     if($(this).find('.field_error').length > 0 || $.cookie('icms[fieldset_state]['+$(this).attr('id')+']') === 'true'){
-                        $(this).addClass('do_expand').removeClass('is_collapse'); return;
+                        $(this).addClass('do_expand').removeClass('is_collapse');
+                        $(this).children('div').addClass('show');
+                        return;
                     }
                 });
             });

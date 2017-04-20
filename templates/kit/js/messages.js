@@ -264,16 +264,15 @@ icms.messages = (function ($) {
     };
 
     this.confirm = function (text, callback){
-        var pm_window = $('#pm_window');
-        pm_window.addClass('wrap_blur');
-        $('.nyroModalCont').append('<div class="msg_overlay"></div><div class="confirm_wrap"><div class="ui_message">'+text.replace(/\n/g, '<br />')+'<div class="buttons"><input type="button" class="button" id="btn_yes" value="'+LANG_YES+'"><input type="button" class="button" id="btn_no" value="'+LANG_NO+'"></div></div></div>');
+        $('#boot-content').append('<div class="msg_overlay"></div>');
+        $('.nyroModalCont').append('<div class="confirm_wrap"><div class="alert alert-info">'+text.replace(/\n/g, '<br />')+'<div class="buttons mt-2"><input type="button" class="btn btn-secondary btn-sm" id="btn_yes" value="'+LANG_YES+'"> <input type="button" class="btn btn-secondary btn-sm" id="btn_no" value="'+LANG_NO+'"></div></div></div>');
         $('#btn_yes').one('click', function () {
             if (callback){ callback(true); }
-            $('.msg_overlay, .confirm_wrap').remove(); pm_window.removeClass('wrap_blur');
+            $('.msg_overlay, .confirm_wrap').remove();
         });
         $('#btn_no, .msg_overlay').one('click', function () {
             if (callback){ callback(false); }
-            $('.msg_overlay, .confirm_wrap').remove(); pm_window.removeClass('wrap_blur');
+            $('.msg_overlay, .confirm_wrap').remove();
         });
         return false;
     };

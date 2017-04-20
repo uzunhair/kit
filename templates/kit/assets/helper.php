@@ -50,7 +50,7 @@ function html_pagebar($page, $perpage, $total, $base_uri=false, $query=array()){
 
     $html   = '';
 
-    $html .= '<ul class="pagination">';
+    $html .= '<ul class="pagination mt-3">';
 
 	if (($page > 1) || ($page < $pages)) {
 

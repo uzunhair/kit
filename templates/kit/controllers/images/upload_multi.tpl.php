@@ -17,10 +17,10 @@
         <?php } ?>
     </div>
 
-    <div class="previews_list clearfix">
+    <div class="previews_list row">
         <?php if ($images){ ?>
             <?php foreach($images as $idx => $paths){ ?>
-                <div class="preview block" rel="<?php echo $idx; ?>" data-paths="<?php html(json_encode($paths)); ?>">
+                <div class="preview col-12 col-sm-6 col-md-4 col-lg-3 col-xs-4 block" rel="<?php echo $idx; ?>" data-paths="<?php html(json_encode($paths)); ?>">
                     <div class="card">
                         <?php  $is_image_exists = !empty($paths); ?>
                         <?php if ($is_image_exists) { ?>
@@ -35,7 +35,7 @@
         <?php } ?>
     </div>
 
-    <div class="preview_template block" style="display:none">
+    <div class="preview_template col-12 col-sm-6 col-md-4 col-lg-3 col-xs-4 block" style="display:none">
         <div class="card">
             <div class="preview-height">
                 <img src="" class="card-img-top img-fluid mx-auto" />

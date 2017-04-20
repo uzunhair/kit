@@ -82,7 +82,10 @@ icms.modal = (function ($) {
 
 	this.alert = function(text, type) {
         type = type || '';
+        $('.modal-body').addClass('p-0');
 		this.openHtml('<div id="alert_wrap"><div class="ui_message '+type+'">'+text+'</div></div>');
+        $('.modal-body').addClass('p-0');
+        $('.modal-content').addClass('modal-content-no-border');
 	};
 
 	return this;

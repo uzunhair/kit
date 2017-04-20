@@ -73,13 +73,12 @@
 <h1 id="group_profile_title">
     <?php html($group['title']); ?>
     <?php if (!empty($group['sub_title'])) { ?>
-        <span>/ <?php html($group['sub_title']); ?></span>
+        <small>/ <?php html($group['sub_title']); ?></small>
     <?php } ?>
     <?php if ($group['is_closed']) { ?>
-        <span class="is_closed" title="<?php html(LANG_GROUP_IS_CLOSED_ICON); ?>"></span>
+        <small class="text-muted" data-toggle="tooltip" title="<?php html(LANG_GROUP_IS_CLOSED_ICON); ?>"><i class="fa fa-lock"></i></small>
     <?php } ?>
 </h1>
-
 <?php if (!$group['is_closed'] || ($is_member || $user->is_admin)){ ?>
 
     <div id="group_profile_tabs" class="mb-3">

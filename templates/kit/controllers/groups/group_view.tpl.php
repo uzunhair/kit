@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <div id="right_column" class="col-12 col-lg-4">
+    <div id="right_column" class="col-12 col-lg-8">
 
         <div id="information" class="content_item block">
 

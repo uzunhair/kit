@@ -10,10 +10,10 @@
 <div id="group_profile_header">
     <?php $this->renderChild('group_header', array('group'=>$group)); ?>
 </div>
-<div class="sess_messages">
-    <div class="message_info">
-        <?php echo LANG_GROUP_IS_CLOSED; ?>
-    </div>
+
+<div class="alert alert-danger" role="alert">
+    <i class="fa fa-exclamation-triangle"></i>
+    <?php echo LANG_GROUP_IS_CLOSED; ?>
 </div>
 
 <div id="group_profile" class="row">
@@ -24,7 +24,6 @@
     </div>
     <div id="right_column" class="col-12 col-lg-8">
         <div id="information" class="content_item block">
-            <i class="fa fa-exclamation-triangle" ></i>
             <?php echo $group['description']; ?>
         </div>
     </div>

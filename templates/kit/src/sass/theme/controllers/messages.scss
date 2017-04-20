@@ -1,3 +1,5 @@
+@import 'base';
+
 .contacts {
   border-right: 1px solid $gray-lighter;
   border-bottom: 1px solid $gray-lighter;
@@ -132,55 +134,42 @@
   width: 360px;
   z-index: 11;
 }
-.ui_message {
-  background-color: $gray-lightest;
-  border-color: $blue;
-  border-style: solid;
-  border-width: 1px 1px 1px 10px;
-  margin-bottom: 20px;
-  padding: 15px;
-}
 
 .modal-dialog {
   height: calc(100% - 100px);
   margin: 50px auto;
   > .modal-content {
     height: 100%;
-    > div {
-      height: 100%;
+    .nyroModalCont {
       display: flex;
-      flex-direction: column;
-      .nyroModalCont{
+      overflow: hidden;
+      .nyroModalLink {
         display: flex;
         overflow: hidden;
-        .nyroModalLink {
-          display: flex;
+        width: 100%;
+        #pm_window {
           overflow: hidden;
+          display: flex;
           width: 100%;
-          #pm_window {
+          .no-gutters {
             overflow: hidden;
-            display: flex;
+            flex-wrap: nowrap;
             width: 100%;
-            .no-gutters {
-              overflow: hidden;
-              flex-wrap: nowrap;
-              width: 100%;
-              .right-panel{
-                flex-direction: column;
-                overflow-y: scroll;
-              }
-              .left-panel {
+            .right-panel {
+              flex-direction: column;
+              overflow-y: auto;
+            }
+            .left-panel {
+              display: flex;
+              #pm_contact {
                 display: flex;
-                #pm_contact {
-                  display: flex;
-                  flex-direction: column;
-                  width: 100%;
-                  justify-content: space-between;
-                  #pm_chat {
-                    overflow-y: auto;
-                    padding-right: 10px;
-                    margin-bottom: auto;
-                  }
+                flex-direction: column;
+                width: 100%;
+                justify-content: space-between;
+                #pm_chat {
+                  overflow-y: auto;
+                  padding-right: 10px;
+                  margin-bottom: auto;
                 }
               }
             }

@@ -486,7 +486,7 @@ qq.FileUploader = function(o){
                 
         template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>'+LANG_DROP_TO_UPLOAD+'</span></div>' +
-                '<div class="qq-upload-button">'+LANG_SELECT_UPLOAD+'</div>' +
+                '<div class="qq-upload-button btn btn-secondary"><i class="fa fa-cloud-upload fa-fw"></i> '+LANG_SELECT_UPLOAD+'</div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
@@ -759,8 +759,7 @@ qq.UploadButton = function(o){
         // name attribute of file input
         name: 'file',
         onChange: function(input){},
-        hoverClass: 'qq-upload-button-hover',
-        focusClass: 'qq-upload-button-focus'                       
+        focusClass: 'active'
     };
     
     qq.extend(this._options, o);
@@ -825,13 +824,7 @@ qq.UploadButton.prototype = {
         qq.attach(input, 'change', function(){
             self._options.onChange(input);
         });
-                
-        qq.attach(input, 'mouseover', function(){
-            qq.addClass(self._element, self._options.hoverClass);
-        });
-        qq.attach(input, 'mouseout', function(){
-            qq.removeClass(self._element, self._options.hoverClass);
-        });
+
         qq.attach(input, 'focus', function(){
             qq.addClass(self._element, self._options.focusClass);
         });

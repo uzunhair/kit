@@ -1,5 +1,26 @@
 //GUI в данном файле настраиваются различные элементы шаблона.
-
+// alert модальные блоки (можно увидеть при попытке добавить пользователя в черный список)
+.ui_message {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #E4F1FE;
+  border-color: #2980b9;
+  border-width: 1px;
+  border-style: solid;
+  border-left-width: 10px;
+  color: #555;
+}
+.ui_message.ui_warning {
+  background-color: #FDE3A7;
+  border-color: #f39c12;
+}
+.ui_message.ui_error {
+  background-color: #F1A9A0;
+  border-color: #e74c3c;
+}
+#alert_wrap .ui_message {
+  margin-bottom: 0;
+}
 /* Global =================================================================== */
 .pos-r {position: relative;}
 .pos-a {position: absolute;}
@@ -175,42 +196,10 @@ nav select { display: none; }
 // fields
 
 /* Ajax Uploader ============================================================ */
-
-.qq-uploader { position:relative; width: 100%; box-sizing: border-box; height: 100%;}
+.qq-uploader { position:relative; width: 100%; height: 100%;}
 
 .qq-upload-button {
-  -moz-box-shadow:inset 0px 1px 0px 0px #FFF;
-  -webkit-box-shadow:inset 0px 1px 0px 0px #FFF;
-  box-shadow:inset 0px 1px 0px 0px #FFF;
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #EDEDED) );
-  background:-moz-linear-gradient( center top, #f9f9f9 5%, #EDEDED 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#EDEDED');
-  background-color:#f9f9f9;
-  border-radius:$input-border-radius;
-  border:1px solid #DDDDDD;
-  display:inline-block;
-  color:#666666;
-  font-family:arial;
-  font-size:15px;
-  font-weight:bold;
-  padding:6px 24px;
-  text-decoration:none;
-  text-shadow:1px 1px 0px #FFF;
-}
-.qq-upload-button-hover {
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #EDEDED), color-stop(1, #f9f9f9) );
-  background:-moz-linear-gradient( center top, #EDEDED 5%, #f9f9f9 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#EDEDED', endColorstr='#f9f9f9');
-  background-color:#EDEDED;
-}
-.qq-upload-button-focus {
   position:relative;
-  top:1px;
-}
-
-.qq-upload-button:active {
-  position:relative;
-  top:1px;
 }
 
 .qq-upload-drop-area {
@@ -244,14 +233,6 @@ nav select { display: none; }
 
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
-.widget_image_multi {
-  .preview {
-    float: left;
-    + .preview {
-      margin-left: -1px;
-    }
-  }
-}
 
 // info_bar
 .info_bar {
@@ -268,6 +249,39 @@ nav select { display: none; }
   cursor: help;
 }
 
+.spoiler > input + label:before {
+  content: '+';
+  font-weight: bold;
+  width: 15px;
+}
+.spoiler > input:checked + label:before {
+  content: '-';
+}
+.spoiler > input,
+.spoiler > input + label + .spoiler_body { display:none; }
+.spoiler > input + label {
+  background:$gray-lightest;
+  padding:($grid-gutter-width-base/4) ($grid-gutter-width-base/2);
+  overflow:hidden;
+  display: flex;
+  margin-bottom: 0;
+}
+.spoiler > input + label { cursor: pointer; }
+.spoiler > input:checked + label + .spoiler_body{ display: block; }
+.spoiler > .spoiler_body {
+  border: 2px solid $gray-lightest;
+  border-top: none;
+  background-color: transparent;
+  padding:($grid-gutter-width-base/4) ($grid-gutter-width-base/2);
+}
+
+
+//.is_collapsed.do_expand > legend {
+//  cursor: pointer;
+//}
+//.is_collapse > .field {
+//  display: none;
+//}
 // Dotdotdot.js
 // 1 dot название скрипта
 // 2 base размер шрифта

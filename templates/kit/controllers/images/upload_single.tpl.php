@@ -12,8 +12,8 @@
         <?php } ?>
     </div>
 
-    <div class="preview" <?php if (!$is_image_exists) { ?>style="display:none"<?php } ?>>
-        <div class="image_single-col">
+    <div class="preview row" <?php if (!$is_image_exists) { ?>style="display:none"<?php } ?>>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xs-4">
             <div class="card">
                 <div class="preview-height">
                     <img src="<?php if ($is_image_exists) { echo cmsConfig::get('upload_host') . '/' . reset($paths); } ?>" class="card-img-top img-fluid mx-auto" />
