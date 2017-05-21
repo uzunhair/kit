@@ -28,6 +28,7 @@ $style = implode(' ', $sn_margin);
 
 $sn_id = 'cd-stretchy-nav-'.$widget->id;
 
+$tooltip = ' data-toggle="tooltip" data-placement="'.$tooltip.'" ';
 ?>
 <style>
     .cd-stretchy-nav-<?php echo $widget->id; ?> {
@@ -131,8 +132,7 @@ $sn_id = 'cd-stretchy-nav-'.$widget->id;
 
                 <li <?php if ($nav_item); { ?>class="<?php echo $nav_item; ?>"<?php } ?>>
                     <a <?php if ($css_classes) { ?>class="<?php echo implode(' ', $css_classes); ?>"<?php } ?>
-                       data-toggle="tooltip" data-placement="<?php echo $tooltip; ?>"
-                       title="<?php echo html($item['title']); ?>" <?php echo $data_attr; ?>
+                       title="<?php echo html($item['title']); ?>" <?php echo $data_attr; ?> <?php echo $tooltip; ?>
                        href="<?php echo !empty($item['url']) ? htmlspecialchars($item['url']) : 'javascript:void(0)'; ?>"
                        <?php if ($onclick) { ?>onclick="<?php echo $onclick; ?>"<?php } ?>
                        <?php if ($target) { ?>target="<?php echo $target; ?>"<?php } ?>>
