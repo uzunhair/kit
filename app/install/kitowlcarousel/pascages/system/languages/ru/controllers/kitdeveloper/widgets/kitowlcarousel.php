@@ -60,9 +60,9 @@ define('LANG_WD_KITOWLCAROUSEL_COLOR_DETAILS', 'Цвет инфо блока');
 define('LANG_WD_KITOWLCAROUSEL_PADDING_DETAILS_Y', 'Padding инфо блока сверху и снизу');
 define('LANG_WD_KITOWLCAROUSEL_PADDING_DETAILS_X', 'Padding инфо блока справа слева');
 
-define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_Y', 'Выравнить инфо блок по вертикали');
+define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_Y', 'Выровнять инфо блок по вертикали');
 
-define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_X', 'Выравнить инфо блок по горизонтали');
+define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_X', 'Выровнять инфо блок по горизонтали');
 define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_START', 'Слева');
 define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_END', 'Справа');
 define('LANG_WD_KITOWLCAROUSEL_DETAILS_SELF_CENTER', 'В центре');
