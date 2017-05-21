@@ -23,6 +23,8 @@
 
     define('LANG_THEME_KIT_TOP_MARGIN',       'Верхний отступ страницы');
 
+    define('LANG_THEME_KIT_DISABLE_HELP_ANIM', 'Отключить анимацию кнопок "Помощь"');
+
     define('LANG_THEME_KIT_LAYOUT',                 'Макет страницы');
     define('LANG_THEME_KIT_LAYOUT_LEFT',            'Слева');
     define('LANG_THEME_KIT_LAYOUT_RIGHT',           'Справа');
@@ -67,7 +69,3 @@
     define('LANG_THEME_KIT_HEADER_NAV_WIDTH',          'Выводить навигацию в контейнере?');
 
     define('LANG_ICONS_BY_FONTAWESOME',          'Иконки от <a href="http://fontawesome.io">Font Awesome</a>');
-
-
-
-
