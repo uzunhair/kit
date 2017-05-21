@@ -6,12 +6,6 @@
     margin-right:-0.5rem;
   }
 }
-#widget_image_avatar {
-  .preview {
-    width: 10rem;
-  }
-}
-
 /* ========================================================================== */
 #user_status_widget.loading {
     background-position: center center;
@@ -20,3 +14,22 @@
     visibility: hidden;
 }
 
+#users_profiles_list {
+  > div {
+    margin-bottom:($grid-gutter-width-base);
+  }
+  .card {
+    > a {
+      display: flex;
+      flex: 1 1 70%;
+      justify-content: center;
+      overflow: hidden;
+
+    }
+  }
+  .orientation_landscape {
+    .card-img-top {
+      max-width: none;
+    }
+  }
+}

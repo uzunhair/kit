@@ -2,14 +2,26 @@
   margin-left: -0.5rem;
   margin-right: -0.5rem; }
 
-#widget_image_avatar .preview {
-  width: 10rem; }
-
 /* ========================================================================== */
 #user_status_widget.loading {
   background-position: center center; }
 
 #user_status_widget.loading .input {
   visibility: hidden; }
+
+#users_profiles_list > div {
+  margin-bottom: 2.1429rem; }
+
+#users_profiles_list .card > a {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1 1 70%;
+  flex: 1 1 70%;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden; }
+
+#users_profiles_list .orientation_landscape .card-img-top {
+  max-width: none; }
 
 /*# sourceMappingURL=styles.css.map */

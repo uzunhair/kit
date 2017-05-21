@@ -72,6 +72,11 @@ class formKitTemplateOptions extends cmsForm {
                         'default' => 'navbar navbar-inverse bg-inverse',
                     )),
 
+                    new fieldColorpalette('colorpallett', array(
+                        'title' => LANG_THEME_KIT_BTN_CLASS,
+                        'default' => 'bg-blueGrey900',
+                    )),
+
                     new fieldNumber('body_padding_top', array(
                         'title' => LANG_THEME_KIT_BODY_PADDING_TOP,
                         'default' => '0',

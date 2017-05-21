@@ -106,9 +106,6 @@ nav select {
   display: none; }
 
 .navbar .dropdown-menu {
-  padding-top: 0;
-  border-width: 1px;
-  padding-bottom: 0;
   min-width: 260px; }
   .navbar .dropdown-menu .dropdown-menu {
     left: 100%;
@@ -116,11 +113,6 @@ nav select {
     .navbar .dropdown-menu .dropdown-menu .dropdown-menu {
       left: auto;
       right: 100%; }
-
-.navbar .dropdown-item {
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 1.07145rem; }
 
 /* InstatnCMS2 Standart Style Kod =====================================*/
 .field .title_left,

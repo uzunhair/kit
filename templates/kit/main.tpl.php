@@ -19,52 +19,17 @@
     <?php $this->addMainJS("templates/{$this->name}/addons/tether/tether.min.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/addons/bootstrap/bootstrap.min.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/kit.js"); ?>
+    <?php if (empty($colorpallett)) { ?>
+        <?php $this->addMainCSS("templates/kit/css/colorpalette.css"); ?>
+    <?php } ?>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
-    <script>
-        function loadFont(a, b, c, d) {
-            function e() {
-                if (!window.FontFace) return !1;
-                var a = new FontFace("t", 'url("data:application/font-woff2,") format("woff2")', {}),
-                    b = a.load();
-                try {
-                    b.then(null, function () {
-                    })
-                } catch (c) {
-                }
-                return "loading" === a.status
-            }
-
-            var f = navigator.userAgent,
-                g = !window.addEventListener || f.match(/(Android (2|3|4.0|4.1|4.2|4.3))|(Opera (Mini|Mobi))/) && !f.match(/Chrome/);
-            if (!g) {
-                var h = {};
-                try {
-                    h = localStorage || {}
-                } catch (i) {
-                }
-                var j = "x-font-" + a,
-                    k = j + "url",
-                    l = j + "css",
-                    m = h[k],
-                    n = h[l],
-                    o = document.createElement("style");
-                if (o.rel = "stylesheet", document.head.appendChild(o), !n || m !== b && m !== c) {
-                    var p = c && e() ? c : b,
-                        q = new XMLHttpRequest;
-                    q.open("GET", p), q.onload = function () {
-                        q.status >= 200 && q.status < 400 && (h[k] = p, h[l] = q.responseText, d || (o.textContent = q.responseText))
-                    }, q.send()
-                } else o.textContent = n
-            }
-        }
-        ;
-    </script>
+    <?php include('load.font.php'); ?>
     <script>loadFont('Roboto', '/templates/<?php echo $this->name; ?>/fonts/roboto.css', '/templates/<?php echo $this->name; ?>/fonts/roboto_woff2.css'); </script>
     <?php $this->head(); ?>
-    <style><?php include('options.css.php'); ?></style>
+    <?php include('options.css.php'); ?>
 </head>
 
 <body id="<?php echo $device_type; ?>_device_type" <?php if($body_padding) {?>style="<?php echo $body_padding; ?>"<?php } ?>>
@@ -74,7 +39,7 @@
                 <?php if ($header_nav_width) { ?>
                     <div id="widget_pos_top" class="container">
                 <?php } ?>
-                        <nav class="<?php echo $header_nav_class; ?> navbar-toggleable-md">
+                        <nav class="<?php echo $header_nav_class .' '. $colorpallett; ?> navbar-toggleable-md">
                             <?php if (!$header_nav_width) { ?><div id="widget_pos_top" class="container"><?php } ?>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-toggle" aria-controls="header-toggle" aria-expanded="false">
                                     <span class="navbar-toggler-icon"></span>
@@ -98,6 +63,7 @@
                 </div>
             </div>
         </header>
+
 
         <div class="container">
 

@@ -59,9 +59,6 @@ nav select { display: none; }
 
 .navbar {
   .dropdown-menu {
-    padding-top: 0;
-    border-width: 1px;
-    padding-bottom: 0;
     min-width: 260px;
     .dropdown-menu {
       left: 100%;
@@ -71,11 +68,6 @@ nav select { display: none; }
         right: 100%;
       }
     }
-  }
-  .dropdown-item {
-    font-size: 12px;
-    font-weight: 500;
-    padding: ($grid-gutter-width-base / 2);
   }
 }
 

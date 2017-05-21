@@ -27,7 +27,7 @@ if( $ctype['options']['list_show_filter'] ) {
                 $stop = 0;
             ?>
 
-            <div class="tile <?php echo $ctype['name']; ?>_list_item col-4 mb-4">
+            <div class="tile <?php echo $ctype['name']; ?>_list_item col-12 col-sm-6 col-md-4 mb-4">
                 <div class="card mb-0 h-100">
                     <div class="photo">
                         <?php if ($is_private) { ?>

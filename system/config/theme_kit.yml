@@ -1,11 +1,13 @@
 ---
 logo: null
+disable_help_anim: null
 owner_name:
 owner_url:
 owner_year:
 site_languages: ru
-header_nav_class: navbar navbar-inverse bg-inverse
-body_padding_top: 0
+header_nav_class: navbar navbar-inverse fixed-top
+colorpallett: bg-blueGrey900
+body_padding_top: 60
 body_padding_bottom: 0
 header_nav_width: 0
 btn_class: btn-success
