@@ -1,34 +1,37 @@
-<?php $this->addMainJS("templates/{$this->name}/addons/tether/tether.min.js"); ?>
-<?php if ($nav_posture == false) { ?>
-    <?php $this->addJS("templates/{$this->name}/addons/stretchynav/main.js"); ?>
-<?php } ?>
 <?php
-if (!isset($this->menus[$widget->options['menu']])) {
-    $menu = $this->loadMenus($widget->options['menu']);
-    if (!$menu){ return; }
-    $this->setMenuItems($widget->options['menu'], $menu);
-}
+    $this->addMainJS($this->getTplFilePath('addons/tether/tether.min.js', false));
 
-$menu = $this->menus[$widget->options['menu']];
+    if ($nav_posture == false) {
+        $this->addMainJS($this->getJavascriptFileName('jquery'));
+        $this->addMainJS($this->getTplFilePath('addons/stretchynav/main.js', false));
+    }
+    
+    if (!isset($this->menus[$widget->options['menu']])) {
+        $menu = $this->loadMenus($widget->options['menu']);
+        if (!$menu){ return; }
+        $this->setMenuItems($widget->options['menu'], $menu);
+    }
 
-$sn_margin = array();
-if (!empty($top)) {
-    $sn_margin[] = 'margin-top:'.$top.';';
-}
-if (!empty($bottom)) {
-    $sn_margin[] = 'margin-bottom:'.$bottom.';';
-}
-if (!empty($left)) {
-    $sn_margin[] = 'margin-left:'.$left.';';
-}
-if (!empty($right)) {
-    $sn_margin[] = 'margin-right:'.$right.';';
-}
-$style = implode(' ', $sn_margin);
+    $menu = $this->menus[$widget->options['menu']];
 
-$sn_id = 'cd-stretchy-nav-'.$widget->id;
+    $sn_margin = array();
+    if (!empty($top)) {
+        $sn_margin[] = 'margin-top:'.$top.';';
+    }
+    if (!empty($bottom)) {
+        $sn_margin[] = 'margin-bottom:'.$bottom.';';
+    }
+    if (!empty($left)) {
+        $sn_margin[] = 'margin-left:'.$left.';';
+    }
+    if (!empty($right)) {
+        $sn_margin[] = 'margin-right:'.$right.';';
+    }
+    $style = implode(' ', $sn_margin);
 
-$tooltip = ' data-toggle="tooltip" data-placement="'.$tooltip.'" ';
+    $sn_id = 'cd-stretchy-nav-'.$widget->id;
+
+    $tooltip = ' data-toggle="tooltip" data-placement="'.$tooltip.'" ';
 ?>
 <style>
     .cd-stretchy-nav-<?php echo $widget->id; ?> {
