@@ -16,14 +16,15 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     changed = require('gulp-changed'), // запускают таски только для изменившихся файлов
     duration = require('gulp-duration'),
+    debug = require('gulp-debug'),
     browserSync = require('browser-sync').create();
 
 // Setting
 
 
 var site = 'kit',
-    site_port = '3020',
-    template = 'kit';
+    site_port = '3010',
+    template = 'kit*';
 
 var user = '',
     password = '',
@@ -37,8 +38,8 @@ var path = {
     build: { //Тут мы укажем куда складывать готовые после сборки файлы
         html: 'app/',
         js: 'templates/' + template + '/js/',
-        style: 'templates/' + template + '/css/',
-        styleContr: 'templates/' + template + '/controllers/',
+        style: 'templates/',
+        styleContr: 'templates/',
         img: 'templates/' + template + '/images/',
         fonts: 'templates/' + template + '/fonts/'
     },
@@ -117,7 +118,12 @@ gulp.task('style:build', function () {
             cascade: false
         }))
         .pipe(pxtorem())
-        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(rename(function (path) {
+            var pathTheme = path.dirname.split('\\', 1);
+            path.dirname = '/' + pathTheme[0] + '/css';
+        }))
+        .pipe(sourcemaps.write(''))
+        .pipe(duration('style:build time'))
         .pipe(gulp.dest(path.build.style)) //И в build
 });
 
@@ -133,8 +139,12 @@ gulp.task('style.min:build', function () {
             cascade: false
         }))
         .pipe(pxtorem())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(rename(function (path) {
+            var pathTheme = path.dirname.split('\\', 1);
+            path.dirname = '/' + pathTheme[0] + '/css';
+            path.basename += ".min";
+        }))
+        .pipe(sourcemaps.write(''))
         .pipe(duration('style.min:build time'))
         .pipe(gulp.dest(path.build.style)) //И в build
         .pipe(browserSync.stream({match: "**/*.min.css"}))
@@ -152,7 +162,8 @@ gulp.task('styleContr:build', function () {
         }))
         .pipe(pxtorem())
         .pipe(rename(function (path) {
-            path.dirname += "/" + path.basename + "";
+            var pathTheme = path.dirname.split('\\', 1);
+            path.dirname = '/' + pathTheme[0] + '/controllers/' + path.basename;
             path.basename = "styles";
         }))
         .pipe(sourcemaps.write(''))
@@ -163,6 +174,10 @@ gulp.task('styleContr:build', function () {
 gulp.task('styleDefault:build', function () {
     gulp.src(path.src.styleDefault) //Выберем файлы по нужному пути
         .pipe(plumber())
+        .pipe(rename(function (path) {
+            var pathTheme = path.dirname.split('\\', 1);
+            path.dirname = '/' + pathTheme[0] + '/css';
+        }))
         .pipe(gulp.dest(path.build.style)) //Выплюнем их в папку build
 });
 
@@ -287,13 +302,13 @@ gulp.task('wdAdd', function () {
     gulp.src("appkit/" + wd_add + "/pascages/system/languages/ru/controllers/kitdeveloper/widgets/wd.name.php")
         .pipe(rename({basename: '' + wd_add + ''}))
         .pipe(debug({title: '' + wd_add + ':'}))
-        .pipe(gulp.dest("./dg/system/languages/ru" + wd_path + "/widgets/"))
+        .pipe(gulp.dest("./system/languages/ru" + wd_path + "/widgets/"))
     gulp.src("appkit/" + wd_add + "/pascages/system/controllers/kitdeveloper/widgets/wd.base/*.*")
         .pipe(debug({title: '' + wd_add + ':'}))
-        .pipe(gulp.dest("./dg/system" + wd_path + "/widgets/" + wd_add + "/"))
+        .pipe(gulp.dest("./system" + wd_path + "/widgets/" + wd_add + "/"))
     gulp.src("appkit/" + wd_add + "/pascages/templates/kit/controllers/kitdeveloper/widgets/wd.base/*.*")
         .pipe(debug({title: '' + wd_add + ':'}))
-        .pipe(gulp.dest("./dg/templates/kit/" + wd_path + "/widgets/" + wd_add + "/"))
+        .pipe(gulp.dest("./templates/kit/" + wd_path + "/widgets/" + wd_add + "/"))
 });
 
 var wd_name = [
@@ -304,8 +319,6 @@ var wd_name = [
 
 
 gulp.task('wdInstall', function () {
-
-    var debug = require('gulp-debug');
 
     for (var i = 0; i < wd_name.length; i++) {
         gulp.src([
@@ -352,7 +365,7 @@ gulp.task('clean', function () {
     ]);
 });
 
-gulp.task('default', ['browser-sync', 'build', 'watch']);
+gulp.task('default', ['browser-sync', 'build', 'wdInstall', 'watch']);
 
 // task для замены текста, необходимо доработать.
 gulp.task('templates', function(){
