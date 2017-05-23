@@ -111,3 +111,4 @@ sftp-config.json
 sendbox/
 node_modules/
 bower_components/
+system/controllers/comgen/

@@ -7,6 +7,8 @@ class widgetStretchynav extends cmsWidget {
 
         $device_type = cmsRequest::getDeviceType();
 
+        $this->setWrapper('wrapper_plain');
+
         $mobile = $device_type == 'mobile' ? '_mobile' : '';
 
         return array(
