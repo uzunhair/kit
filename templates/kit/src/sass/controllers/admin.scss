@@ -1,7 +1,7 @@
 @import 'base';
-@import '../../vendors/bootstrap/dropdown';
-@import '../../vendors/bootstrap/buttons';
-@import '../../vendors/bootstrap/button-group';
+@import '../vendors/bootstrap/dropdown';
+@import '../vendors/bootstrap/buttons';
+@import '../vendors/bootstrap/button-group';
 
 .show > .dropdown-menu {
     display: flex;

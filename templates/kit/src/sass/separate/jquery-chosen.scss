@@ -1,9 +1,9 @@
 @import "bower_components/compass-sass-mixins/lib/compass";
 
-@import 'config/variables';
+@import '../config/_variables';
 
-@import 'vendors/bootstrap/mixins';
-@import 'vendors/bootstrap/variables';
+@import '../vendors/bootstrap/_mixins';
+@import '../vendors/bootstrap/_variables';
 
 $chosen-sprite: image-url('chosen-sprite.png') !default;
 $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;

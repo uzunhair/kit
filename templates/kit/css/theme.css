@@ -539,6 +539,21 @@ nav select {
 .loading {
   background: transparent url("../images/loader16.gif") no-repeat scroll center center; }
 
+.widget_activity_list .media,
+.activity-list .media,
+.widget_content_list .media,
+.contacts .media {
+  margin-top: 1rem; }
+  .widget_activity_list .media:first-child,
+  .activity-list .media:first-child,
+  .widget_content_list .media:first-child,
+  .contacts .media:first-child {
+    margin-top: 0; }
+
+/* Comments =================================================================== */
+.markItUpContainer .markItUpHeader ul a {
+  padding: 0.8rem 1rem; }
+
 .card .list-group-item {
   margin-top: -1px;
   border-width: 1px; }

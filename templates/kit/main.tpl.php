@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php $this->addMainCSS("templates/{$this->name}/css/system.min.css"); ?>
     <?php $this->addMainCSS("templates/{$this->name}/css/theme.min.css"); ?>
-    <?php $this->addMainCSS("templates/{$this->name}/css/example.min.css"); ?>
+    <?php $this->addMainCSS("templates/{$this->name}/css/example.css"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/jquery.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/jquery-modal.js"); ?>
     <?php $this->addMainJS("templates/{$this->name}/js/core.js"); ?>

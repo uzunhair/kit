@@ -6,6 +6,6 @@
 @import "vendors/fontawesome/variables";
 
 @import 'theme/ui';
-@import 'theme/controllers';
+@import 'theme/ui/controllers';
 
-@import 'theme/addons.scss';
+@import 'widgets/widgets.scss';

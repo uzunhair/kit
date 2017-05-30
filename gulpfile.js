@@ -6,12 +6,12 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     mqpacker = require('css-mqpacker'),
     sass = require('gulp-sass'),
-    sassUnicode = require('gulp-sass-unicode'),  // Не допускает ошибок при наличии обратного слеша "\fff"
+    sassUnicode = require('gulp-sass-unicode'),  // Устраняет ошибку несоответсвия кодировки
     sourcemaps = require('gulp-sourcemaps'),
-    rigger = require('gulp-rigger'), // Собирает html файлы
+    rigger = require('gulp-rigger'), // Объединяет html файлы
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
-    del = require('del'), // Удаление файлов
+    del = require('del'), // Очищает директорию от скомпилированных файлов
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename'),
     changed = require('gulp-changed'), // запускают таски только для изменившихся файлов
@@ -22,40 +22,48 @@ var gulp = require('gulp'),
 // Setting
 
 
-var site = 'kit',
+var site = 'kit', // название сайта
     site_port = '3010',
-    template = 'kit*';
+    template = 'kit'; // название шаблона с которым ведется работа
 
 var user = '',
     password = '',
     host = '',
     ftp_port = 21,
     localFilesGlob = [
-        'templates/' + template + '/**/*.*'
+        'templates/' + template + '/**/*.*',
+        'system/**/stretchynav/*.*',
+        'system/languages/**/stretchynav.*',
+        'templates/**/stretchynav/*.*'
     ], remoteFolder = '/';
 
 var path = {
     build: { //Тут мы укажем куда складывать готовые после сборки файлы
         html: 'app/',
         js: 'templates/' + template + '/js/',
-        style: 'templates/',
-        styleContr: 'templates/',
+        style: 'templates/' + template + '/css/',
+        styleContr: 'templates/' + template + '/controllers/',
         img: 'templates/' + template + '/images/',
         fonts: 'templates/' + template + '/fonts/'
     },
     src: { //Пути откуда брать исходники
         html: 'app/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
         js: 'templates/' + template + '/src/js/*.js',
-        style: 'templates/' + template + '/src/sass/*.scss',
-        styleDefault: 'templates/' + template + '/src/sass/default/*.css',
-        styleContr: 'templates/' + template + '/src/sass/theme/controllers/*.scss',
+        style: 'templates/' + template + '/src/sass/theme.scss',
+        styleyVendors: 'templates/' + template + '/src/sass/system.scss',
+        styleSeparate: 'templates/' + template + '/src/sass/separate/*.scss',
+        styleContr: 'templates/' + template + '/src/sass/controllers/*.scss',
         img: 'templates/' + template + '/images/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
         fonts: 'templates/' + template + '/src/fonts/**/*.*'
     },
     watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
         html: 'app/**/*.html',
         js: 'templates/' + template + '/src/js/**/*.js',
-        style: 'templates/' + template + '/src/sass/**/*.scss',
+        style: 'templates/' + template + '/src/sass/theme/**/*.scss',
+        styleVendors: 'templates/' + template + '/src/sass/vendors/**/*.scss',
+        styleSeparate: 'templates/' + template + '/src/sass/separate/*.scss',
+        styleContr: 'templates/' + template + '/src/sass/controllers/*.scss',
+        styleConfig: 'templates/' + template + '/src/sass/config/*.scss',
         img: 'templates/' + template + '/images/**/*.*',
         fonts: 'templates/' + template + '/src/fonts/**/*.*'
     },
@@ -93,24 +101,24 @@ gulp.task('html:build', function () {
     gulp.src(path.src.html) //Выберем файлы по нужному пути
         .pipe(plumber())
         .pipe(rigger()) //Прогоним через rigger
-        .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
+        .pipe(gulp.dest(path.build.html)); //Выплюнем их в папку build
 });
 
 gulp.task('js:build', function () {
-    gulp.src(path.src.js) //Найдем наш main файл
+    gulp.src(path.src.js)
         .pipe(changed(path.build.js))
         .pipe(plumber())
         .pipe(concat('kit.js'))
         .pipe(uglify())
         // .pipe(sourcemaps.init()) //Инициализируем sourcemap
         // .pipe(sourcemaps.write('')) //Пропишем карты
-        .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
+        .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('style:build', function () {
     gulp.src(path.src.style) //Выберем наш system.scss
         .pipe(plumber())
-        .pipe(sourcemaps.init({largeFile: true})) //То же самое что и с js
+        .pipe(sourcemaps.init({largeFile: true}))
         .pipe(sass().on('error', sass.logError)) //Скомпилируем
         .pipe(sassUnicode())
         .pipe(autoprefixer({
@@ -118,43 +126,74 @@ gulp.task('style:build', function () {
             cascade: false
         }))
         .pipe(pxtorem())
-        .pipe(rename(function (path) {
-            var pathTheme = path.dirname.split('\\', 1);
-            path.dirname = '/' + pathTheme[0] + '/css';
-        }))
-        .pipe(sourcemaps.write(''))
+        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(debug({title: 'style:build'}))
         .pipe(duration('style:build time'))
-        .pipe(gulp.dest(path.build.style)) //И в build
+        .pipe(gulp.dest(path.build.style));
+});
+
+gulp.task('styleVendors:build', function () {
+    gulp.src(path.src.styleyVendors) //Выберем наш system.scss
+        .pipe(plumber())
+        .pipe(sourcemaps.init({largeFile: true}))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sassUnicode())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(pxtorem())
+        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(debug({title: 'style:build'}))
+        .pipe(duration('style:build time'))
+        .pipe(gulp.dest(path.build.style)); //И в build
 });
 
 gulp.task('style.min:build', function () {
-    gulp.src(path.src.style) //Выберем наш system.scss
+    gulp.src(path.src.style)
         .pipe(plumber())
-        .pipe(sourcemaps.init({largeFile: true})) //То же самое что и с js
-        .pipe(sass().on('error', sass.logError)) //Скомпилируем
+        .pipe(sourcemaps.init({largeFile: true}))
+        .pipe(sass().on('error', sass.logError))
         .pipe(sassUnicode())
-        .pipe(cssnano({zindex: false})) //Сожмем
+        .pipe(cssnano({zindex: false}))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
         .pipe(pxtorem())
-        .pipe(rename(function (path) {
-            var pathTheme = path.dirname.split('\\', 1);
-            path.dirname = '/' + pathTheme[0] + '/css';
-            path.basename += ".min";
-        }))
-        .pipe(sourcemaps.write(''))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(debug({title: 'style.min:build'}))
         .pipe(duration('style.min:build time'))
-        .pipe(gulp.dest(path.build.style)) //И в build
-        .pipe(browserSync.stream({match: "**/*.min.css"}))
+        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(gulp.dest(path.build.style))
+        .pipe(browserSync.stream())
+});
+
+gulp.task('styleVendors.min:build', function () {
+    gulp.src(path.src.styleyVendors)
+        .pipe(plumber())
+        .pipe(sourcemaps.init({largeFile: true}))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sassUnicode())
+        .pipe(cssnano({zindex: false}))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(pxtorem())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(debug({title: 'style.min:build'}))
+        .pipe(duration('style.min:build time'))
+        .pipe(gulp.dest(path.build.style))
+        .pipe(browserSync.stream())
 });
 
 gulp.task('styleContr:build', function () {
-    gulp.src(path.src.styleContr) //Выберем наш system.scss
+    gulp.src(path.src.styleContr)
         .pipe(plumber())
-        .pipe(sourcemaps.init({largeFile: true})) //То же самое что и с js
-        .pipe(sass().on('error', sass.logError)) //Скомпилируем
+        .pipe(sourcemaps.init({largeFile: true}))
+        .pipe(sass().on('error', sass.logError))
         .pipe(sassUnicode())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -162,23 +201,30 @@ gulp.task('styleContr:build', function () {
         }))
         .pipe(pxtorem())
         .pipe(rename(function (path) {
-            var pathTheme = path.dirname.split('\\', 1);
-            path.dirname = '/' + pathTheme[0] + '/controllers/' + path.basename;
+            path.dirname += "/" + path.basename + "";
             path.basename = "styles";
         }))
         .pipe(sourcemaps.write(''))
+        .pipe(debug({title: 'styleContr:build'}))
+        .pipe(duration('styleContr:build time'))
         .pipe(gulp.dest(path.build.styleContr))
         .pipe(browserSync.stream())
 });
 
-gulp.task('styleDefault:build', function () {
-    gulp.src(path.src.styleDefault) //Выберем файлы по нужному пути
+gulp.task('styleSeparate:build', function () {
+    gulp.src(path.src.styleSeparate)
         .pipe(plumber())
-        .pipe(rename(function (path) {
-            var pathTheme = path.dirname.split('\\', 1);
-            path.dirname = '/' + pathTheme[0] + '/css';
+        .pipe(sourcemaps.init({largeFile: true}))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(cssnano({zindex: false}))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
         }))
-        .pipe(gulp.dest(path.build.style)) //Выплюнем их в папку build
+        .pipe(pxtorem())
+        .pipe(sourcemaps.write('../css/maps'))
+        .pipe(gulp.dest(path.build.style))
+        .pipe(browserSync.stream())
 });
 
 gulp.task('img:build', function () {
@@ -189,7 +235,7 @@ gulp.task('img:build', function () {
         imageminJR = require('imagemin-jpeg-recompress'),
         imageminSvgo = require('imagemin-svgo');
 
-    gulp.src(path.src.img) //Выберем наши картинки
+    gulp.src(path.src.img)
         .pipe(changed(path.build.img))
         .pipe(plumber())
         .pipe(imagemin([
@@ -208,12 +254,12 @@ gulp.task('img:build', function () {
                 interlaced: true
             })
         ]))
-        .pipe(gulp.dest(path.build.img)) //И бросим в build
+        .pipe(gulp.dest(path.build.img))
 });
 
 gulp.task('fonts:build', function () {
-    gulp.src(path.src.fonts) //Выберем файлы по нужному пути
-        .pipe(gulp.dest(path.build.fonts)) //Выплюнем их в папку build
+    gulp.src(path.src.fonts)
+        .pipe(gulp.dest(path.build.fonts));
 });
 
 gulp.task('build', [
@@ -221,17 +267,20 @@ gulp.task('build', [
     'js:build',
     'style:build',
     'style.min:build',
+    'styleVendors:build',
+    'styleVendors.min:build',
     'styleContr:build',
-    'styleDefault:build',
+    'styleSeparate:build',
     'fonts:build',
     'img:build'
 ]);
 
 gulp.task('watch', function () {
     gulp.watch(path.watch.html, ['html:build']);
-    gulp.watch(path.watch.style, ['style:build']);
-    gulp.watch(path.watch.style, ['style.min:build']);
-    gulp.watch(path.watch.style, ['styleContr:build']);
+    gulp.watch(path.watch.style, ['style:build', 'style.min:build']);
+    gulp.watch(path.watch.styleVendors, ['styleVendors:build', 'styleVendors.min:build']);
+    gulp.watch(path.watch.styleContr, ['styleContr:build']);
+    gulp.watch(path.watch.styleConfig, ['style:build', 'style.min:build', 'styleVendors:build', 'styleVendors.min:build', 'styleContr:build', 'styleSeparate:build']);
     gulp.watch(path.watch.js, ['js:build']);
     gulp.watch(path.watch.img, ['img:build']);
     gulp.watch(path.watch.fonts, ['fonts:build']);
@@ -302,10 +351,10 @@ gulp.task('wdAdd', function () {
     gulp.src("appkit/" + wd_add + "/pascages/system/languages/ru/controllers/kitdeveloper/widgets/wd.name.php")
         .pipe(rename({basename: '' + wd_add + ''}))
         .pipe(debug({title: '' + wd_add + ':'}))
-        .pipe(gulp.dest("./system/languages/ru" + wd_path + "/widgets/"))
+        .pipe(gulp.dest("./system/languages/ru" + wd_path + "/widgets/"));
     gulp.src("appkit/" + wd_add + "/pascages/system/controllers/kitdeveloper/widgets/wd.base/*.*")
         .pipe(debug({title: '' + wd_add + ':'}))
-        .pipe(gulp.dest("./system" + wd_path + "/widgets/" + wd_add + "/"))
+        .pipe(gulp.dest("./system" + wd_path + "/widgets/" + wd_add + "/"));
     gulp.src("appkit/" + wd_add + "/pascages/templates/kit/controllers/kitdeveloper/widgets/wd.base/*.*")
         .pipe(debug({title: '' + wd_add + ':'}))
         .pipe(gulp.dest("./templates/kit/" + wd_path + "/widgets/" + wd_add + "/"))
@@ -322,19 +371,19 @@ gulp.task('wdInstall', function () {
 
     for (var i = 0; i < wd_name.length; i++) {
         gulp.src([
-            'system/**/' + wd_name[i] + '/*.*',
+            'system/**/' + wd_name[i] + '/*.*'
         ])
             .pipe(debug({title: '' + wd_name[i] + ':'}))
-            .pipe(gulp.dest('' + wd_dir + wd_name[i] + '/pascages/system/'))
+            .pipe(gulp.dest('' + wd_dir + wd_name[i] + '/pascages/system/'));
 
         gulp.src([
-            'system/languages/**/' + wd_name[i] + '.*',
+            'system/languages/**/' + wd_name[i] + '.*'
         ])
             .pipe(debug({title: '' + wd_name[i] + ':'}))
-            .pipe(gulp.dest('' + wd_dir + wd_name[i] + '/pascages/system/languages/'))
+            .pipe(gulp.dest('' + wd_dir + wd_name[i] + '/pascages/system/languages/'));
 
         gulp.src([
-            'templates/**/' + wd_name[i] + '/*.*',
+            'templates/**/' + wd_name[i] + '/*.*'
         ])
             .pipe(debug({title: '' + wd_name[i] + ':'}))
             .pipe(gulp.dest('' + wd_dir + wd_name[i] + '/pascages/templates/'))
@@ -361,7 +410,7 @@ gulp.task('clean', function () {
     return del([
         path.clean.style,
         path.clean.styleContr,
-        path.clean.fonts,
+        path.clean.fonts
     ]);
 });
 
